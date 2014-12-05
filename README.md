@@ -11,7 +11,7 @@ For API docs please see the [documentation page](/docs/API.md)!
 
 ```webpack.config.js```
 
-```javascript
+```
 'use strict';
 
 var path = require('path'),
@@ -82,7 +82,7 @@ module.exports = WebpackConfig.from({
 
 ```polyfills/webpack.config.js```
 
-```javascript
+```
 'use strict';
 
 var WebpackConfig = require('webpack-config');
