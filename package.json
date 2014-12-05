@@ -19,5 +19,21 @@
   "bugs": {
     "url": "https://github.com/mdreizin/webpack-config/issues"
   },
-  "homepage": "https://github.com/mdreizin/webpack-config"
+  "homepage": "https://github.com/mdreizin/webpack-config",
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-concat": "^2.4.2",
+    "gulp-eslint": "^0.2.0",
+    "gulp-jsdoc-to-markdown": "^0.1.5"
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "del": "^1.1.0",
+    "gulp-eslint": "^0.2.0",
+    "gulp-concat": "^2.4.2",
+    "gulp": "^3.8.10",
+    "gulp-jsdoc-to-markdown": "^0.1.5"
+  }
 }
