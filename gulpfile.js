@@ -8,20 +8,23 @@ var path = require('path'),
     concat = require('gulp-concat');
 
 var src = './lib/',
-    docs = './docs/';
+    docs = './docs/',
+    paths = {
+        scripts: path.join(src, '**/*.js')
+    };
 
 gulp.task('lint', function() {
-    return gulp.src([src + '**/*.js', 'gulpfile.js'])
+    return gulp.src([paths.scripts, 'gulpfile.js'])
         .pipe(eslint())
         .pipe(eslint.format());
 });
 
 gulp.task('clean', function(callback) {
-    del([path.join(docs, 'API.md')], callback);
+    del(path.join(docs, 'API.md'), callback);
 });
 
 gulp.task('docs', function() {
-    return gulp.src([path.join(src, '**/*.js')])
+    return gulp.src(paths.scripts)
         .pipe(concat('API.md'))
         .pipe(jsdoc2md())
         .pipe(gulp.dest(docs));
