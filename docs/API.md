@@ -10,6 +10,7 @@ Represents webpack config
   * [config.extend(attributes)](#Config#extend)
   * [Config.from(attributes)](#Config.from)
   * [Config.load(filename)](#Config.load)
+  * [Config.closest(dirname)](#Config.closest)
 
 <a name="new_Config"></a>
 ##new Config(attributes)
@@ -50,6 +51,15 @@ Loads config from directory or file
 
 **Params**
 
-- filename `Object` - [filename=`process.cwd()`]  - Attributes  
+- filename `String` - [filename=`process.cwd()`]  - Directory or file  
 
 **Returns**: [Config](#Config)  
+<a name="Config.closest"></a>
+##Config.closest(dirname)
+Finds closest config
+
+**Params**
+
+- dirname `String` - Directory  
+
+**Returns**: `String` - File name  
