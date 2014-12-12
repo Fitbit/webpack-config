@@ -9,9 +9,9 @@ For API docs please see the [documentation page](/docs/API.md)!
 
 ## Sample
 
-```webpack.config.js```
+`webpack.config.js`
 
-```
+``` javasript
 'use strict';
 
 var path = require('path'),
@@ -80,9 +80,9 @@ module.exports = WebpackConfig.from({
 });
 ```
 
-```polyfills/webpack.config.js```
+`polyfills/webpack.config.js`
 
-```
+``` javascript
 'use strict';
 
 var WebpackConfig = require('webpack-config');
