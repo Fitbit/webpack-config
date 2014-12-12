@@ -11,7 +11,7 @@ For API docs please see the [documentation page](/docs/API.md)!
 
 `webpack.config.js`
 
-``` javasript
+``` javascript
 'use strict';
 
 var path = require('path'),
