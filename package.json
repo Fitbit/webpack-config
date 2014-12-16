@@ -1,6 +1,6 @@
 {
   "name": "webpack-config",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Helps to load, extend and merge webpack configs",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mdreizin/webpack-config"
+    "url": "https://github.com/mdreizin/webpack-config.git"
   },
   "keywords": [
     "webpack",
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/mdreizin/webpack-config",
   "devDependencies": {
+    "del": "^1.1.0",
     "gulp": "^3.8.10",
     "gulp-concat": "^2.4.2",
     "gulp-eslint": "^0.2.0",
@@ -28,12 +29,5 @@
   },
   "directories": {
     "doc": "docs"
-  },
-  "dependencies": {
-    "del": "^1.1.0",
-    "gulp-eslint": "^0.2.0",
-    "gulp-concat": "^2.4.2",
-    "gulp": "^3.8.10",
-    "gulp-jsdoc-to-markdown": "^0.1.5"
   }
 }
