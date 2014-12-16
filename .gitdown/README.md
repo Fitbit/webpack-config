@@ -1,6 +1,4 @@
-{"gitdown": "badge", "name": "npm-version"}
-{"gitdown": "badge", "name": "david"}
-{"gitdown": "badge", "name": "david-dev"}
+{"gitdown": "badge", "name": "npm-version"} {"gitdown": "badge", "name": "david"} {"gitdown": "badge", "name": "david-dev"}
 
 [webpack](https://github.com/webpack/webpack)-config
 ====================================================
