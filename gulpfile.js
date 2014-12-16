@@ -11,13 +11,18 @@ var path = require('path'),
 var src = './lib/',
     docs = './docs/',
     paths = {
-        scripts: path.join(src, '**/*.js')
+        scripts: [
+            path.join(src, '**/*.js'),
+            path.join('./samples', '**/*.js'),
+            'gulpfile.js'
+        ]
     };
 
 gulp.task('lint', function() {
-    return gulp.src([paths.scripts, 'gulpfile.js'])
+    return gulp.src(paths.scripts)
         .pipe(eslint())
-        .pipe(eslint.format());
+        .pipe(eslint.format())
+        .pipe(eslint.failOnError());
 });
 
 gulp.task('clean', function(callback) {
