@@ -1,5 +1,5 @@
 [webpack](https://github.com/webpack/webpack)-config
-==============
+====================================================
 
 Helps to load, extend and merge webpack configs
 
