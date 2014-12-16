@@ -1,23 +1,3 @@
-<!--
-This file has been generated using Gitdown (https://github.com/gajus/gitdown).
-Direct edits to this will be be overwritten. Look for Gitdown markup file under ./.gitdown/ path.
--->
-[webpack](https://github.com/webpack/webpack)-config
-====================================================
-
-Helps to load, extend and merge webpack configs
-
-[![NPM](https://nodei.co/npm/webpack-config.png?downloads=true&stars=true)](https://nodei.co/npm/webpack-config/)
-
-<h2 id="documentation">Documentation</h2>
-
-For API docs please see the [documentation page](/docs/API.md)!
-
-<h2 id="sample">Sample</h2>
-
-`webpack.config.js`
-
-``` javascript
 'use strict';
 
 var path = require('path'),
@@ -84,30 +64,3 @@ module.exports = WebpackConfig.from({
         }]
     }
 });
-
-```
-
-`polyfills/webpack.config.js`
-
-``` javascript
-'use strict';
-
-var WebpackConfig = require('webpack-config');
-
-module.exports = WebpackConfig.load().extend({
-    entry: {
-        vendor: [
-            'consolelog',
-            'es5-shim',
-            'es5-shim/es5-sham',
-            'es6-shim',
-            'es6-shim/es6-sham',
-            'json3',
-            'html5shiv',
-            'html5shiv/dist/html5shiv-printshiv.js',
-            'respond'
-        ]
-    }
-});
-
-```
