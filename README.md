@@ -3,6 +3,8 @@ webpack-config
 
 Helps to load, extend and merge webpack configs
 
+[![NPM](https://nodei.co/npm/webpack-config.png?downloads=true&stars=true)](https://nodei.co/npm/webpack-config/)
+
 ## Documentation
 
 For API docs please see the [documentation page](/docs/API.md)!
