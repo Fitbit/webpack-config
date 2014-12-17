@@ -1,11 +1,11 @@
 {"gitdown": "badge", "name": "npm-version"} {"gitdown": "badge", "name": "david"} {"gitdown": "badge", "name": "david-dev"}
 
+[![NPM](https://nodei.co/npm/webpack-config.png?downloads=true&stars=true)](https://nodei.co/npm/webpack-config/)
+
 [webpack](https://github.com/webpack/webpack)-config
 ====================================================
 
 Helps to load, extend and merge webpack configs
-
-[![NPM](https://nodei.co/npm/webpack-config.png?downloads=true&stars=true)](https://nodei.co/npm/webpack-config/)
 
 ## Documentation
 
