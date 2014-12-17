@@ -29,7 +29,7 @@ module.exports = WebpackConfig.from({
                 /.*\.min.*/
             ]
         }),
-        new ExtractTextPlugin(path.join('[name].css')),
+        new ExtractTextPlugin('[name].css'),
         new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js')
     ],
     module: {
