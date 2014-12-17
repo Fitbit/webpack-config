@@ -13,7 +13,7 @@ Helps to load, extend and merge webpack configs
 
 <h2 id="documentation">Documentation</h2>
 
-For API docs please see the [documentation page](/docs/API.md)!
+For API docs please see the [documentation page](https://github.com/mdreizin/webpack-config/blob/master/docs/API.md)!
 
 <h2 id="sample">Sample</h2>
 
