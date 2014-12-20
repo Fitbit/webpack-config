@@ -9,7 +9,7 @@ Represents webpack config
   * [config.merge(attributes)](#Config#merge)
   * [config.extend(attributes)](#Config#extend)
   * [Config.from(attributes)](#Config.from)
-  * [Config.load(filename)](#Config.load)
+  * [Config.load(filename, cached)](#Config.load)
   * [Config.closest(dirname)](#Config.closest)
 
 <a name="new_Config"></a>
@@ -46,12 +46,13 @@ Creates new config form attributes
 
 **Returns**: [Config](#Config)  
 <a name="Config.load"></a>
-##Config.load(filename)
+##Config.load(filename, cached)
 Loads config from directory or file
 
 **Params**
 
 - filename `String` - [filename=`process.cwd()`]  - Directory or file  
+- cached `Boolean` - [cached=`true`]  - Load from cache or not  
 
 **Returns**: [Config](#Config)  
 <a name="Config.closest"></a>
