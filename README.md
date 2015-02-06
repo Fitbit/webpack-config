@@ -1,7 +1,3 @@
-<!--
-This file has been generated using Gitdown (https://github.com/gajus/gitdown).
-Direct edits to this will be be overwritten. Look for Gitdown markup file under ./.gitdown/ path.
--->
 [![NPM version](http://img.shields.io/npm/v/webpack-config.svg?style=flat)](https://www.npmjs.org/package/webpack-config) [![Dependency Status](https://david-dm.org/mdreizin/webpack-config.svg?style=flat)](https://david-dm.org/mdreizin/webpack-config) [![Dependency Status](https://david-dm.org/mdreizin/webpack-config/dev-status.svg?style=flat)](https://david-dm.org/mdreizin/webpack-config#info=devDependencies)
 
 [![NPM](https://nodei.co/npm/webpack-config.png?downloads=true&stars=true)](https://nodei.co/npm/webpack-config/)
