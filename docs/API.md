@@ -6,12 +6,13 @@ Represents webpack config
 
 * [class: Config](#Config)
   * [new Config(attributes)](#new_Config)
+  * [Config.useCache](#Config.useCache)
   * [config.merge(attributes)](#Config#merge)
   * [config.extend(attributes)](#Config#extend)
   * [Config.fromObject(attributes)](#Config.fromObject)
-  * [Config.fromCwd([basename], [cached])](#Config.fromCwd)
-  * [Config.fromDirectory(dirname, [basename], [cached])](#Config.fromDirectory)
-  * [Config.fromFile(filename, [cached])](#Config.fromFile)
+  * [Config.fromCwd([basename])](#Config.fromCwd)
+  * [Config.fromDirectory(dirname, [basename])](#Config.fromDirectory)
+  * [Config.fromFile(filename)](#Config.fromFile)
   * [Config.closest(dirname, [basename])](#Config.closest)
 
 <a name="new_Config"></a>
@@ -19,6 +20,12 @@ Represents webpack config
 **Params**
 
 - attributes `Object` - Attributes (please see [webpack.github.io](http://webpack.github.io/docs/configuration.html))  
+
+<a name="Config.useCache"></a>
+##Config.useCache
+**Properties**
+
+-  `Boolean` - Use cache or not  
 
 <a name="Config#merge"></a>
 ##config.merge(attributes)
@@ -48,34 +55,31 @@ Creates new config form object
 
 **Returns**: [Config](#Config)  
 <a name="Config.fromCwd"></a>
-##Config.fromCwd([basename], [cached])
+##Config.fromCwd([basename])
 Loads config from `process.cwd()`
 
 **Params**
 
 - \[basename=`webpack.config.js`\] `String` - Config file name  
-- \[cached=`true`\] `Boolean` - Use cache or not  
 
 **Returns**: [Config](#Config)  
 <a name="Config.fromDirectory"></a>
-##Config.fromDirectory(dirname, [basename], [cached])
+##Config.fromDirectory(dirname, [basename])
 Loads config from directory
 
 **Params**
 
 - dirname `String` - Directory name  
 - \[basename=`webpack.config.js`\] `String` - Config file name  
-- \[cached=`true`\] `Boolean` - Use cache or not  
 
 **Returns**: [Config](#Config)  
 <a name="Config.fromFile"></a>
-##Config.fromFile(filename, [cached])
+##Config.fromFile(filename)
 Loads config from file
 
 **Params**
 
 - filename `String` - File name  
-- \[cached=`true`\] `Boolean` - Use cache or not  
 
 **Returns**: [Config](#Config)  
 <a name="Config.closest"></a>
