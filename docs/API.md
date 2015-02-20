@@ -5,21 +5,21 @@ Represents webpack config
 **Members**
 
 * [class: Config](#Config)
-  * [new Config(attributes)](#new_Config)
+  * [new Config(options)](#new_Config)
   * [Config.useCache](#Config.useCache)
-  * [config.merge(attributes)](#Config#merge)
-  * [config.extend(attributes)](#Config#extend)
-  * [Config.fromObject(attributes)](#Config.fromObject)
+  * [config.merge(options)](#Config#merge)
+  * [config.extend(options)](#Config#extend)
+  * [Config.fromObject(options)](#Config.fromObject)
   * [Config.fromCwd([basename])](#Config.fromCwd)
   * [Config.fromDirectory(dirname, [basename])](#Config.fromDirectory)
   * [Config.fromFile(filename)](#Config.fromFile)
   * [Config.closest(dirname, [basename])](#Config.closest)
 
 <a name="new_Config"></a>
-##new Config(attributes)
+##new Config(options)
 **Params**
 
-- attributes `Object` - Attributes (please see [webpack.github.io](http://webpack.github.io/docs/configuration.html))  
+- options `Object` - Options (please see [webpack.github.io](http://webpack.github.io/docs/configuration.html))  
 
 <a name="Config.useCache"></a>
 ##Config.useCache
@@ -28,30 +28,30 @@ Represents webpack config
 -  `Boolean` - Use cache or not  
 
 <a name="Config#merge"></a>
-##config.merge(attributes)
-Merges attributes
+##config.merge(options)
+Merges options
 
 **Params**
 
-- attributes `Object` - Attributes  
+- options `Object` - Options  
 
 **Returns**: [Config](#Config)  
 <a name="Config#extend"></a>
-##config.extend(attributes)
-Creates a new config and merges attributes
+##config.extend(options)
+Creates a new config and merges options
 
 **Params**
 
-- attributes `Object` - Attributes  
+- options `Object` - Options  
 
 **Returns**: [Config](#Config)  
 <a name="Config.fromObject"></a>
-##Config.fromObject(attributes)
+##Config.fromObject(options)
 Creates new config form object
 
 **Params**
 
-- attributes `Object` - Attributes  
+- options `Object` - Options  
 
 **Returns**: [Config](#Config)  
 <a name="Config.fromCwd"></a>
