@@ -8,9 +8,11 @@ Represents webpack config
   * [new Config(attributes)](#new_Config)
   * [config.merge(attributes)](#Config#merge)
   * [config.extend(attributes)](#Config#extend)
-  * [Config.from(attributes)](#Config.from)
-  * [Config.load(filename, cached)](#Config.load)
-  * [Config.closest(dirname)](#Config.closest)
+  * [Config.fromObject(attributes)](#Config.fromObject)
+  * [Config.fromCwd([basename], [cached])](#Config.fromCwd)
+  * [Config.fromDirectory(dirname, [basename], [cached])](#Config.fromDirectory)
+  * [Config.fromFile(filename, [cached])](#Config.fromFile)
+  * [Config.closest(dirname, [basename])](#Config.closest)
 
 <a name="new_Config"></a>
 ##new Config(attributes)
@@ -36,31 +38,53 @@ Creates a new config and merges attributes
 - attributes `Object` - Attributes  
 
 **Returns**: [Config](#Config)  
-<a name="Config.from"></a>
-##Config.from(attributes)
-Creates new config form attributes
+<a name="Config.fromObject"></a>
+##Config.fromObject(attributes)
+Creates new config form object
 
 **Params**
 
 - attributes `Object` - Attributes  
 
 **Returns**: [Config](#Config)  
-<a name="Config.load"></a>
-##Config.load(filename, cached)
-Loads config from directory or file
+<a name="Config.fromCwd"></a>
+##Config.fromCwd([basename], [cached])
+Loads config from `process.cwd()`
 
 **Params**
 
-- filename `String` - [filename=`process.cwd()`]  - Directory or file  
-- cached `Boolean` - [cached=`true`]  - Load from cache or not  
+- \[basename=`webpack.config.js`\] `String` - Config file name  
+- \[cached=`true`\] `Boolean` - Use cache or not  
+
+**Returns**: [Config](#Config)  
+<a name="Config.fromDirectory"></a>
+##Config.fromDirectory(dirname, [basename], [cached])
+Loads config from directory
+
+**Params**
+
+- dirname `String` - Directory name  
+- \[basename=`webpack.config.js`\] `String` - Config file name  
+- \[cached=`true`\] `Boolean` - Use cache or not  
+
+**Returns**: [Config](#Config)  
+<a name="Config.fromFile"></a>
+##Config.fromFile(filename, [cached])
+Loads config from file
+
+**Params**
+
+- filename `String` - File name  
+- \[cached=`true`\] `Boolean` - Use cache or not  
 
 **Returns**: [Config](#Config)  
 <a name="Config.closest"></a>
-##Config.closest(dirname)
+##Config.closest(dirname, [basename])
 Finds closest config
 
 **Params**
 
-- dirname `String` - Directory  
+- dirname `String` - Directory name  
+- \[basename=`webpack.config.js`\] `String` - Config file name  
 
-**Returns**: `String` - File name  
+**Returns**: `String` - File path  
