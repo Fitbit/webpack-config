@@ -7,7 +7,7 @@ var path = require('path'),
     ComponentPlugin = require('component-webpack-plugin'),
     WebpackConfig = require('webpack-config');
 
-module.exports = WebpackConfig.from({
+module.exports = WebpackConfig.fromObject({
     output: {
         filename: '[name].js'
     },

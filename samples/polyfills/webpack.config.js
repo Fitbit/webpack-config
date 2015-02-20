@@ -2,7 +2,7 @@
 
 var WebpackConfig = require('webpack-config');
 
-module.exports = WebpackConfig.load().extend({
+module.exports = WebpackConfig.fromCwd().extend({
     entry: {
         vendor: [
             'consolelog',

@@ -25,7 +25,7 @@ var path = require('path'),
     ComponentPlugin = require('component-webpack-plugin'),
     WebpackConfig = require('webpack-config');
 
-module.exports = WebpackConfig.from({
+module.exports = WebpackConfig.fromObject({
     output: {
         filename: '[name].js'
     },
@@ -92,7 +92,7 @@ module.exports = WebpackConfig.from({
 
 var WebpackConfig = require('webpack-config');
 
-module.exports = WebpackConfig.load().extend({
+module.exports = WebpackConfig.fromCwd().extend({
     entry: {
         vendor: [
             'consolelog',
