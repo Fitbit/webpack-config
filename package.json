@@ -21,14 +21,17 @@
   },
   "homepage": "https://github.com/mdreizin/webpack-config",
   "devDependencies": {
-    "del": "^1.1.0",
     "gitdown": "^1.2.6",
     "gulp": "^3.8.10",
     "gulp-concat": "^2.4.2",
     "gulp-eslint": "^0.3.0",
-    "gulp-jsdoc-to-markdown": "^0.1.5"
+    "gulp-jsdoc-to-markdown": "^0.1.5",
+    "run-sequence": "^1.0.2"
   },
   "directories": {
     "doc": "docs"
+  },
+  "dependencies": {
+    "lodash": "^3.3.0"
   }
 }

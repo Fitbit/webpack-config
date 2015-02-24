@@ -1,15 +1,14 @@
 'use strict';
 
 var path = require('path'),
-    del = require('del'),
     gulp = require('gulp'),
     eslint = require('gulp-eslint'),
     jsdoc2md = require('gulp-jsdoc-to-markdown'),
+    runSequence = require('run-sequence'),
     concat = require('gulp-concat'),
-    gitdown = require('gitdown');
+    Gitdown = require('gitdown');
 
 var src = './lib/',
-    docs = './docs/',
     paths = {
         scripts: [
             path.join(src, '**/*.js'),
@@ -25,29 +24,40 @@ gulp.task('lint', function() {
         .pipe(eslint.failOnError());
 });
 
-gulp.task('clean', function(callback) {
-    del(path.join(docs, 'API.md'), callback);
-});
-
-gulp.task('docs', ['jsdoc2md'], function() {
-    gulp.start('gitdown');
-});
-
 gulp.task('jsdoc2md', function() {
-    return gulp.src(paths.scripts)
+    return gulp.src([
+            './index.js',
+            path.join(src, '**/*.js')
+        ])
         .pipe(concat('API.md'))
         .pipe(jsdoc2md())
-        .pipe(gulp.dest(docs));
+        .pipe(gulp.dest('.gitdown/docs'));
 });
 
-gulp.task('gitdown', function() {
-    return gitdown.read('.gitdown/README.md').write('README.md');
+gulp.task('gitdown:readme', function() {
+    return Gitdown.read('.gitdown/README.md').write('README.md');
 });
 
-gulp.task('build', ['lint'], function() {
-    gulp.start('docs');
+gulp.task('gitdown:api', function() {
+    var gitdown = Gitdown.read('.gitdown/docs/API.md');
+
+    gitdown.config.headingNesting.enabled = false;
+
+    return gitdown.write('docs/API.md');
 });
 
-gulp.task('default', ['clean'], function() {
-    gulp.start('build');
+gulp.task('gitdown', function(callback) {
+    runSequence('gitdown:readme', 'gitdown:api', callback);
+});
+
+gulp.task('docs', function(callback) {
+    runSequence('jsdoc2md', 'gitdown', callback);
+});
+
+gulp.task('build', function(callback) {
+    runSequence('lint', 'docs', callback);
+});
+
+gulp.task('default', function(callback) {
+    runSequence('build', callback);
 });
