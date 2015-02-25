@@ -1,6 +1,6 @@
 {
   "name": "webpack-config",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Helps to load, extend and merge webpack configs",
   "main": "index.js",
   "scripts": {
