@@ -59,6 +59,10 @@ gulp.task('build', function(callback) {
     runSequence('lint', 'docs', callback);
 });
 
+gulp.task('ci', function(callback) {
+    runSequence('build', callback);
+});
+
 gulp.task('default', function(callback) {
     runSequence('build', callback);
 });
