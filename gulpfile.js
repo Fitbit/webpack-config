@@ -11,6 +11,7 @@ var path = require('path'),
 var src = './lib/',
     paths = {
         scripts: [
+            'index.js',
             path.join(src, '**/*.js'),
             path.join('./samples', '**/*.js'),
             'gulpfile.js'
