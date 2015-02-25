@@ -60,7 +60,7 @@ gulp.task('build', function(callback) {
 });
 
 gulp.task('ci', function(callback) {
-    runSequence('build', callback);
+    runSequence('lint', callback);
 });
 
 gulp.task('default', function(callback) {
