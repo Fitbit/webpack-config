@@ -11,9 +11,9 @@ var path = require('path'),
     BowerPlugin = require('bower-webpack-plugin'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     ComponentPlugin = require('component-webpack-plugin'),
-    WebpackConfig = require('webpack-config');
+    webpackConfig = require('webpack-config');
 
-module.exports = WebpackConfig.fromObject({
+module.exports = webpackConfig.fromObject({
     output: {
         filename: '[name].js'
     },
@@ -79,9 +79,9 @@ module.exports = WebpackConfig.fromObject({
 ``` javascript
 'use strict';
 
-var WebpackConfig = require('webpack-config');
+var webpackConfig = require('webpack-config');
 
-module.exports = WebpackConfig.fromCwd().extend({
+module.exports = webpackConfig.fromCwd().extend({
     entry: {
         vendor: [
             'consolelog',
