@@ -3,6 +3,11 @@
   "version": "0.5.0",
   "description": "Helps to load, extend and merge webpack configs",
   "main": "index.js",
+  "files": [
+    "index.js",
+    "lib/",
+    "docs/"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
