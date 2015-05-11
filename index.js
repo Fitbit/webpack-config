@@ -51,7 +51,7 @@ module.exports = {
     },
     /**
      * Loads config from `process.cwd()`
-     * @param {String} [basename=`webpack.config.js`] - Config file name
+     * @param {String} [basename=webpack.config.js] - Config file name
      * @returns {Config|MultiConfig}
      */
     fromCwd: function(basename) {
@@ -60,7 +60,7 @@ module.exports = {
     /**
      * Loads config from directory
      * @param {String} dirname - Directory name
-     * @param {String} [basename=`webpack.config.js`] - Config file name
+     * @param {String} [basename=webpack.config.js] - Config file name
      * @returns {Config|MultiConfig}
      */
     fromDirectory: function(dirname, basename) {
@@ -83,7 +83,7 @@ module.exports = {
     /**
      * Finds closest config
      * @param {String} dirname - Directory name
-     * @param {String} [basename=`webpack.config.js`] - Config file name
+     * @param {String} [basename=webpack.config.js] - Config file name
      * @returns {String} File path
      */
     closest: function(dirname, basename) {

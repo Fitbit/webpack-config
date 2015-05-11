@@ -1,5 +1,5 @@
 <a name="module_webpack-config"></a>
-#webpack-config
+## webpack-config
 **Example**  
 `webpack.config.js`
 
@@ -72,7 +72,6 @@ module.exports = webpackConfig.fromObject({
 });
 
 ```
-
 **Example**  
 `polyfills/webpack.config.js`
 
@@ -99,212 +98,335 @@ module.exports = webpackConfig.fromCwd().extend({
 
 ```
 
-**Members**
-
 * [webpack-config](#module_webpack-config)
-  * [webpack-config.Config](#module_webpack-config.Config)
-    * [config.merge(options)](#module_webpack-config.Config#merge)
-    * [config.defaults(options)](#module_webpack-config.Config#defaults)
-    * [config.extend(options)](#module_webpack-config.Config#extend)
-    * [config.toPlainObject()](#module_webpack-config.Config#toPlainObject)
-  * [webpack-config.MultiConfig](#module_webpack-config.MultiConfig)
-    * [multiConfig.merge(options)](#module_webpack-config.MultiConfig#merge)
-    * [multiConfig.defaults(options)](#module_webpack-config.MultiConfig#defaults)
-    * [multiConfig.extend(options)](#module_webpack-config.MultiConfig#extend)
-    * [multiConfig.toPlainObject()](#module_webpack-config.MultiConfig#toPlainObject)
-  * [webpack-config.useCache](#module_webpack-config.useCache)
-  * [webpack-config.fromObject(options)](#module_webpack-config.fromObject)
-  * [webpack-config.fromCwd([basename])](#module_webpack-config.fromCwd)
-  * [webpack-config.fromDirectory(dirname, [basename])](#module_webpack-config.fromDirectory)
-  * [webpack-config.fromFile(filename)](#module_webpack-config.fromFile)
-  * [webpack-config.closest(dirname, [basename])](#module_webpack-config.closest)
-  * [const: webpack-config.CONFIG_FILENAME](#module_webpack-config.CONFIG_FILENAME)
-  * [class: webpack-config.Config](#module_webpack-config.Config)
-    * [new webpack-config.Config(options)](#new_module_webpack-config.Config)
-    * [config.merge(options)](#module_webpack-config.Config#merge)
-    * [config.defaults(options)](#module_webpack-config.Config#defaults)
-    * [config.extend(options)](#module_webpack-config.Config#extend)
-    * [config.toPlainObject()](#module_webpack-config.Config#toPlainObject)
-  * [class: webpack-config.MultiConfig](#module_webpack-config.MultiConfig)
-    * [new webpack-config.MultiConfig(options)](#new_module_webpack-config.MultiConfig)
-    * [multiConfig.merge(options)](#module_webpack-config.MultiConfig#merge)
-    * [multiConfig.defaults(options)](#module_webpack-config.MultiConfig#defaults)
-    * [multiConfig.extend(options)](#module_webpack-config.MultiConfig#extend)
-    * [multiConfig.toPlainObject()](#module_webpack-config.MultiConfig#toPlainObject)
+  * [.Config](#module_webpack-config.Config)
+    * [new Config(options)](#new_module_webpack-config.Config_new)
+    * [.merge(options)](#module_webpack-config.Config#merge) ⇒ <code>Config</code>
+    * [.defaults(options)](#module_webpack-config.Config#defaults) ⇒ <code>Config</code>
+    * [.extend(options)](#module_webpack-config.Config#extend) ⇒ <code>Config</code>
+    * [.toPlainObject()](#module_webpack-config.Config#toPlainObject) ⇒ <code>Object</code>
+  * [.MultiConfig](#module_webpack-config.MultiConfig)
+    * [new MultiConfig(options)](#new_module_webpack-config.MultiConfig_new)
+    * [.merge(options)](#module_webpack-config.MultiConfig#merge) ⇒ <code>MultiConfig</code>
+    * [.defaults(options)](#module_webpack-config.MultiConfig#defaults) ⇒ <code>MultiConfig</code>
+    * [.extend(options)](#module_webpack-config.MultiConfig#extend) ⇒ <code>MultiConfig</code>
+    * [.toPlainObject()](#module_webpack-config.MultiConfig#toPlainObject) ⇒ <code>Array</code>
+  * [.Config](#module_webpack-config.Config)
+    * [new Config(options)](#new_module_webpack-config.Config_new)
+    * [.merge(options)](#module_webpack-config.Config#merge) ⇒ <code>Config</code>
+    * [.defaults(options)](#module_webpack-config.Config#defaults) ⇒ <code>Config</code>
+    * [.extend(options)](#module_webpack-config.Config#extend) ⇒ <code>Config</code>
+    * [.toPlainObject()](#module_webpack-config.Config#toPlainObject) ⇒ <code>Object</code>
+  * [.MultiConfig](#module_webpack-config.MultiConfig)
+    * [new MultiConfig(options)](#new_module_webpack-config.MultiConfig_new)
+    * [.merge(options)](#module_webpack-config.MultiConfig#merge) ⇒ <code>MultiConfig</code>
+    * [.defaults(options)](#module_webpack-config.MultiConfig#defaults) ⇒ <code>MultiConfig</code>
+    * [.extend(options)](#module_webpack-config.MultiConfig#extend) ⇒ <code>MultiConfig</code>
+    * [.toPlainObject()](#module_webpack-config.MultiConfig#toPlainObject) ⇒ <code>Array</code>
+  * [.useCache](#module_webpack-config.useCache)
+  * [.CONFIG_FILENAME](#module_webpack-config.CONFIG_FILENAME) : <code>String</code>
+  * [.fromObject(options)](#module_webpack-config.fromObject) ⇒ <code>Config</code> &#124; <code>MultiConfig</code>
+  * [.fromCwd([basename])](#module_webpack-config.fromCwd) ⇒ <code>Config</code> &#124; <code>MultiConfig</code>
+  * [.fromDirectory(dirname, [basename])](#module_webpack-config.fromDirectory) ⇒ <code>Config</code> &#124; <code>MultiConfig</code>
+  * [.fromFile(filename)](#module_webpack-config.fromFile) ⇒ <code>Config</code> &#124; <code>MultiConfig</code>
+  * [.closest(dirname, [basename])](#module_webpack-config.closest) ⇒ <code>String</code>
 
 <a name="module_webpack-config.Config"></a>
-##webpack-config.Config
-**Properties**
-
--  `Config`  
-
-**Read only**: true  
-<a name="module_webpack-config.MultiConfig"></a>
-##webpack-config.MultiConfig
-**Properties**
-
--  `MultiConfig`  
-
-**Read only**: true  
-<a name="module_webpack-config.useCache"></a>
-##webpack-config.useCache
-Use cache or not
-
-**Properties**
-
--  `Boolean`  
-
-<a name="module_webpack-config.fromObject"></a>
-##webpack-config.fromObject(options)
-Creates new config form object
-
-**Params**
-
-- options `Object` - Options  
-
-**Returns**: `Config` | `MultiConfig`  
-<a name="module_webpack-config.fromCwd"></a>
-##webpack-config.fromCwd([basename])
-Loads config from `process.cwd()`
-
-**Params**
-
-- \[basename=`webpack.config.js`\] `String` - Config file name  
-
-**Returns**: `Config` | `MultiConfig`  
-<a name="module_webpack-config.fromDirectory"></a>
-##webpack-config.fromDirectory(dirname, [basename])
-Loads config from directory
-
-**Params**
-
-- dirname `String` - Directory name  
-- \[basename=`webpack.config.js`\] `String` - Config file name  
-
-**Returns**: `Config` | `MultiConfig`  
-<a name="module_webpack-config.fromFile"></a>
-##webpack-config.fromFile(filename)
-Loads config from file
-
-**Params**
-
-- filename `String` - File name  
-
-**Returns**: `Config` | `MultiConfig`  
-<a name="module_webpack-config.closest"></a>
-##webpack-config.closest(dirname, [basename])
-Finds closest config
-
-**Params**
-
-- dirname `String` - Directory name  
-- \[basename=`webpack.config.js`\] `String` - Config file name  
-
-**Returns**: `String` - File path  
-<a name="module_webpack-config.CONFIG_FILENAME"></a>
-##const: webpack-config.CONFIG_FILENAME
-`webpack.config.js`
-
-**Type**: `String`  
-<a name="module_webpack-config.Config"></a>
-##class: webpack-config.Config
+### webpack-config.Config
 Represents webpack config
 
-**Members**
+**Kind**: static class of <code>[webpack-config](#module_webpack-config)</code>  
 
-* [class: webpack-config.Config](#module_webpack-config.Config)
-  * [new webpack-config.Config(options)](#new_module_webpack-config.Config)
-  * [config.merge(options)](#module_webpack-config.Config#merge)
-  * [config.defaults(options)](#module_webpack-config.Config#defaults)
-  * [config.extend(options)](#module_webpack-config.Config#extend)
-  * [config.toPlainObject()](#module_webpack-config.Config#toPlainObject)
+* [.Config](#module_webpack-config.Config)
+  * [new Config(options)](#new_module_webpack-config.Config_new)
+  * [.merge(options)](#module_webpack-config.Config#merge) ⇒ <code>Config</code>
+  * [.defaults(options)](#module_webpack-config.Config#defaults) ⇒ <code>Config</code>
+  * [.extend(options)](#module_webpack-config.Config#extend) ⇒ <code>Config</code>
+  * [.toPlainObject()](#module_webpack-config.Config#toPlainObject) ⇒ <code>Object</code>
 
-<a name="new_module_webpack-config.Config"></a>
-###new webpack-config.Config(options)
-**Params**
+<a name="new_module_webpack-config.Config_new"></a>
+#### new Config(options)
 
-- options `Object` - Please see [webpack.github.io](http://webpack.github.io/docs/configuration.html)  
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>Object</code> | Please see more info about [options](http://webpack.github.io/docs/configuration.html). |
 
 <a name="module_webpack-config.Config#merge"></a>
-###config.merge(options)
+#### config.merge(options) ⇒ <code>Config</code>
 Merges options
 
-**Params**
+**Kind**: instance method of <code>[Config](#module_webpack-config.Config)</code>  
 
-- options `Object` - Options  
+| Param | Type |
+| --- | --- |
+| options | <code>Object</code> | 
 
-**Returns**: `Config`  
 <a name="module_webpack-config.Config#defaults"></a>
-###config.defaults(options)
-Merges default options
+#### config.defaults(options) ⇒ <code>Config</code>
+Merges default options.
 
-**Params**
+**Kind**: instance method of <code>[Config](#module_webpack-config.Config)</code>  
 
-- options `Object` - Options  
+| Param | Type |
+| --- | --- |
+| options | <code>Object</code> | 
 
-**Returns**: `Config`  
 <a name="module_webpack-config.Config#extend"></a>
-###config.extend(options)
-Creates a new config and merges options
+#### config.extend(options) ⇒ <code>Config</code>
+Creates a new config and merges options.
 
-**Params**
+**Kind**: instance method of <code>[Config](#module_webpack-config.Config)</code>  
 
-- options `Object` - Options  
+| Param | Type |
+| --- | --- |
+| options | <code>Object</code> | 
 
-**Returns**: `Config`  
 <a name="module_webpack-config.Config#toPlainObject"></a>
-###config.toPlainObject()
-Returns webpack config
+#### config.toPlainObject() ⇒ <code>Object</code>
+Returns webpack config.
 
-**Returns**: `Object`  
+**Kind**: instance method of <code>[Config](#module_webpack-config.Config)</code>  
 <a name="module_webpack-config.MultiConfig"></a>
-##class: webpack-config.MultiConfig
-Represents multi webpack config
+### webpack-config.MultiConfig
+Represents multi webpack config.
 
-**Members**
+**Kind**: static class of <code>[webpack-config](#module_webpack-config)</code>  
 
-* [class: webpack-config.MultiConfig](#module_webpack-config.MultiConfig)
-  * [new webpack-config.MultiConfig(options)](#new_module_webpack-config.MultiConfig)
-  * [multiConfig.merge(options)](#module_webpack-config.MultiConfig#merge)
-  * [multiConfig.defaults(options)](#module_webpack-config.MultiConfig#defaults)
-  * [multiConfig.extend(options)](#module_webpack-config.MultiConfig#extend)
-  * [multiConfig.toPlainObject()](#module_webpack-config.MultiConfig#toPlainObject)
+* [.MultiConfig](#module_webpack-config.MultiConfig)
+  * [new MultiConfig(options)](#new_module_webpack-config.MultiConfig_new)
+  * [.merge(options)](#module_webpack-config.MultiConfig#merge) ⇒ <code>MultiConfig</code>
+  * [.defaults(options)](#module_webpack-config.MultiConfig#defaults) ⇒ <code>MultiConfig</code>
+  * [.extend(options)](#module_webpack-config.MultiConfig#extend) ⇒ <code>MultiConfig</code>
+  * [.toPlainObject()](#module_webpack-config.MultiConfig#toPlainObject) ⇒ <code>Array</code>
 
-<a name="new_module_webpack-config.MultiConfig"></a>
-###new webpack-config.MultiConfig(options)
-**Params**
+<a name="new_module_webpack-config.MultiConfig_new"></a>
+#### new MultiConfig(options)
 
-- options `Array` - Array  
+| Param | Type |
+| --- | --- |
+| options | <code>Array</code> | 
 
 <a name="module_webpack-config.MultiConfig#merge"></a>
-###multiConfig.merge(options)
+#### multiConfig.merge(options) ⇒ <code>MultiConfig</code>
 Merges options
 
-**Params**
+**Kind**: instance method of <code>[MultiConfig](#module_webpack-config.MultiConfig)</code>  
 
-- options `Object` - Options  
+| Param | Type |
+| --- | --- |
+| options | <code>Object</code> | 
 
-**Returns**: `MultiConfig`  
 <a name="module_webpack-config.MultiConfig#defaults"></a>
-###multiConfig.defaults(options)
-Merges default options
+#### multiConfig.defaults(options) ⇒ <code>MultiConfig</code>
+Merges default options.
 
-**Params**
+**Kind**: instance method of <code>[MultiConfig](#module_webpack-config.MultiConfig)</code>  
 
-- options `Object` - Options  
+| Param | Type |
+| --- | --- |
+| options | <code>Object</code> | 
 
-**Returns**: `MultiConfig`  
 <a name="module_webpack-config.MultiConfig#extend"></a>
-###multiConfig.extend(options)
-Creates a new config and merges options
+#### multiConfig.extend(options) ⇒ <code>MultiConfig</code>
+Creates a new config and merges options.
 
-**Params**
+**Kind**: instance method of <code>[MultiConfig](#module_webpack-config.MultiConfig)</code>  
 
-- options `Object` - Options  
+| Param | Type |
+| --- | --- |
+| options | <code>Object</code> | 
 
-**Returns**: `MultiConfig`  
 <a name="module_webpack-config.MultiConfig#toPlainObject"></a>
-###multiConfig.toPlainObject()
-Returns webpack configs
+#### multiConfig.toPlainObject() ⇒ <code>Array</code>
+Returns webpack configs.
 
-**Returns**: `Array`  
+**Kind**: instance method of <code>[MultiConfig](#module_webpack-config.MultiConfig)</code>  
+<a name="module_webpack-config.Config"></a>
+### webpack-config.Config
+**Kind**: static property of <code>[webpack-config](#module_webpack-config)</code>  
+**Read only**: true  
+**Properties**
+
+| Type |
+| --- |
+| <code>Config</code> | 
+
+
+* [.Config](#module_webpack-config.Config)
+  * [new Config(options)](#new_module_webpack-config.Config_new)
+  * [.merge(options)](#module_webpack-config.Config#merge) ⇒ <code>Config</code>
+  * [.defaults(options)](#module_webpack-config.Config#defaults) ⇒ <code>Config</code>
+  * [.extend(options)](#module_webpack-config.Config#extend) ⇒ <code>Config</code>
+  * [.toPlainObject()](#module_webpack-config.Config#toPlainObject) ⇒ <code>Object</code>
+
+<a name="new_module_webpack-config.Config_new"></a>
+#### new Config(options)
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>Object</code> | Please see more info about [options](http://webpack.github.io/docs/configuration.html). |
+
+<a name="module_webpack-config.Config#merge"></a>
+#### config.merge(options) ⇒ <code>Config</code>
+Merges options
+
+**Kind**: instance method of <code>[Config](#module_webpack-config.Config)</code>  
+
+| Param | Type |
+| --- | --- |
+| options | <code>Object</code> | 
+
+<a name="module_webpack-config.Config#defaults"></a>
+#### config.defaults(options) ⇒ <code>Config</code>
+Merges default options.
+
+**Kind**: instance method of <code>[Config](#module_webpack-config.Config)</code>  
+
+| Param | Type |
+| --- | --- |
+| options | <code>Object</code> | 
+
+<a name="module_webpack-config.Config#extend"></a>
+#### config.extend(options) ⇒ <code>Config</code>
+Creates a new config and merges options.
+
+**Kind**: instance method of <code>[Config](#module_webpack-config.Config)</code>  
+
+| Param | Type |
+| --- | --- |
+| options | <code>Object</code> | 
+
+<a name="module_webpack-config.Config#toPlainObject"></a>
+#### config.toPlainObject() ⇒ <code>Object</code>
+Returns webpack config.
+
+**Kind**: instance method of <code>[Config](#module_webpack-config.Config)</code>  
+<a name="module_webpack-config.MultiConfig"></a>
+### webpack-config.MultiConfig
+**Kind**: static property of <code>[webpack-config](#module_webpack-config)</code>  
+**Read only**: true  
+**Properties**
+
+| Type |
+| --- |
+| <code>MultiConfig</code> | 
+
+
+* [.MultiConfig](#module_webpack-config.MultiConfig)
+  * [new MultiConfig(options)](#new_module_webpack-config.MultiConfig_new)
+  * [.merge(options)](#module_webpack-config.MultiConfig#merge) ⇒ <code>MultiConfig</code>
+  * [.defaults(options)](#module_webpack-config.MultiConfig#defaults) ⇒ <code>MultiConfig</code>
+  * [.extend(options)](#module_webpack-config.MultiConfig#extend) ⇒ <code>MultiConfig</code>
+  * [.toPlainObject()](#module_webpack-config.MultiConfig#toPlainObject) ⇒ <code>Array</code>
+
+<a name="new_module_webpack-config.MultiConfig_new"></a>
+#### new MultiConfig(options)
+
+| Param | Type |
+| --- | --- |
+| options | <code>Array</code> | 
+
+<a name="module_webpack-config.MultiConfig#merge"></a>
+#### multiConfig.merge(options) ⇒ <code>MultiConfig</code>
+Merges options
+
+**Kind**: instance method of <code>[MultiConfig](#module_webpack-config.MultiConfig)</code>  
+
+| Param | Type |
+| --- | --- |
+| options | <code>Object</code> | 
+
+<a name="module_webpack-config.MultiConfig#defaults"></a>
+#### multiConfig.defaults(options) ⇒ <code>MultiConfig</code>
+Merges default options.
+
+**Kind**: instance method of <code>[MultiConfig](#module_webpack-config.MultiConfig)</code>  
+
+| Param | Type |
+| --- | --- |
+| options | <code>Object</code> | 
+
+<a name="module_webpack-config.MultiConfig#extend"></a>
+#### multiConfig.extend(options) ⇒ <code>MultiConfig</code>
+Creates a new config and merges options.
+
+**Kind**: instance method of <code>[MultiConfig](#module_webpack-config.MultiConfig)</code>  
+
+| Param | Type |
+| --- | --- |
+| options | <code>Object</code> | 
+
+<a name="module_webpack-config.MultiConfig#toPlainObject"></a>
+#### multiConfig.toPlainObject() ⇒ <code>Array</code>
+Returns webpack configs.
+
+**Kind**: instance method of <code>[MultiConfig](#module_webpack-config.MultiConfig)</code>  
+<a name="module_webpack-config.useCache"></a>
+### webpack-config.useCache
+Use cache or not
+
+**Kind**: static property of <code>[webpack-config](#module_webpack-config)</code>  
+**Properties**
+
+| Type |
+| --- |
+| <code>Boolean</code> | 
+
+<a name="module_webpack-config.CONFIG_FILENAME"></a>
+### webpack-config.CONFIG_FILENAME : <code>String</code>
+`webpack.config.js`
+
+**Kind**: static constant of <code>[webpack-config](#module_webpack-config)</code>  
+<a name="module_webpack-config.fromObject"></a>
+### webpack-config.fromObject(options) ⇒ <code>Config</code> &#124; <code>MultiConfig</code>
+Creates new config form object
+
+**Kind**: static method of <code>[webpack-config](#module_webpack-config)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>Object</code> | Options |
+
+<a name="module_webpack-config.fromCwd"></a>
+### webpack-config.fromCwd([basename]) ⇒ <code>Config</code> &#124; <code>MultiConfig</code>
+Loads config from `process.cwd()`
+
+**Kind**: static method of <code>[webpack-config](#module_webpack-config)</code>  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [basename] | <code>String</code> | <code>webpack.config.js</code> | Config file name |
+
+<a name="module_webpack-config.fromDirectory"></a>
+### webpack-config.fromDirectory(dirname, [basename]) ⇒ <code>Config</code> &#124; <code>MultiConfig</code>
+Loads config from directory
+
+**Kind**: static method of <code>[webpack-config](#module_webpack-config)</code>  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| dirname | <code>String</code> |  | Directory name |
+| [basename] | <code>String</code> | <code>webpack.config.js</code> | Config file name |
+
+<a name="module_webpack-config.fromFile"></a>
+### webpack-config.fromFile(filename) ⇒ <code>Config</code> &#124; <code>MultiConfig</code>
+Loads config from file
+
+**Kind**: static method of <code>[webpack-config](#module_webpack-config)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| filename | <code>String</code> | File name |
+
+<a name="module_webpack-config.closest"></a>
+### webpack-config.closest(dirname, [basename]) ⇒ <code>String</code>
+Finds closest config
+
+**Kind**: static method of <code>[webpack-config](#module_webpack-config)</code>  
+**Returns**: <code>String</code> - File path  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| dirname | <code>String</code> |  | Directory name |
+| [basename] | <code>String</code> | <code>webpack.config.js</code> | Config file name |
+
