@@ -6,7 +6,8 @@ var path = require('path'),
     jsdoc2md = require('gulp-jsdoc-to-markdown'),
     runSequence = require('run-sequence'),
     concat = require('gulp-concat'),
-    Gitdown = require('gitdown');
+    Gitdown = require('gitdown'),
+    mocha = require('gulp-mocha');
 
 var src = './lib/',
     paths = {
@@ -14,6 +15,7 @@ var src = './lib/',
             'index.js',
             path.join(src, '**/*.js'),
             path.join('./samples', '**/*.js'),
+            path.join('./test', '**/*.spec.js'),
             'gulpfile.js'
         ]
     };
@@ -55,12 +57,21 @@ gulp.task('docs', function(callback) {
     runSequence('jsdoc2md', 'gitdown', callback);
 });
 
+gulp.task('test', function() {
+    return gulp.src('./test/**/*.spec.js', { read: false })
+        .pipe(mocha({
+            reporter: 'spec'
+        }));
+});
+
 gulp.task('build', function(callback) {
-    runSequence('lint', 'docs', callback);
+    runSequence('lint', 'docs', 'test', callback);
 });
 
 gulp.task('ci', function(callback) {
-    runSequence('lint', callback);
+    runSequence('lint', 'test', function() {
+        callback();
+    });
 });
 
 gulp.task('default', function(callback) {
