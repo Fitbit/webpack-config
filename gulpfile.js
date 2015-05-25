@@ -57,13 +57,6 @@ gulp.task('docs', function(callback) {
     runSequence('jsdoc2md', 'gitdown', callback);
 });
 
-gulp.task('test', function() {
-    return gulp.src('./test/**/*.spec.js', { read: false })
-        .pipe(mocha({
-            reporter: 'spec'
-        }));
-});
-
 gulp.task('build', function(callback) {
     runSequence('lint', 'docs', 'test', callback);
 });
@@ -72,6 +65,11 @@ gulp.task('ci', function(callback) {
     runSequence('lint', 'test', function() {
         callback();
     });
+});
+
+gulp.task('test', function() {
+    return gulp.src('./test/**/*.spec.js', { read: false })
+        .pipe(mocha());
 });
 
 gulp.task('default', function(callback) {
