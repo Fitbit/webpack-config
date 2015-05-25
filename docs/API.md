@@ -204,7 +204,7 @@ Represents multi webpack config.
 
 | Param | Type |
 | --- | --- |
-| [options] | <code>Array</code> | 
+| [options] | <code>Object</code> &#124; <code>Array.&lt;Object&gt;</code> | 
 
 <a name="module_webpack-config.MultiConfig#merge"></a>
 #### multiConfig.merge([options]) ⇒ <code>MultiConfig</code>
@@ -324,7 +324,7 @@ Returns webpack config.
 
 | Param | Type |
 | --- | --- |
-| [options] | <code>Array</code> | 
+| [options] | <code>Object</code> &#124; <code>Array.&lt;Object&gt;</code> | 
 
 <a name="module_webpack-config.MultiConfig#merge"></a>
 #### multiConfig.merge([options]) ⇒ <code>MultiConfig</code>
