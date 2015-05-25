@@ -3,38 +3,9 @@
 var expect = require('expect.js'),
     webpackConfig = require('../index');
 
-var util = require('../lib/util'),
-    _ = require('lodash');
-
 var Config = webpackConfig.Config;
 
 describe('Config', function () {
-    describe('merge', function() {
-        it('success', function() {
-            var o1 = {
-                    foo: {
-                        bar: 'bar1'
-                    }
-                },
-                o2 = {
-                    foo: {
-                        bar: 'bar2'
-                    }
-                },
-                r = _.merge(o1, o2, function(x, y) {
-                    if (_.isArray(x)) {
-                        return x.concat(y);
-                    }
-                });
-
-            expect(r).to.eql({
-                foo: {
-                    bar: 'bar2'
-                }
-            });
-        });
-    });
-
     describe('#ctor()', function() {
         it('should accept object', function() {
             var config = new Config({
