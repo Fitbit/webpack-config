@@ -12,10 +12,12 @@ describe('MultiConfig', function () {
                 foo: 'foo1'
             });
 
-            expect(config).to.have.length(1);
-            expect(config[0]).to.eql({
+            var array = config.toPlainObject();
+
+            expect(array).to.have.length(1);
+            expect(array).to.eql([{
                 foo: 'foo1'
-            });
+            }]);
         });
 
         it('should accept array of objects via arguments', function() {
@@ -25,13 +27,14 @@ describe('MultiConfig', function () {
                 foo: 'foo2'
             });
 
-            expect(config).to.have.length(2);
-            expect(config[0]).to.eql({
+            var array = config.toPlainObject();
+
+            expect(array).to.have.length(2);
+            expect(array).to.eql([{
                 foo: 'foo1'
-            });
-            expect(config[1]).to.eql({
+            }, {
                 foo: 'foo2'
-            });
+            }]);
         });
 
         it('should accept array of objects', function() {
@@ -39,10 +42,12 @@ describe('MultiConfig', function () {
                 foo: 'foo1'
             }]);
 
-            expect(config).to.have.length(1);
-            expect(config[0]).to.eql({
+            var array = config.toPlainObject();
+
+            expect(array).to.have.length(1);
+            expect(array).to.eql([{
                 foo: 'foo1'
-            });
+            }]);
         });
     });
 
@@ -56,8 +61,12 @@ describe('MultiConfig', function () {
                 foo: 'foo2'
             });
 
-            expect(config).to.have.length(1);
-            expect(config[0].foo).to.be('foo2');
+            var array = config.toPlainObject();
+
+            expect(array).to.have.length(1);
+            expect(array).to.eql([{
+                foo: 'foo2'
+            }]);
         });
 
         it('should do deep merging correctly', function() {
@@ -73,8 +82,14 @@ describe('MultiConfig', function () {
                 }
             });
 
-            expect(config).to.have.length(1);
-            expect(config[0].foo.bar).to.be('bar2');
+            var array = config.toPlainObject();
+
+            expect(array).to.have.length(1);
+            expect(array).to.eql([{
+                foo: {
+                    bar: 'bar2'
+                }
+            }]);
         });
     });
 
@@ -88,8 +103,12 @@ describe('MultiConfig', function () {
                 foo: 'foo2'
             });
 
-            expect(config).to.have.length(1);
-            expect(config[0].foo).to.be('foo1');
+            var array = config.toPlainObject();
+
+            expect(array).to.have.length(1);
+            expect(array).to.eql([{
+                foo: 'foo1'
+            }]);
         });
     });
 
@@ -111,13 +130,10 @@ describe('MultiConfig', function () {
             var config = new MultiConfig({
                     foo: 'foo1'
                 }),
-                expectedArray = config.toPlainObject(),
-                actualArray = [{
-                    foo: 'foo1'
-                }];
+                array = config.toPlainObject();
 
-            expect(expectedArray).to.have.length(1);
-            expect(expectedArray).to.eql(actualArray);
+            expect(array).to.have.length(1);
+            expect(array).to.be.an('array');
         });
     });
 });

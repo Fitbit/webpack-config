@@ -12,7 +12,11 @@ describe('Config', function () {
                 foo: 'foo1'
             });
 
-            expect(config.foo).to.be('foo1');
+            var obj = config.toPlainObject();
+
+            expect(obj).to.eql({
+                foo: 'foo1'
+            });
         });
     });
 
@@ -26,7 +30,11 @@ describe('Config', function () {
                 foo: 'foo2'
             });
 
-            expect(config.foo).to.be('foo2');
+            var obj = config.toPlainObject();
+
+            expect(obj).to.eql({
+                foo: 'foo2'
+            });
         });
 
         it('should do deep merging correctly', function() {
@@ -42,7 +50,13 @@ describe('Config', function () {
                 }
             });
 
-            expect(config.foo.bar).to.be('bar2');
+            var obj = config.toPlainObject();
+
+            expect(obj).to.eql({
+                foo: {
+                    bar: 'bar2'
+                }
+            });
         });
     });
 
@@ -56,7 +70,11 @@ describe('Config', function () {
                 foo: 'foo2'
             });
 
-            expect(config.foo).to.be('foo1');
+            var obj = config.toPlainObject();
+
+            expect(obj).to.eql({
+                foo: 'foo1'
+            });
         });
     });
 
@@ -75,12 +93,9 @@ describe('Config', function () {
             var config = new Config({
                     foo: 'foo1'
                 }),
-                expectedObject = config.toPlainObject(),
-                actualObject = {
-                    foo: 'foo1'
-                };
+                obj = config.toPlainObject();
 
-            expect(expectedObject).to.eql(actualObject);
+            expect(obj).to.be.an('object');
         });
     });
 });
