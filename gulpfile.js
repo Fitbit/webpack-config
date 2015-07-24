@@ -1,40 +1,40 @@
 'use strict';
 
-var path = require('path'),
-    gulp = require('gulp'),
+var gulp = require('gulp'),
     eslint = require('gulp-eslint'),
     jsdoc2md = require('gulp-jsdoc-to-markdown'),
     runSequence = require('run-sequence'),
     concat = require('gulp-concat'),
     Gitdown = require('gitdown'),
-    mocha = require('gulp-mocha');
+    mocha = require('gulp-mocha'),
+    istanbul = require('gulp-istanbul'),
+    del = require('del');
 
-var src = './lib/',
-    paths = {
-        scripts: [
-            'index.js',
-            path.join(src, '**/*.js'),
-            path.join('./samples', '**/*.js'),
-            path.join('./test', '**/*.spec.js'),
-            'gulpfile.js'
-        ]
-    };
+gulp.task('clean', function(callback) {
+    del(['./coverage'], callback);
+});
 
 gulp.task('lint', function() {
-    return gulp.src(paths.scripts)
-        .pipe(eslint())
-        .pipe(eslint.format())
-        .pipe(eslint.failOnError());
+    return gulp.src([
+        'index.js',
+        './lib/**/*.js',
+        './samples/**/*.js',
+        './test/**/*.spec.js',
+        'gulpfile.js'
+    ])
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failOnError());
 });
 
 gulp.task('jsdoc2md', function() {
     return gulp.src([
-            './index.js',
-            path.join(src, '**/*.js')
-        ])
-        .pipe(concat('API.md'))
-        .pipe(jsdoc2md())
-        .pipe(gulp.dest('.gitdown/docs'));
+        './index.js',
+        './lib/**/*.js'
+    ])
+    .pipe(concat('API.md'))
+    .pipe(jsdoc2md())
+    .pipe(gulp.dest('.gitdown/docs'));
 });
 
 gulp.task('gitdown:readme', function() {
@@ -50,28 +50,43 @@ gulp.task('gitdown:api', function() {
 });
 
 gulp.task('gitdown', function(callback) {
-    runSequence('gitdown:readme', 'gitdown:api', callback);
-});
-
-gulp.task('docs', function(callback) {
-    runSequence('jsdoc2md', 'gitdown', callback);
-});
-
-gulp.task('build', function(callback) {
-    runSequence('lint', 'docs', 'test', callback);
-});
-
-gulp.task('ci', function(callback) {
-    runSequence('lint', 'test', function() {
+    runSequence('gitdown:readme', 'gitdown:api', function() {
         callback();
     });
 });
 
-gulp.task('test', function() {
-    return gulp.src('./test/**/*.spec.js', { read: false })
-        .pipe(mocha());
+gulp.task('docs', function(callback) {
+    runSequence('jsdoc2md', 'gitdown', function() {
+        callback();
+    });
+});
+
+gulp.task('build', function(callback) {
+    runSequence('clean', 'lint', 'docs', 'test', function() {
+        callback();
+    });
+});
+
+gulp.task('ci', function(callback) {
+    runSequence('clean', 'lint', 'test', function() {
+        callback();
+    });
+});
+
+gulp.task('test', function(callback) {
+    gulp.src(['./index.js', './lib/*.js'])
+        .pipe(istanbul())
+        .pipe(istanbul.hookRequire())
+        .on('finish', function () {
+            gulp.src('./test/**/*.spec.js')
+                .pipe(mocha())
+                .pipe(istanbul.writeReports())
+                .on('end', callback);
+        });
 });
 
 gulp.task('default', function(callback) {
-    runSequence('build', callback);
+    runSequence('build', function() {
+        callback();
+    });
 });

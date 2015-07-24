@@ -101,28 +101,28 @@ module.exports = webpackConfig.fromCwd().extend({
 * [webpack-config](#module_webpack-config)
   * [.Config](#module_webpack-config.Config)
     * [new Config([options])](#new_module_webpack-config.Config_new)
-    * [.merge([options])](#module_webpack-config.Config#merge) ⇒ <code>Config</code>
-    * [.defaults([options])](#module_webpack-config.Config#defaults) ⇒ <code>Config</code>
-    * [.extend([options])](#module_webpack-config.Config#extend) ⇒ <code>Config</code>
-    * [.toPlainObject()](#module_webpack-config.Config#toPlainObject) ⇒ <code>Object</code>
+    * [.merge([options])](#module_webpack-config.Config+merge) ⇒ <code>Config</code>
+    * [.defaults([options])](#module_webpack-config.Config+defaults) ⇒ <code>Config</code>
+    * [.extend([options])](#module_webpack-config.Config+extend) ⇒ <code>Config</code>
+    * [.toPlainObject()](#module_webpack-config.Config+toPlainObject) ⇒ <code>Object</code>
   * [.MultiConfig](#module_webpack-config.MultiConfig)
-    * [new MultiConfig([options])](#new_module_webpack-config.MultiConfig_new)
-    * [.merge([options])](#module_webpack-config.MultiConfig#merge) ⇒ <code>MultiConfig</code>
-    * [.defaults([options])](#module_webpack-config.MultiConfig#defaults) ⇒ <code>MultiConfig</code>
-    * [.extend([options])](#module_webpack-config.MultiConfig#extend) ⇒ <code>MultiConfig</code>
-    * [.toPlainObject()](#module_webpack-config.MultiConfig#toPlainObject) ⇒ <code>Array</code>
+    * [new MultiConfig([arguments])](#new_module_webpack-config.MultiConfig_new)
+    * [.merge([options])](#module_webpack-config.MultiConfig+merge) ⇒ <code>MultiConfig</code>
+    * [.defaults([options])](#module_webpack-config.MultiConfig+defaults) ⇒ <code>MultiConfig</code>
+    * [.extend([options])](#module_webpack-config.MultiConfig+extend) ⇒ <code>MultiConfig</code>
+    * [.toPlainObject()](#module_webpack-config.MultiConfig+toPlainObject) ⇒ <code>Array</code>
   * [.Config](#module_webpack-config.Config)
     * [new Config([options])](#new_module_webpack-config.Config_new)
-    * [.merge([options])](#module_webpack-config.Config#merge) ⇒ <code>Config</code>
-    * [.defaults([options])](#module_webpack-config.Config#defaults) ⇒ <code>Config</code>
-    * [.extend([options])](#module_webpack-config.Config#extend) ⇒ <code>Config</code>
-    * [.toPlainObject()](#module_webpack-config.Config#toPlainObject) ⇒ <code>Object</code>
+    * [.merge([options])](#module_webpack-config.Config+merge) ⇒ <code>Config</code>
+    * [.defaults([options])](#module_webpack-config.Config+defaults) ⇒ <code>Config</code>
+    * [.extend([options])](#module_webpack-config.Config+extend) ⇒ <code>Config</code>
+    * [.toPlainObject()](#module_webpack-config.Config+toPlainObject) ⇒ <code>Object</code>
   * [.MultiConfig](#module_webpack-config.MultiConfig)
-    * [new MultiConfig([options])](#new_module_webpack-config.MultiConfig_new)
-    * [.merge([options])](#module_webpack-config.MultiConfig#merge) ⇒ <code>MultiConfig</code>
-    * [.defaults([options])](#module_webpack-config.MultiConfig#defaults) ⇒ <code>MultiConfig</code>
-    * [.extend([options])](#module_webpack-config.MultiConfig#extend) ⇒ <code>MultiConfig</code>
-    * [.toPlainObject()](#module_webpack-config.MultiConfig#toPlainObject) ⇒ <code>Array</code>
+    * [new MultiConfig([arguments])](#new_module_webpack-config.MultiConfig_new)
+    * [.merge([options])](#module_webpack-config.MultiConfig+merge) ⇒ <code>MultiConfig</code>
+    * [.defaults([options])](#module_webpack-config.MultiConfig+defaults) ⇒ <code>MultiConfig</code>
+    * [.extend([options])](#module_webpack-config.MultiConfig+extend) ⇒ <code>MultiConfig</code>
+    * [.toPlainObject()](#module_webpack-config.MultiConfig+toPlainObject) ⇒ <code>Array</code>
   * [.useCache](#module_webpack-config.useCache)
   * [.CONFIG_FILENAME](#module_webpack-config.CONFIG_FILENAME) : <code>String</code>
   * [.fromObject(options)](#module_webpack-config.fromObject) ⇒ <code>Config</code> &#124; <code>MultiConfig</code>
@@ -139,10 +139,10 @@ Represents webpack config
 
 * [.Config](#module_webpack-config.Config)
   * [new Config([options])](#new_module_webpack-config.Config_new)
-  * [.merge([options])](#module_webpack-config.Config#merge) ⇒ <code>Config</code>
-  * [.defaults([options])](#module_webpack-config.Config#defaults) ⇒ <code>Config</code>
-  * [.extend([options])](#module_webpack-config.Config#extend) ⇒ <code>Config</code>
-  * [.toPlainObject()](#module_webpack-config.Config#toPlainObject) ⇒ <code>Object</code>
+  * [.merge([options])](#module_webpack-config.Config+merge) ⇒ <code>Config</code>
+  * [.defaults([options])](#module_webpack-config.Config+defaults) ⇒ <code>Config</code>
+  * [.extend([options])](#module_webpack-config.Config+extend) ⇒ <code>Config</code>
+  * [.toPlainObject()](#module_webpack-config.Config+toPlainObject) ⇒ <code>Object</code>
 
 <a name="new_module_webpack-config.Config_new"></a>
 #### new Config([options])
@@ -151,7 +151,7 @@ Represents webpack config
 | --- | --- | --- |
 | [options] | <code>Object</code> | Please see more info about [options](http://webpack.github.io/docs/configuration.html). |
 
-<a name="module_webpack-config.Config#merge"></a>
+<a name="module_webpack-config.Config+merge"></a>
 #### config.merge([options]) ⇒ <code>Config</code>
 Merges options
 
@@ -161,7 +161,7 @@ Merges options
 | --- | --- |
 | [options] | <code>Object</code> | 
 
-<a name="module_webpack-config.Config#defaults"></a>
+<a name="module_webpack-config.Config+defaults"></a>
 #### config.defaults([options]) ⇒ <code>Config</code>
 Merges default options.
 
@@ -171,7 +171,7 @@ Merges default options.
 | --- | --- |
 | [options] | <code>Object</code> | 
 
-<a name="module_webpack-config.Config#extend"></a>
+<a name="module_webpack-config.Config+extend"></a>
 #### config.extend([options]) ⇒ <code>Config</code>
 Creates a new config and merges options.
 
@@ -181,7 +181,7 @@ Creates a new config and merges options.
 | --- | --- |
 | [options] | <code>Object</code> | 
 
-<a name="module_webpack-config.Config#toPlainObject"></a>
+<a name="module_webpack-config.Config+toPlainObject"></a>
 #### config.toPlainObject() ⇒ <code>Object</code>
 Returns webpack config.
 
@@ -193,20 +193,20 @@ Represents multi webpack config.
 **Kind**: static class of <code>[webpack-config](#module_webpack-config)</code>  
 
 * [.MultiConfig](#module_webpack-config.MultiConfig)
-  * [new MultiConfig([options])](#new_module_webpack-config.MultiConfig_new)
-  * [.merge([options])](#module_webpack-config.MultiConfig#merge) ⇒ <code>MultiConfig</code>
-  * [.defaults([options])](#module_webpack-config.MultiConfig#defaults) ⇒ <code>MultiConfig</code>
-  * [.extend([options])](#module_webpack-config.MultiConfig#extend) ⇒ <code>MultiConfig</code>
-  * [.toPlainObject()](#module_webpack-config.MultiConfig#toPlainObject) ⇒ <code>Array</code>
+  * [new MultiConfig([arguments])](#new_module_webpack-config.MultiConfig_new)
+  * [.merge([options])](#module_webpack-config.MultiConfig+merge) ⇒ <code>MultiConfig</code>
+  * [.defaults([options])](#module_webpack-config.MultiConfig+defaults) ⇒ <code>MultiConfig</code>
+  * [.extend([options])](#module_webpack-config.MultiConfig+extend) ⇒ <code>MultiConfig</code>
+  * [.toPlainObject()](#module_webpack-config.MultiConfig+toPlainObject) ⇒ <code>Array</code>
 
 <a name="new_module_webpack-config.MultiConfig_new"></a>
-#### new MultiConfig([options])
+#### new MultiConfig([arguments])
 
 | Param | Type |
 | --- | --- |
-| [options] | <code>Object</code> &#124; <code>Array.&lt;Object&gt;</code> | 
+| [arguments] | <code>Object</code> &#124; <code>Array.&lt;Object&gt;</code> | 
 
-<a name="module_webpack-config.MultiConfig#merge"></a>
+<a name="module_webpack-config.MultiConfig+merge"></a>
 #### multiConfig.merge([options]) ⇒ <code>MultiConfig</code>
 Merges options
 
@@ -216,7 +216,7 @@ Merges options
 | --- | --- |
 | [options] | <code>Object</code> | 
 
-<a name="module_webpack-config.MultiConfig#defaults"></a>
+<a name="module_webpack-config.MultiConfig+defaults"></a>
 #### multiConfig.defaults([options]) ⇒ <code>MultiConfig</code>
 Merges default options.
 
@@ -226,7 +226,7 @@ Merges default options.
 | --- | --- |
 | [options] | <code>Object</code> | 
 
-<a name="module_webpack-config.MultiConfig#extend"></a>
+<a name="module_webpack-config.MultiConfig+extend"></a>
 #### multiConfig.extend([options]) ⇒ <code>MultiConfig</code>
 Creates a new config and merges options.
 
@@ -236,7 +236,7 @@ Creates a new config and merges options.
 | --- | --- |
 | [options] | <code>Object</code> | 
 
-<a name="module_webpack-config.MultiConfig#toPlainObject"></a>
+<a name="module_webpack-config.MultiConfig+toPlainObject"></a>
 #### multiConfig.toPlainObject() ⇒ <code>Array</code>
 Returns webpack configs.
 
@@ -254,10 +254,10 @@ Returns webpack configs.
 
 * [.Config](#module_webpack-config.Config)
   * [new Config([options])](#new_module_webpack-config.Config_new)
-  * [.merge([options])](#module_webpack-config.Config#merge) ⇒ <code>Config</code>
-  * [.defaults([options])](#module_webpack-config.Config#defaults) ⇒ <code>Config</code>
-  * [.extend([options])](#module_webpack-config.Config#extend) ⇒ <code>Config</code>
-  * [.toPlainObject()](#module_webpack-config.Config#toPlainObject) ⇒ <code>Object</code>
+  * [.merge([options])](#module_webpack-config.Config+merge) ⇒ <code>Config</code>
+  * [.defaults([options])](#module_webpack-config.Config+defaults) ⇒ <code>Config</code>
+  * [.extend([options])](#module_webpack-config.Config+extend) ⇒ <code>Config</code>
+  * [.toPlainObject()](#module_webpack-config.Config+toPlainObject) ⇒ <code>Object</code>
 
 <a name="new_module_webpack-config.Config_new"></a>
 #### new Config([options])
@@ -266,7 +266,7 @@ Returns webpack configs.
 | --- | --- | --- |
 | [options] | <code>Object</code> | Please see more info about [options](http://webpack.github.io/docs/configuration.html). |
 
-<a name="module_webpack-config.Config#merge"></a>
+<a name="module_webpack-config.Config+merge"></a>
 #### config.merge([options]) ⇒ <code>Config</code>
 Merges options
 
@@ -276,7 +276,7 @@ Merges options
 | --- | --- |
 | [options] | <code>Object</code> | 
 
-<a name="module_webpack-config.Config#defaults"></a>
+<a name="module_webpack-config.Config+defaults"></a>
 #### config.defaults([options]) ⇒ <code>Config</code>
 Merges default options.
 
@@ -286,7 +286,7 @@ Merges default options.
 | --- | --- |
 | [options] | <code>Object</code> | 
 
-<a name="module_webpack-config.Config#extend"></a>
+<a name="module_webpack-config.Config+extend"></a>
 #### config.extend([options]) ⇒ <code>Config</code>
 Creates a new config and merges options.
 
@@ -296,7 +296,7 @@ Creates a new config and merges options.
 | --- | --- |
 | [options] | <code>Object</code> | 
 
-<a name="module_webpack-config.Config#toPlainObject"></a>
+<a name="module_webpack-config.Config+toPlainObject"></a>
 #### config.toPlainObject() ⇒ <code>Object</code>
 Returns webpack config.
 
@@ -313,20 +313,20 @@ Returns webpack config.
 
 
 * [.MultiConfig](#module_webpack-config.MultiConfig)
-  * [new MultiConfig([options])](#new_module_webpack-config.MultiConfig_new)
-  * [.merge([options])](#module_webpack-config.MultiConfig#merge) ⇒ <code>MultiConfig</code>
-  * [.defaults([options])](#module_webpack-config.MultiConfig#defaults) ⇒ <code>MultiConfig</code>
-  * [.extend([options])](#module_webpack-config.MultiConfig#extend) ⇒ <code>MultiConfig</code>
-  * [.toPlainObject()](#module_webpack-config.MultiConfig#toPlainObject) ⇒ <code>Array</code>
+  * [new MultiConfig([arguments])](#new_module_webpack-config.MultiConfig_new)
+  * [.merge([options])](#module_webpack-config.MultiConfig+merge) ⇒ <code>MultiConfig</code>
+  * [.defaults([options])](#module_webpack-config.MultiConfig+defaults) ⇒ <code>MultiConfig</code>
+  * [.extend([options])](#module_webpack-config.MultiConfig+extend) ⇒ <code>MultiConfig</code>
+  * [.toPlainObject()](#module_webpack-config.MultiConfig+toPlainObject) ⇒ <code>Array</code>
 
 <a name="new_module_webpack-config.MultiConfig_new"></a>
-#### new MultiConfig([options])
+#### new MultiConfig([arguments])
 
 | Param | Type |
 | --- | --- |
-| [options] | <code>Object</code> &#124; <code>Array.&lt;Object&gt;</code> | 
+| [arguments] | <code>Object</code> &#124; <code>Array.&lt;Object&gt;</code> | 
 
-<a name="module_webpack-config.MultiConfig#merge"></a>
+<a name="module_webpack-config.MultiConfig+merge"></a>
 #### multiConfig.merge([options]) ⇒ <code>MultiConfig</code>
 Merges options
 
@@ -336,7 +336,7 @@ Merges options
 | --- | --- |
 | [options] | <code>Object</code> | 
 
-<a name="module_webpack-config.MultiConfig#defaults"></a>
+<a name="module_webpack-config.MultiConfig+defaults"></a>
 #### multiConfig.defaults([options]) ⇒ <code>MultiConfig</code>
 Merges default options.
 
@@ -346,7 +346,7 @@ Merges default options.
 | --- | --- |
 | [options] | <code>Object</code> | 
 
-<a name="module_webpack-config.MultiConfig#extend"></a>
+<a name="module_webpack-config.MultiConfig+extend"></a>
 #### multiConfig.extend([options]) ⇒ <code>MultiConfig</code>
 Creates a new config and merges options.
 
@@ -356,7 +356,7 @@ Creates a new config and merges options.
 | --- | --- |
 | [options] | <code>Object</code> | 
 
-<a name="module_webpack-config.MultiConfig#toPlainObject"></a>
+<a name="module_webpack-config.MultiConfig+toPlainObject"></a>
 #### multiConfig.toPlainObject() ⇒ <code>Array</code>
 Returns webpack configs.
 
