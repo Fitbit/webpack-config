@@ -1,0 +1,15 @@
+{
+  "files": [
+    "lib/*.js",
+    "index.js",
+    "test/fixtures/**/*.js*"
+  ],
+
+  "tests": [
+    "test/*spec.js"
+  ],
+  "testFramework": "mocha",
+  "env": {
+    "type": "node"
+  }
+}
