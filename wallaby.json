@@ -1,10 +1,9 @@
 {
   "files": [
     "lib/*.js",
-    "index.js",
-    "test/fixtures/**/*.js*"
+    "test/fixtures/**/*.js",
+    "index.js"
   ],
-
   "tests": [
     "test/*spec.js"
   ],

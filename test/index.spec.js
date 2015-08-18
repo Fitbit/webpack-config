@@ -118,12 +118,16 @@ describe('Index', function () {
     });
 
     describe('.useCache', function() {
+        function testFile(name) {
+            return path.join(path.dirname(fixtures.useCache), name, path.basename(fixtures.useCache));
+        }
+
         function createConfig() {
-            fs.copySync(fixtures.useCache + '-original', fixtures.useCache);
+            fs.copySync(testFile('original'), fixtures.useCache);
         }
 
         function updateConfig() {
-            fs.copySync(fixtures.useCache + '-updated', fixtures.useCache);
+            fs.copySync(testFile('updated'), fixtures.useCache);
         }
 
         function loadConfig() {
