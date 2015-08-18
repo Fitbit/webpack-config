@@ -27,12 +27,11 @@ node_modules
 # Users Environment Variables
 .lock-wscript
 
-# Node
-node_modules
-
 # Test
 test/expected
 
 # Docs
 .gitdown/docs
 
+# Intellij
+.idea
