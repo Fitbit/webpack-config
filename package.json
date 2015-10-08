@@ -10,7 +10,9 @@
   "scripts": {
     "lint": "eslint --cache ./",
     "pretest": "npm run lint",
-    "test": "mocha --full-trace --check-leaks -u exports -R spec"
+    "test": "mocha --full-trace --check-leaks -u exports -R spec",
+    "cover": "istanbul cover _mocha -- -u exports -R spec",
+    "posttest": "npm run cover"
   },
   "repository": {
     "type": "git",
@@ -40,6 +42,7 @@
     "gulp-jsdoc-to-markdown": "^1.1.1",
     "gulp-mocha": "^2.1.0",
     "gulp-util": "^3.0.4",
+    "istanbul": "^0.3.22",
     "mocha": "^2.3.3",
     "run-sequence": "^1.1.0"
   },
