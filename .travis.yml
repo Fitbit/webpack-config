@@ -6,6 +6,7 @@ node_js:
 before_script:
   - npm install
 script:
-  - gulp ci
+  - npm run test
 after_success:
   - CODECLIMATE_REPO_TOKEN=e13b84f5a82863b03dae7d8d8261993786b6ac0a5f466e2537bbc1af7e70cf8c ./node_modules/.bin/codeclimate-test-reporter < ./coverage/lcov.info
+  - rm -rf ./coverage
