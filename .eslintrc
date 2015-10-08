@@ -1,10 +1,6 @@
 {
-  "env": {
-    "browser": true,
-    "node": true
-  },
-  "rules": {
-    "curly": 2,
-    "quotes": [2, "single"]
-  }
+  "extends": [
+    "./node_modules/coding-style/base/eslintrc.json",
+    "./node_modules/coding-style/node/eslintrc.json"
+  ]
 }

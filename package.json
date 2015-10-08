@@ -8,6 +8,7 @@
     "lib/"
   ],
   "scripts": {
+    "lint": "eslint --cache ./",
     "test": "gulp test"
   },
   "repository": {
@@ -26,6 +27,7 @@
   "homepage": "https://github.com/mdreizin/webpack-config",
   "devDependencies": {
     "codeclimate-test-reporter": "^0.1.0",
+    "coding-style": "mdreizin/coding-style",
     "del": "^2.0.2",
     "expect.js": "^0.3.1",
     "fs-extra": "^0.24.0",
