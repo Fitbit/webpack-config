@@ -3,10 +3,16 @@ node_js:
   - "0.12"
   - "0.11"
   - "0.10"
-before_script:
+cache:
+  directories:
+    - node_modules
+notifications:
+  email: false
+before_install:
   - npm install
+before_script:
+  - npm run clean
 script:
-  - npm run test
+  - npm run cover
 after_success:
-  - CODECLIMATE_REPO_TOKEN=e13b84f5a82863b03dae7d8d8261993786b6ac0a5f466e2537bbc1af7e70cf8c ./node_modules/.bin/codeclimate-test-reporter < ./coverage/lcov.info
-  - rm -rf ./coverage
+  - npm run codeclimate
