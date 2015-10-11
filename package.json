@@ -11,8 +11,7 @@
     "lint": "eslint --cache ./",
     "pretest": "npm run lint",
     "test": "mocha --full-trace --check-leaks -u exports -R spec",
-    "cover": "istanbul cover _mocha -- -u exports -R spec",
-    "posttest": "npm run cover"
+    "cover": "istanbul cover _mocha -- -u exports -R spec"
   },
   "repository": {
     "type": "git",
