@@ -8,10 +8,13 @@
     "lib/"
   ],
   "scripts": {
+    "clean": "rm -rf ./coverage",
     "lint": "eslint --cache ./",
     "pretest": "npm run lint",
     "test": "mocha --full-trace --check-leaks -u exports -R spec",
-    "cover": "istanbul cover _mocha -- -u exports -R spec"
+    "precover": "npm run clean && npm run lint",
+    "cover": "istanbul cover _mocha -- --full-trace --check-leaks -u exports -R spec",
+    "codeclimate": "CODECLIMATE_REPO_TOKEN=e13b84f5a82863b03dae7d8d8261993786b6ac0a5f466e2537bbc1af7e70cf8c codeclimate-test-reporter < ./coverage/lcov.info"
   },
   "repository": {
     "type": "git",
