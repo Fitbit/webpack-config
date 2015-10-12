@@ -12,8 +12,10 @@ notifications:
 before_install:
   - npm install
 before_script:
-  - npm run clean
+  - npm dedupe
+  - npm prune
 script:
-  - npm run cover
+  - '[ "${TRAVIS_PULL_REQUEST}" = "true" ] && npm run test'
+  - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && npm run clean && npm run cover'
 after_success:
-  - npm run codeclimate
+  - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && npm run codeclimate && npm run semantic-release'
