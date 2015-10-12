@@ -20,14 +20,14 @@ describe('ConfigLoader', function () {
             fs.copySync(configPathResolver.resolve('./test/fixtures/webpack.2.config.js'), filename);
         }
 
-        beforeEach(function() {
+        beforeEach(function(done) {
             configLoader.useCache = true;
 
-            fs.copySync(configPathResolver.resolve('./test/fixtures/webpack.1.config.js'), filename);
+            fs.copy(configPathResolver.resolve('./test/fixtures/webpack.1.config.js'), filename, done);
         });
 
-        afterEach(function() {
-            fs.removeSync(path.dirname(filename));
+        afterEach(function(done) {
+            fs.remove(path.dirname(filename), done);
         });
 
         it('should return same configs when "useCache" is "true"', function() {
