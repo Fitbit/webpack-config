@@ -2,7 +2,7 @@
 
 var expect = require('expect.js'),
     Config = require('../lib/config'),
-    ConfigFactory = require('../lib/ConfigFactory');
+    ConfigFactory = require('../lib/configFactory');
 
 var configFactory = ConfigFactory.INSTANCE;
 
