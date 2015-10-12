@@ -15,7 +15,7 @@ before_script:
   - npm dedupe
   - npm prune
 script:
-  - '[ "${TRAVIS_PULL_REQUEST}" = "true" ] && npm run test'
-  - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && npm run clean && npm run cover'
+  - npm run clean
+  - npm run cover
 after_success:
-  - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && npm run codeclimate && npm run semantic-release'
+  - 'if [[ $TRAVIS_PULL_REQUEST == "false" && $TRAVIS_BRANCH == "master" ]]; then npm run codeclimate && npm run semantic-release; fi'
