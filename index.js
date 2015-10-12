@@ -2,36 +2,49 @@
 
 var Config = require('./lib/config'),
     ConfigNameResolver = require('./lib/configNameResolver'),
+    ConfigPathResolver = require('./lib/configPathResolver'),
     ConfigFactory = require('./lib/configFactory'),
     ConfigLoader = require('./lib/configLoader'),
     ConfigFinder = require('./lib/configFinder'),
     ConfigVisitor = require('./lib/configVisitor');
 
+var configFactory = new ConfigFactory(),
+    configNameResolver = new ConfigNameResolver(),
+    configPathResolver = new ConfigPathResolver(configNameResolver),
+    configLoader = new ConfigLoader(configFactory, configPathResolver),
+    configVisitor = new ConfigVisitor(configLoader, configPathResolver),
+    configFinder = new ConfigFinder(configLoader, configPathResolver);
+
 /**
  * @property {ConfigNameResolver}
  * @static
  */
-Config.nameResolver = ConfigNameResolver.INSTANCE;
+Config.nameResolver = configNameResolver;
 /**
  * @property {ConfigFinder}
  * @static
  */
-Config.factory = ConfigFactory.INSTANCE;
+Config.factory = configFactory;
 /**
  * @property {ConfigLoader}
  * @static
  */
-Config.loader = ConfigLoader.INSTANCE;
+Config.loader = configLoader;
 /**
  * @property {ConfigFinder}
  * @static
  */
-Config.finder = ConfigFinder.INSTANCE;
+Config.finder = configFinder;
 /**
  * @property {ConfigVisitor}
  * @static
  */
-Config.visitor = ConfigVisitor.INSTANCE;
+Config.visitor = configVisitor;
+/**
+ * @property {ConfigPathResolver}
+ * @static
+ */
+Config.pathResolver = configPathResolver;
 
 /**
  * @module webpack-config

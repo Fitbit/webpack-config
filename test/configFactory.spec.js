@@ -4,12 +4,12 @@ var expect = require('expect.js'),
     Config = require('../lib/config'),
     ConfigFactory = require('../lib/configFactory');
 
-var configFactory = ConfigFactory.INSTANCE;
-
 describe('ConfigFactory', function () {
+    var configFactory = new ConfigFactory();
+
     context('#create()', function() {
         it('should create "Config" from "Object"', function() {
-            var config = configFactory.create({
+            var config = configFactory.createInstance({
                 foo: 'foo1'
             });
 
@@ -21,7 +21,7 @@ describe('ConfigFactory', function () {
         });
 
         it('should create "Config[]" from "Object[]"', function() {
-            var configs = configFactory.create([{
+            var configs = configFactory.createInstance([{
                 foo: 'foo1'
             }]);
 
@@ -34,7 +34,7 @@ describe('ConfigFactory', function () {
         });
 
         it('should create "Config" from "Object" via "Function"', function() {
-            var config = configFactory.create(function() {
+            var config = configFactory.createInstance(function() {
                 return {
                     foo: 'foo1'
                 };
@@ -48,7 +48,7 @@ describe('ConfigFactory', function () {
         });
 
         it('should create "Config[]" from "Object[]" via "Function"', function() {
-            var configs = configFactory.create(function() {
+            var configs = configFactory.createInstance(function() {
                 return [{
                     foo: 'foo1'
                 }];
@@ -71,7 +71,7 @@ describe('ConfigFactory', function () {
                 }
             });
 
-            var config = configFactory.create({});
+            var config = configFactory.createInstance({});
 
             config.test();
 

@@ -2,14 +2,25 @@
 
 var expect = require('expect.js'),
     webpack = require('webpack'),
-    ConfigFactory = require('../lib/configFactory');
-
-var configFactory = ConfigFactory.INSTANCE;
+    Config = require('../lib/config'),
+    ConfigFactory = require('../lib/configFactory'),
+    ConfigLoader = require('../lib/configLoader'),
+    ConfigVisitor = require('../lib/configVisitor'),
+    ConfigNameResolver = require('../lib/configNameResolver'),
+    ConfigPathResolver = require('../lib/configPathResolver');
 
 describe('ConfigExtendMixin', function () {
+    var configFactory = new ConfigFactory(),
+        configNameResolver = new ConfigNameResolver(),
+        configPathResolver = new ConfigPathResolver(configNameResolver),
+        configLoader = new ConfigLoader(configFactory, configPathResolver),
+        configVisitor = new ConfigVisitor(configLoader, configPathResolver);
+
+    Config.visitor = configVisitor;
+
     context('#extend()', function() {
         it('should accept "String"', function() {
-            var config = configFactory.create({});
+            var config = configFactory.createInstance({});
 
             config.extend('./test/fixtures/webpack.5.config.js');
 
@@ -33,7 +44,7 @@ describe('ConfigExtendMixin', function () {
         });
 
         it('should accept "String[]"', function() {
-            var config = configFactory.create({});
+            var config = configFactory.createInstance({});
 
             config.extend([
                 './test/fixtures/webpack.5.config.js'
@@ -61,7 +72,7 @@ describe('ConfigExtendMixin', function () {
         });
 
         it('should accept "Object<String,Function>"', function() {
-            var config = configFactory.create({});
+            var config = configFactory.createInstance({});
 
             function configTransform(x) {
                 return x;
@@ -93,7 +104,7 @@ describe('ConfigExtendMixin', function () {
         });
 
         it('should accept "Object<String,Boolean>"', function() {
-            var config = configFactory.create({});
+            var config = configFactory.createInstance({});
 
             config.extend({
                 './test/fixtures/webpack.5.config.js': true

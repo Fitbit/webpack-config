@@ -3,16 +3,19 @@
 var path = require('path'),
     fs = require('fs-extra'),
     expect = require('expect.js'),
+    ConfigFactory = require('../lib/configFactory'),
     ConfigLoader = require('../lib/configLoader'),
+    ConfigNameResolver = require('../lib/configNameResolver'),
     ConfigPathResolver = require('../lib/configPathResolver');
 
-var configPathResolver = ConfigPathResolver.INSTANCE,
-    configLoader = ConfigLoader.INSTANCE;
-
 describe('ConfigLoader', function () {
-    context('#load()', function() {
-        var filename = configPathResolver.resolve('./test/fixtures/tmp/webpack.config.js');
+    var configNameResolver = new ConfigNameResolver(),
+        configPathResolver = new ConfigPathResolver(configNameResolver),
+        configFactory = new ConfigFactory(),
+        configLoader = new ConfigLoader(configFactory, configPathResolver),
+        filename = configPathResolver.resolve('./test/fixtures/tmp/webpack.config.js');
 
+    context('#load()', function() {
         function updateConfig() {
             fs.copySync(configPathResolver.resolve('./test/fixtures/webpack.2.config.js'), filename);
         }

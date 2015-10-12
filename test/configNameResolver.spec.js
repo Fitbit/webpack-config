@@ -3,9 +3,9 @@
 var expect = require('expect.js'),
     ConfigNameResolver = require('../lib/configNameResolver');
 
-var configNameResolver = ConfigNameResolver.INSTANCE;
-
 describe('ConfigNameResolver', function () {
+    var configNameResolver = new ConfigNameResolver();
+
     context('#resolve()', function() {
         beforeEach(function() {
             delete process.env.WEBPACK_ENV;

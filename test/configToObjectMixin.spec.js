@@ -3,12 +3,12 @@
 var expect = require('expect.js'),
     ConfigFactory = require('../lib/configFactory');
 
-var configFactory = ConfigFactory.INSTANCE;
-
 describe('ConfigToObjectMixin', function () {
+    var configFactory = new ConfigFactory();
+
     context('#toObject()', function() {
         it('should return plain "Object"', function() {
-            var config = configFactory.create({});
+            var config = configFactory.createInstance({});
 
             config.merge({
                 foo: 'foo1'

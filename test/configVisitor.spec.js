@@ -1,13 +1,19 @@
 'use strict';
 
 var expect = require('expect.js'),
+    ConfigFactory = require('../lib/configFactory'),
+    ConfigLoader = require('../lib/configLoader'),
     ConfigVisitor = require('../lib/configVisitor'),
+    ConfigNameResolver = require('../lib/configNameResolver'),
     ConfigPathResolver = require('../lib/configPathResolver');
 
-var configVisitor = ConfigVisitor.INSTANCE,
-    configPathResolver = ConfigPathResolver.INSTANCE;
-
 describe('ConfigVisitor', function () {
+    var configFactory = new ConfigFactory(),
+        configNameResolver = new ConfigNameResolver(),
+        configPathResolver = new ConfigPathResolver(configNameResolver),
+        configLoader = new ConfigLoader(configFactory, configPathResolver),
+        configVisitor = new ConfigVisitor(configLoader, configPathResolver);
+
     context('#visit()', function() {
         it('should visit "{extend:String}"', function() {
             var visited = configVisitor.visit({
