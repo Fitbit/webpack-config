@@ -4,8 +4,8 @@ var expect = require('expect.js'),
     ConfigVisitor = require('../lib/configVisitor'),
     ConfigPathResolver = require('../lib/configPathResolver');
 
-var configVisitor = ConfigVisitor.INSTANCE;
-    ConfigPathResolver = ConfigPathResolver.INSTANCE;
+var configVisitor = ConfigVisitor.INSTANCE,
+    configPathResolver = ConfigPathResolver.INSTANCE;
 
 describe('ConfigVisitor', function () {
     context('#visit()', function() {
@@ -15,8 +15,8 @@ describe('ConfigVisitor', function () {
             });
 
             expect(visited).to.only.have.keys([
-                ConfigPathResolver.resolve('./test/fixtures/webpack.3.config.js'),
-                ConfigPathResolver.resolve('./test/fixtures/webpack.4.config.js')
+                configPathResolver.resolve('./test/fixtures/webpack.3.config.js'),
+                configPathResolver.resolve('./test/fixtures/webpack.4.config.js')
             ]);
         });
 
@@ -29,9 +29,9 @@ describe('ConfigVisitor', function () {
             });
 
             expect(visited).to.only.have.keys([
-                ConfigPathResolver.resolve('./test/fixtures/webpack.3.config.js'),
-                ConfigPathResolver.resolve('./test/fixtures/webpack.4.config.js'),
-                ConfigPathResolver.resolve('./test/fixtures/webpack.5.config.js')
+                configPathResolver.resolve('./test/fixtures/webpack.3.config.js'),
+                configPathResolver.resolve('./test/fixtures/webpack.4.config.js'),
+                configPathResolver.resolve('./test/fixtures/webpack.5.config.js')
             ]);
         });
 
@@ -48,9 +48,9 @@ describe('ConfigVisitor', function () {
             });
 
             expect(visited).to.only.have.keys([
-                ConfigPathResolver.resolve('./test/fixtures/webpack.3.config.js'),
-                ConfigPathResolver.resolve('./test/fixtures/webpack.4.config.js'),
-                ConfigPathResolver.resolve('./test/fixtures/webpack.5.config.js')
+                configPathResolver.resolve('./test/fixtures/webpack.3.config.js'),
+                configPathResolver.resolve('./test/fixtures/webpack.4.config.js'),
+                configPathResolver.resolve('./test/fixtures/webpack.5.config.js')
             ]);
         });
 
@@ -63,8 +63,8 @@ describe('ConfigVisitor', function () {
             });
 
             expect(visited).to.only.have.keys([
-                ConfigPathResolver.resolve('./test/fixtures/webpack.3.config.js'),
-                ConfigPathResolver.resolve('./test/fixtures/webpack.4.config.js')
+                configPathResolver.resolve('./test/fixtures/webpack.3.config.js'),
+                configPathResolver.resolve('./test/fixtures/webpack.4.config.js')
             ]);
         });
 
