@@ -2,7 +2,7 @@
 
 var expect = require('expect.js'),
     Config = require('../lib/config'),
-    ConfigLoader = require('../lib/ConfigLoader'),
+    ConfigLoader = require('../lib/configLoader'),
     ConfigFactory = require('../lib/configFactory'),
     ConfigNameResolver = require('../lib/configNameResolver'),
     ConfigPathResolver = require('../lib/configPathResolver'),
