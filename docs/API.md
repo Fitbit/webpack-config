@@ -301,10 +301,7 @@ Resolves path
 
 * [ConfigVisitor](#ConfigVisitor)
   * [new ConfigVisitor(loader, pathResolver, [fieldName])](#new_ConfigVisitor_new)
-  * _instance_
-    * [.visit(obj)](#ConfigVisitor+visit) ⇒ <code>Object.&lt;String, Config&gt;</code>
-  * _static_
-    * [.INSTANCE](#ConfigVisitor.INSTANCE)
+  * [.visit(obj)](#ConfigVisitor+visit) ⇒ <code>Object.&lt;String, Config&gt;</code>
 
 <a name="new_ConfigVisitor_new"></a>
 ### new ConfigVisitor(loader, pathResolver, [fieldName])
@@ -324,15 +321,6 @@ Returns `visited` configs
 | Param | Type |
 | --- | --- |
 | obj | <code>Object</code> | 
-
-<a name="ConfigVisitor.INSTANCE"></a>
-### ConfigVisitor.INSTANCE
-**Kind**: static property of <code>[ConfigVisitor](#ConfigVisitor)</code>  
-**Properties**
-
-| Type |
-| --- |
-| <code>[ConfigVisitor](#ConfigVisitor)</code> | 
 
 <a name="ConfigCloneMixin"></a>
 ## ConfigCloneMixin
