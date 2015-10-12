@@ -1,432 +1,418 @@
+## Modules
+<dl>
+<dt><a href="#module_webpack-config">webpack-config</a> ⇒ <code><a href="#Config">Config</a></code></dt>
+<dd></dd>
+<dt><a href="#module_webpack-config/lib/config">webpack-config/lib/config</a> ⇒ <code><a href="#Config">Config</a></code></dt>
+<dd></dd>
+<dt><a href="#module_webpack-config/lib/configCloneMixin">webpack-config/lib/configCloneMixin</a> ⇒ <code><a href="#ConfigCloneMixin">ConfigCloneMixin</a></code></dt>
+<dd></dd>
+<dt><a href="#module_webpack-config/lib/configDefaultsMixin">webpack-config/lib/configDefaultsMixin</a> ⇒ <code><a href="#ConfigDefaultsMixin">ConfigDefaultsMixin</a></code></dt>
+<dd></dd>
+<dt><a href="#module_webpack-config/lib/configEnvironment">webpack-config/lib/configEnvironment</a> ⇒ <code><a href="#ConfigEnvironment">ConfigEnvironment</a></code></dt>
+<dd></dd>
+<dt><a href="#module_webpack-config/lib/configExtendMixin">webpack-config/lib/configExtendMixin</a> ⇒ <code><a href="#ConfigExtendMixin">ConfigExtendMixin</a></code></dt>
+<dd></dd>
+<dt><a href="#module_webpack-config/lib/configFactory">webpack-config/lib/configFactory</a> ⇒ <code><a href="#ConfigFactory">ConfigFactory</a></code></dt>
+<dd></dd>
+<dt><a href="#module_webpack-config/lib/configFinder">webpack-config/lib/configFinder</a> ⇒ <code><a href="#ConfigFinder">ConfigFinder</a></code></dt>
+<dd></dd>
+<dt><a href="#module_webpack-config/lib/configLoader">webpack-config/lib/configLoader</a> ⇒ <code><a href="#ConfigLoader">ConfigLoader</a></code></dt>
+<dd></dd>
+<dt><a href="#module_webpack-config/lib/configMergeMixin">webpack-config/lib/configMergeMixin</a> ⇒ <code><a href="#ConfigMergeMixin">ConfigMergeMixin</a></code></dt>
+<dd></dd>
+<dt><a href="#module_webpack-config/lib/configMixin">webpack-config/lib/configMixin</a> ⇒ <code><a href="#ConfigMixin">ConfigMixin</a></code></dt>
+<dd></dd>
+<dt><a href="#module_webpack-config/lib/configNameResolver">webpack-config/lib/configNameResolver</a> ⇒ <code><a href="#ConfigNameResolver">ConfigNameResolver</a></code></dt>
+<dd></dd>
+<dt><a href="#module_webpack-config/lib/configPathResolver">webpack-config/lib/configPathResolver</a> ⇒ <code><a href="#ConfigPathResolver">ConfigPathResolver</a></code></dt>
+<dd></dd>
+<dt><a href="#module_webpack-config/lib/configToObjectMixin">webpack-config/lib/configToObjectMixin</a> ⇒ <code><a href="#ConfigToObjectMixin">ConfigToObjectMixin</a></code></dt>
+<dd></dd>
+<dt><a href="#module_webpack-config/lib/configVisitor">webpack-config/lib/configVisitor</a> ⇒ <code><a href="#ConfigVisitor">ConfigVisitor</a></code></dt>
+<dd></dd>
+</dl>
+## Classes
+<dl>
+<dt><a href="#Config">Config</a></dt>
+<dd></dd>
+<dt><a href="#ConfigFactory">ConfigFactory</a></dt>
+<dd></dd>
+<dt><a href="#ConfigFinder">ConfigFinder</a></dt>
+<dd></dd>
+<dt><a href="#ConfigLoader">ConfigLoader</a></dt>
+<dd></dd>
+<dt><a href="#ConfigNameResolver">ConfigNameResolver</a></dt>
+<dd></dd>
+<dt><a href="#ConfigPathResolver">ConfigPathResolver</a></dt>
+<dd></dd>
+<dt><a href="#ConfigVisitor">ConfigVisitor</a></dt>
+<dd></dd>
+</dl>
+## Members
+<dl>
+<dt><a href="#ConfigCloneMixin">ConfigCloneMixin</a></dt>
+<dd></dd>
+<dt><a href="#ConfigDefaultsMixin">ConfigDefaultsMixin</a></dt>
+<dd></dd>
+<dt><a href="#ConfigEnvironment">ConfigEnvironment</a></dt>
+<dd></dd>
+<dt><a href="#ConfigExtendMixin">ConfigExtendMixin</a></dt>
+<dd></dd>
+<dt><a href="#ConfigMergeMixin">ConfigMergeMixin</a></dt>
+<dd></dd>
+<dt><a href="#ConfigMixin">ConfigMixin</a> : <code>Array.&lt;Object&gt;</code></dt>
+<dd></dd>
+<dt><a href="#ConfigToObjectMixin">ConfigToObjectMixin</a></dt>
+<dd></dd>
+</dl>
 <a name="module_webpack-config"></a>
-## webpack-config
-**Example**  
-`webpack.config.js`
+## webpack-config ⇒ <code>[Config](#Config)</code>
+<a name="module_webpack-config/lib/config"></a>
+## webpack-config/lib/config ⇒ <code>[Config](#Config)</code>
+<a name="module_webpack-config/lib/configCloneMixin"></a>
+## webpack-config/lib/configCloneMixin ⇒ <code>[ConfigCloneMixin](#ConfigCloneMixin)</code>
+<a name="module_webpack-config/lib/configDefaultsMixin"></a>
+## webpack-config/lib/configDefaultsMixin ⇒ <code>[ConfigDefaultsMixin](#ConfigDefaultsMixin)</code>
+<a name="module_webpack-config/lib/configEnvironment"></a>
+## webpack-config/lib/configEnvironment ⇒ <code>[ConfigEnvironment](#ConfigEnvironment)</code>
+<a name="module_webpack-config/lib/configExtendMixin"></a>
+## webpack-config/lib/configExtendMixin ⇒ <code>[ConfigExtendMixin](#ConfigExtendMixin)</code>
+<a name="module_webpack-config/lib/configFactory"></a>
+## webpack-config/lib/configFactory ⇒ <code>[ConfigFactory](#ConfigFactory)</code>
+<a name="module_webpack-config/lib/configFinder"></a>
+## webpack-config/lib/configFinder ⇒ <code>[ConfigFinder](#ConfigFinder)</code>
+<a name="module_webpack-config/lib/configLoader"></a>
+## webpack-config/lib/configLoader ⇒ <code>[ConfigLoader](#ConfigLoader)</code>
+<a name="module_webpack-config/lib/configMergeMixin"></a>
+## webpack-config/lib/configMergeMixin ⇒ <code>[ConfigMergeMixin](#ConfigMergeMixin)</code>
+<a name="module_webpack-config/lib/configMixin"></a>
+## webpack-config/lib/configMixin ⇒ <code>[ConfigMixin](#ConfigMixin)</code>
+<a name="module_webpack-config/lib/configNameResolver"></a>
+## webpack-config/lib/configNameResolver ⇒ <code>[ConfigNameResolver](#ConfigNameResolver)</code>
+<a name="module_webpack-config/lib/configPathResolver"></a>
+## webpack-config/lib/configPathResolver ⇒ <code>[ConfigPathResolver](#ConfigPathResolver)</code>
+<a name="module_webpack-config/lib/configToObjectMixin"></a>
+## webpack-config/lib/configToObjectMixin ⇒ <code>[ConfigToObjectMixin](#ConfigToObjectMixin)</code>
+<a name="module_webpack-config/lib/configVisitor"></a>
+## webpack-config/lib/configVisitor ⇒ <code>[ConfigVisitor](#ConfigVisitor)</code>
+<a name="Config"></a>
+## Config
+**Kind**: global class  
 
-``` javascript
-'use strict';
+* [Config](#Config)
+  * [.nameResolver](#Config.nameResolver)
+  * [.factory](#Config.factory)
+  * [.loader](#Config.loader)
+  * [.finder](#Config.finder)
+  * [.visitor](#Config.visitor)
+  * [.pathResolver](#Config.pathResolver)
 
-var path = require('path'),
-    webpack = require('webpack'),
-    BowerPlugin = require('bower-webpack-plugin'),
-    ExtractTextPlugin = require('extract-text-webpack-plugin'),
-    ComponentPlugin = require('component-webpack-plugin'),
-    webpackConfig = require('webpack-config');
-
-module.exports = webpackConfig.fromObject({
-    output: {
-        filename: '[name].js'
-    },
-    resolve: {
-        root: [
-            __dirname,
-            path.join(__dirname, 'src', 'main', 'assets')
-        ],
-        modulesDirectories: [
-            'node_modules',
-            'bower_components',
-            'custom_components'
-        ]
-    },
-    plugins: [
-        new ComponentPlugin(),
-        new BowerPlugin({
-            excludes: [
-                /.*\.min.*/
-            ]
-        }),
-        new ExtractTextPlugin('[name].css'),
-        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js')
-    ],
-    module: {
-        loaders: [{
-            test: /\.css$/,
-            exclude: /.*\.min.css/,
-            loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
-        }, {
-            test: /\.less$/,
-            loader: ExtractTextPlugin.extract('style-loader', 'css-loader!less-loader')
-        }, {
-            test: /\.png$/,
-            loader: 'url-loader?prefix=img/&limit=5000'
-        }, {
-            test: /\.jpg$/,
-            loader: 'url-loader?prefix=img/&limit=5000'
-        }, {
-            test: /\.gif$/,
-            loader: 'url-loader?prefix=img/&limit=5000'
-        }, {
-            test: /\.woff$/,
-            loader: 'url-loader?prefix=font/&limit=5000'
-        }, {
-            test: /\.eot$/,
-            loader: 'file-loader?prefix=font/'
-        }, {
-            test: /\.ttf$/,
-            loader: 'file-loader?prefix=font/'
-        }, {
-            test: /\.svg$/,
-            loader: 'file-loader?prefix=font/'
-        }]
-    }
-});
-
-```
-**Example**  
-`polyfills/webpack.config.js`
-
-``` javascript
-'use strict';
-
-var webpackConfig = require('webpack-config');
-
-module.exports = webpackConfig.fromCwd().extend({
-    entry: {
-        vendor: [
-            'consolelog',
-            'es5-shim',
-            'es5-shim/es5-sham',
-            'es6-shim',
-            'es6-shim/es6-sham',
-            'json3',
-            'html5shiv',
-            'html5shiv/dist/html5shiv-printshiv.js',
-            'respond'
-        ]
-    }
-});
-
-```
-
-* [webpack-config](#module_webpack-config)
-  * [.Config](#module_webpack-config.Config)
-    * [new Config([options])](#new_module_webpack-config.Config_new)
-    * [.merge([options])](#module_webpack-config.Config+merge) ⇒ <code>Config</code>
-    * [.defaults([options])](#module_webpack-config.Config+defaults) ⇒ <code>Config</code>
-    * [.extend([options])](#module_webpack-config.Config+extend) ⇒ <code>Config</code>
-    * [.toPlainObject()](#module_webpack-config.Config+toPlainObject) ⇒ <code>Object</code>
-  * [.MultiConfig](#module_webpack-config.MultiConfig)
-    * [new MultiConfig([arguments])](#new_module_webpack-config.MultiConfig_new)
-    * [.merge([options])](#module_webpack-config.MultiConfig+merge) ⇒ <code>MultiConfig</code>
-    * [.defaults([options])](#module_webpack-config.MultiConfig+defaults) ⇒ <code>MultiConfig</code>
-    * [.extend([options])](#module_webpack-config.MultiConfig+extend) ⇒ <code>MultiConfig</code>
-    * [.toPlainObject()](#module_webpack-config.MultiConfig+toPlainObject) ⇒ <code>Array</code>
-  * [.Config](#module_webpack-config.Config)
-    * [new Config([options])](#new_module_webpack-config.Config_new)
-    * [.merge([options])](#module_webpack-config.Config+merge) ⇒ <code>Config</code>
-    * [.defaults([options])](#module_webpack-config.Config+defaults) ⇒ <code>Config</code>
-    * [.extend([options])](#module_webpack-config.Config+extend) ⇒ <code>Config</code>
-    * [.toPlainObject()](#module_webpack-config.Config+toPlainObject) ⇒ <code>Object</code>
-  * [.MultiConfig](#module_webpack-config.MultiConfig)
-    * [new MultiConfig([arguments])](#new_module_webpack-config.MultiConfig_new)
-    * [.merge([options])](#module_webpack-config.MultiConfig+merge) ⇒ <code>MultiConfig</code>
-    * [.defaults([options])](#module_webpack-config.MultiConfig+defaults) ⇒ <code>MultiConfig</code>
-    * [.extend([options])](#module_webpack-config.MultiConfig+extend) ⇒ <code>MultiConfig</code>
-    * [.toPlainObject()](#module_webpack-config.MultiConfig+toPlainObject) ⇒ <code>Array</code>
-  * [.useCache](#module_webpack-config.useCache)
-  * [.CONFIG_FILENAME](#module_webpack-config.CONFIG_FILENAME) : <code>String</code>
-  * [.fromObject(options)](#module_webpack-config.fromObject) ⇒ <code>Config</code> &#124; <code>MultiConfig</code>
-  * [.fromCwd([basename])](#module_webpack-config.fromCwd) ⇒ <code>Config</code> &#124; <code>MultiConfig</code>
-  * [.fromDirectory(dirname, [basename])](#module_webpack-config.fromDirectory) ⇒ <code>Config</code> &#124; <code>MultiConfig</code>
-  * [.fromFile(filename)](#module_webpack-config.fromFile) ⇒ <code>Config</code> &#124; <code>MultiConfig</code>
-  * [.closest(dirname, [basename])](#module_webpack-config.closest) ⇒ <code>String</code>
-
-<a name="module_webpack-config.Config"></a>
-### webpack-config.Config
-Represents webpack config
-
-**Kind**: static class of <code>[webpack-config](#module_webpack-config)</code>  
-
-* [.Config](#module_webpack-config.Config)
-  * [new Config([options])](#new_module_webpack-config.Config_new)
-  * [.merge([options])](#module_webpack-config.Config+merge) ⇒ <code>Config</code>
-  * [.defaults([options])](#module_webpack-config.Config+defaults) ⇒ <code>Config</code>
-  * [.extend([options])](#module_webpack-config.Config+extend) ⇒ <code>Config</code>
-  * [.toPlainObject()](#module_webpack-config.Config+toPlainObject) ⇒ <code>Object</code>
-
-<a name="new_module_webpack-config.Config_new"></a>
-#### new Config([options])
-
-| Param | Type | Description |
-| --- | --- | --- |
-| [options] | <code>Object</code> | Please see more info about [options](http://webpack.github.io/docs/configuration.html). |
-
-<a name="module_webpack-config.Config+merge"></a>
-#### config.merge([options]) ⇒ <code>Config</code>
-Merges options
-
-**Kind**: instance method of <code>[Config](#module_webpack-config.Config)</code>  
-
-| Param | Type |
-| --- | --- |
-| [options] | <code>Object</code> | 
-
-<a name="module_webpack-config.Config+defaults"></a>
-#### config.defaults([options]) ⇒ <code>Config</code>
-Merges default options.
-
-**Kind**: instance method of <code>[Config](#module_webpack-config.Config)</code>  
-
-| Param | Type |
-| --- | --- |
-| [options] | <code>Object</code> | 
-
-<a name="module_webpack-config.Config+extend"></a>
-#### config.extend([options]) ⇒ <code>Config</code>
-Creates a new config and merges options.
-
-**Kind**: instance method of <code>[Config](#module_webpack-config.Config)</code>  
-
-| Param | Type |
-| --- | --- |
-| [options] | <code>Object</code> | 
-
-<a name="module_webpack-config.Config+toPlainObject"></a>
-#### config.toPlainObject() ⇒ <code>Object</code>
-Returns webpack config.
-
-**Kind**: instance method of <code>[Config](#module_webpack-config.Config)</code>  
-<a name="module_webpack-config.MultiConfig"></a>
-### webpack-config.MultiConfig
-Represents multi webpack config.
-
-**Kind**: static class of <code>[webpack-config](#module_webpack-config)</code>  
-
-* [.MultiConfig](#module_webpack-config.MultiConfig)
-  * [new MultiConfig([arguments])](#new_module_webpack-config.MultiConfig_new)
-  * [.merge([options])](#module_webpack-config.MultiConfig+merge) ⇒ <code>MultiConfig</code>
-  * [.defaults([options])](#module_webpack-config.MultiConfig+defaults) ⇒ <code>MultiConfig</code>
-  * [.extend([options])](#module_webpack-config.MultiConfig+extend) ⇒ <code>MultiConfig</code>
-  * [.toPlainObject()](#module_webpack-config.MultiConfig+toPlainObject) ⇒ <code>Array</code>
-
-<a name="new_module_webpack-config.MultiConfig_new"></a>
-#### new MultiConfig([arguments])
-
-| Param | Type |
-| --- | --- |
-| [arguments] | <code>Object</code> &#124; <code>Array.&lt;Object&gt;</code> | 
-
-<a name="module_webpack-config.MultiConfig+merge"></a>
-#### multiConfig.merge([options]) ⇒ <code>MultiConfig</code>
-Merges options
-
-**Kind**: instance method of <code>[MultiConfig](#module_webpack-config.MultiConfig)</code>  
-
-| Param | Type |
-| --- | --- |
-| [options] | <code>Object</code> | 
-
-<a name="module_webpack-config.MultiConfig+defaults"></a>
-#### multiConfig.defaults([options]) ⇒ <code>MultiConfig</code>
-Merges default options.
-
-**Kind**: instance method of <code>[MultiConfig](#module_webpack-config.MultiConfig)</code>  
-
-| Param | Type |
-| --- | --- |
-| [options] | <code>Object</code> | 
-
-<a name="module_webpack-config.MultiConfig+extend"></a>
-#### multiConfig.extend([options]) ⇒ <code>MultiConfig</code>
-Creates a new config and merges options.
-
-**Kind**: instance method of <code>[MultiConfig](#module_webpack-config.MultiConfig)</code>  
-
-| Param | Type |
-| --- | --- |
-| [options] | <code>Object</code> | 
-
-<a name="module_webpack-config.MultiConfig+toPlainObject"></a>
-#### multiConfig.toPlainObject() ⇒ <code>Array</code>
-Returns webpack configs.
-
-**Kind**: instance method of <code>[MultiConfig](#module_webpack-config.MultiConfig)</code>  
-<a name="module_webpack-config.Config"></a>
-### webpack-config.Config
-**Kind**: static property of <code>[webpack-config](#module_webpack-config)</code>  
-**Read only**: true  
+<a name="Config.nameResolver"></a>
+### Config.nameResolver
+**Kind**: static property of <code>[Config](#Config)</code>  
 **Properties**
 
 | Type |
 | --- |
-| <code>Config</code> | 
+| <code>[ConfigNameResolver](#ConfigNameResolver)</code> | 
 
-
-* [.Config](#module_webpack-config.Config)
-  * [new Config([options])](#new_module_webpack-config.Config_new)
-  * [.merge([options])](#module_webpack-config.Config+merge) ⇒ <code>Config</code>
-  * [.defaults([options])](#module_webpack-config.Config+defaults) ⇒ <code>Config</code>
-  * [.extend([options])](#module_webpack-config.Config+extend) ⇒ <code>Config</code>
-  * [.toPlainObject()](#module_webpack-config.Config+toPlainObject) ⇒ <code>Object</code>
-
-<a name="new_module_webpack-config.Config_new"></a>
-#### new Config([options])
-
-| Param | Type | Description |
-| --- | --- | --- |
-| [options] | <code>Object</code> | Please see more info about [options](http://webpack.github.io/docs/configuration.html). |
-
-<a name="module_webpack-config.Config+merge"></a>
-#### config.merge([options]) ⇒ <code>Config</code>
-Merges options
-
-**Kind**: instance method of <code>[Config](#module_webpack-config.Config)</code>  
-
-| Param | Type |
-| --- | --- |
-| [options] | <code>Object</code> | 
-
-<a name="module_webpack-config.Config+defaults"></a>
-#### config.defaults([options]) ⇒ <code>Config</code>
-Merges default options.
-
-**Kind**: instance method of <code>[Config](#module_webpack-config.Config)</code>  
-
-| Param | Type |
-| --- | --- |
-| [options] | <code>Object</code> | 
-
-<a name="module_webpack-config.Config+extend"></a>
-#### config.extend([options]) ⇒ <code>Config</code>
-Creates a new config and merges options.
-
-**Kind**: instance method of <code>[Config](#module_webpack-config.Config)</code>  
-
-| Param | Type |
-| --- | --- |
-| [options] | <code>Object</code> | 
-
-<a name="module_webpack-config.Config+toPlainObject"></a>
-#### config.toPlainObject() ⇒ <code>Object</code>
-Returns webpack config.
-
-**Kind**: instance method of <code>[Config](#module_webpack-config.Config)</code>  
-<a name="module_webpack-config.MultiConfig"></a>
-### webpack-config.MultiConfig
-**Kind**: static property of <code>[webpack-config](#module_webpack-config)</code>  
-**Read only**: true  
+<a name="Config.factory"></a>
+### Config.factory
+**Kind**: static property of <code>[Config](#Config)</code>  
 **Properties**
 
 | Type |
 | --- |
-| <code>MultiConfig</code> | 
+| <code>[ConfigFinder](#ConfigFinder)</code> | 
 
-
-* [.MultiConfig](#module_webpack-config.MultiConfig)
-  * [new MultiConfig([arguments])](#new_module_webpack-config.MultiConfig_new)
-  * [.merge([options])](#module_webpack-config.MultiConfig+merge) ⇒ <code>MultiConfig</code>
-  * [.defaults([options])](#module_webpack-config.MultiConfig+defaults) ⇒ <code>MultiConfig</code>
-  * [.extend([options])](#module_webpack-config.MultiConfig+extend) ⇒ <code>MultiConfig</code>
-  * [.toPlainObject()](#module_webpack-config.MultiConfig+toPlainObject) ⇒ <code>Array</code>
-
-<a name="new_module_webpack-config.MultiConfig_new"></a>
-#### new MultiConfig([arguments])
-
-| Param | Type |
-| --- | --- |
-| [arguments] | <code>Object</code> &#124; <code>Array.&lt;Object&gt;</code> | 
-
-<a name="module_webpack-config.MultiConfig+merge"></a>
-#### multiConfig.merge([options]) ⇒ <code>MultiConfig</code>
-Merges options
-
-**Kind**: instance method of <code>[MultiConfig](#module_webpack-config.MultiConfig)</code>  
-
-| Param | Type |
-| --- | --- |
-| [options] | <code>Object</code> | 
-
-<a name="module_webpack-config.MultiConfig+defaults"></a>
-#### multiConfig.defaults([options]) ⇒ <code>MultiConfig</code>
-Merges default options.
-
-**Kind**: instance method of <code>[MultiConfig](#module_webpack-config.MultiConfig)</code>  
-
-| Param | Type |
-| --- | --- |
-| [options] | <code>Object</code> | 
-
-<a name="module_webpack-config.MultiConfig+extend"></a>
-#### multiConfig.extend([options]) ⇒ <code>MultiConfig</code>
-Creates a new config and merges options.
-
-**Kind**: instance method of <code>[MultiConfig](#module_webpack-config.MultiConfig)</code>  
-
-| Param | Type |
-| --- | --- |
-| [options] | <code>Object</code> | 
-
-<a name="module_webpack-config.MultiConfig+toPlainObject"></a>
-#### multiConfig.toPlainObject() ⇒ <code>Array</code>
-Returns webpack configs.
-
-**Kind**: instance method of <code>[MultiConfig](#module_webpack-config.MultiConfig)</code>  
-<a name="module_webpack-config.useCache"></a>
-### webpack-config.useCache
-Use cache or not
-
-**Kind**: static property of <code>[webpack-config](#module_webpack-config)</code>  
+<a name="Config.loader"></a>
+### Config.loader
+**Kind**: static property of <code>[Config](#Config)</code>  
 **Properties**
 
 | Type |
 | --- |
-| <code>Boolean</code> | 
+| <code>[ConfigLoader](#ConfigLoader)</code> | 
 
-<a name="module_webpack-config.CONFIG_FILENAME"></a>
-### webpack-config.CONFIG_FILENAME : <code>String</code>
-`webpack.config.js`
+<a name="Config.finder"></a>
+### Config.finder
+**Kind**: static property of <code>[Config](#Config)</code>  
+**Properties**
 
-**Kind**: static constant of <code>[webpack-config](#module_webpack-config)</code>  
-<a name="module_webpack-config.fromObject"></a>
-### webpack-config.fromObject(options) ⇒ <code>Config</code> &#124; <code>MultiConfig</code>
-Creates new config form object
+| Type |
+| --- |
+| <code>[ConfigFinder](#ConfigFinder)</code> | 
 
-**Kind**: static method of <code>[webpack-config](#module_webpack-config)</code>  
+<a name="Config.visitor"></a>
+### Config.visitor
+**Kind**: static property of <code>[Config](#Config)</code>  
+**Properties**
 
-| Param | Type | Description |
-| --- | --- | --- |
-| options | <code>Object</code> | Options |
+| Type |
+| --- |
+| <code>[ConfigVisitor](#ConfigVisitor)</code> | 
 
-<a name="module_webpack-config.fromCwd"></a>
-### webpack-config.fromCwd([basename]) ⇒ <code>Config</code> &#124; <code>MultiConfig</code>
-Loads config from `process.cwd()`
+<a name="Config.pathResolver"></a>
+### Config.pathResolver
+**Kind**: static property of <code>[Config](#Config)</code>  
+**Properties**
 
-**Kind**: static method of <code>[webpack-config](#module_webpack-config)</code>  
+| Type |
+| --- |
+| <code>[ConfigPathResolver](#ConfigPathResolver)</code> | 
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| [basename] | <code>String</code> | <code>webpack.config.js</code> | Config file name |
+<a name="ConfigFactory"></a>
+## ConfigFactory
+**Kind**: global class  
 
-<a name="module_webpack-config.fromDirectory"></a>
-### webpack-config.fromDirectory(dirname, [basename]) ⇒ <code>Config</code> &#124; <code>MultiConfig</code>
-Loads config from directory
+* [ConfigFactory](#ConfigFactory)
+  * [.addMixins(...arguments)](#ConfigFactory+addMixins)
+  * [.createInstance(obj)](#ConfigFactory+createInstance) ⇒ <code>[Config](#Config)</code> &#124; <code>[Array.&lt;Config&gt;](#Config)</code>
 
-**Kind**: static method of <code>[webpack-config](#module_webpack-config)</code>  
+<a name="ConfigFactory+addMixins"></a>
+### configFactory.addMixins(...arguments)
+Adds custom `mixins`
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| dirname | <code>String</code> |  | Directory name |
-| [basename] | <code>String</code> | <code>webpack.config.js</code> | Config file name |
+**Kind**: instance method of <code>[ConfigFactory](#ConfigFactory)</code>  
 
-<a name="module_webpack-config.fromFile"></a>
-### webpack-config.fromFile(filename) ⇒ <code>Config</code> &#124; <code>MultiConfig</code>
-Loads config from file
+| Param | Type |
+| --- | --- |
+| ...arguments | <code>Object</code> | 
 
-**Kind**: static method of <code>[webpack-config](#module_webpack-config)</code>  
+<a name="ConfigFactory+createInstance"></a>
+### configFactory.createInstance(obj) ⇒ <code>[Config](#Config)</code> &#124; <code>[Array.&lt;Config&gt;](#Config)</code>
+Creates config instance
 
-| Param | Type | Description |
-| --- | --- | --- |
-| filename | <code>String</code> | File name |
+**Kind**: instance method of <code>[ConfigFactory](#ConfigFactory)</code>  
 
-<a name="module_webpack-config.closest"></a>
-### webpack-config.closest(dirname, [basename]) ⇒ <code>String</code>
+| Param | Type |
+| --- | --- |
+| obj | <code>Object</code> &#124; <code>Array.&lt;Object&gt;</code> &#124; <code>function</code> | 
+
+<a name="ConfigFinder"></a>
+## ConfigFinder
+**Kind**: global class  
+
+* [ConfigFinder](#ConfigFinder)
+  * [new ConfigFinder(loader, pathResolver)](#new_ConfigFinder_new)
+  * [.closest(filename)](#ConfigFinder+closest) ⇒ <code>[Config](#Config)</code> &#124; <code>[Array.&lt;Config&gt;](#Config)</code>
+
+<a name="new_ConfigFinder_new"></a>
+### new ConfigFinder(loader, pathResolver)
+
+| Param | Type |
+| --- | --- |
+| loader | <code>[ConfigLoader](#ConfigLoader)</code> | 
+| pathResolver | <code>[ConfigPathResolver](#ConfigPathResolver)</code> | 
+
+<a name="ConfigFinder+closest"></a>
+### configFinder.closest(filename) ⇒ <code>[Config](#Config)</code> &#124; <code>[Array.&lt;Config&gt;](#Config)</code>
 Finds closest config
 
-**Kind**: static method of <code>[webpack-config](#module_webpack-config)</code>  
-**Returns**: <code>String</code> - File path  
+**Kind**: instance method of <code>[ConfigFinder](#ConfigFinder)</code>  
+
+| Param | Type |
+| --- | --- |
+| filename | <code>String</code> | 
+
+<a name="ConfigLoader"></a>
+## ConfigLoader
+**Kind**: global class  
+
+* [ConfigLoader](#ConfigLoader)
+  * [new ConfigLoader(factory, pathResolver, [useCache])](#new_ConfigLoader_new)
+  * [.load(filename)](#ConfigLoader+load) ⇒ <code>[Config](#Config)</code> &#124; <code>[Array.&lt;Config&gt;](#Config)</code>
+
+<a name="new_ConfigLoader_new"></a>
+### new ConfigLoader(factory, pathResolver, [useCache])
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| dirname | <code>String</code> |  | Directory name |
-| [basename] | <code>String</code> | <code>webpack.config.js</code> | Config file name |
+| factory | <code>[ConfigFactory](#ConfigFactory)</code> |  |  |
+| pathResolver | <code>[ConfigPathResolver](#ConfigPathResolver)</code> |  |  |
+| [useCache] | <code>Boolean</code> | <code>true</code> | Use cache or not |
 
+<a name="ConfigLoader+load"></a>
+### configLoader.load(filename) ⇒ <code>[Config](#Config)</code> &#124; <code>[Array.&lt;Config&gt;](#Config)</code>
+Loads config from file
+
+**Kind**: instance method of <code>[ConfigLoader](#ConfigLoader)</code>  
+
+| Param | Type |
+| --- | --- |
+| filename | <code>String</code> | 
+
+<a name="ConfigNameResolver"></a>
+## ConfigNameResolver
+**Kind**: global class  
+
+* [ConfigNameResolver](#ConfigNameResolver)
+  * [.addVariables(...arguments)](#ConfigNameResolver+addVariables)
+  * [.resolve(filename)](#ConfigNameResolver+resolve) ⇒ <code>String</code>
+
+<a name="ConfigNameResolver+addVariables"></a>
+### configNameResolver.addVariables(...arguments)
+Adds custom `variables`
+
+**Kind**: instance method of <code>[ConfigNameResolver](#ConfigNameResolver)</code>  
+
+| Param | Type |
+| --- | --- |
+| ...arguments | <code>Object</code> | 
+
+<a name="ConfigNameResolver+resolve"></a>
+### configNameResolver.resolve(filename) ⇒ <code>String</code>
+Resolves `filename`
+
+**Kind**: instance method of <code>[ConfigNameResolver](#ConfigNameResolver)</code>  
+
+| Param | Type |
+| --- | --- |
+| filename | <code>String</code> | 
+
+<a name="ConfigPathResolver"></a>
+## ConfigPathResolver
+**Kind**: global class  
+
+* [ConfigPathResolver](#ConfigPathResolver)
+  * [new ConfigPathResolver(nameResolver)](#new_ConfigPathResolver_new)
+  * [.resolve(filename)](#ConfigPathResolver+resolve) ⇒ <code>String</code>
+
+<a name="new_ConfigPathResolver_new"></a>
+### new ConfigPathResolver(nameResolver)
+
+| Param | Type |
+| --- | --- |
+| nameResolver | <code>[ConfigNameResolver](#ConfigNameResolver)</code> | 
+
+<a name="ConfigPathResolver+resolve"></a>
+### configPathResolver.resolve(filename) ⇒ <code>String</code>
+Resolves path
+
+**Kind**: instance method of <code>[ConfigPathResolver](#ConfigPathResolver)</code>  
+
+| Param | Type |
+| --- | --- |
+| filename | <code>String</code> | 
+
+<a name="ConfigVisitor"></a>
+## ConfigVisitor
+**Kind**: global class  
+
+* [ConfigVisitor](#ConfigVisitor)
+  * [new ConfigVisitor(loader, pathResolver, [fieldName])](#new_ConfigVisitor_new)
+  * _instance_
+    * [.visit(obj)](#ConfigVisitor+visit) ⇒ <code>Object.&lt;String, Config&gt;</code>
+  * _static_
+    * [.INSTANCE](#ConfigVisitor.INSTANCE)
+
+<a name="new_ConfigVisitor_new"></a>
+### new ConfigVisitor(loader, pathResolver, [fieldName])
+
+| Param | Type | Default |
+| --- | --- | --- |
+| loader | <code>[ConfigLoader](#ConfigLoader)</code> |  | 
+| pathResolver | <code>[ConfigPathResolver](#ConfigPathResolver)</code> |  | 
+| [fieldName] | <code>String</code> | <code>&#x27;extend&#x27;</code> | 
+
+<a name="ConfigVisitor+visit"></a>
+### configVisitor.visit(obj) ⇒ <code>Object.&lt;String, Config&gt;</code>
+Returns `visited` configs
+
+**Kind**: instance method of <code>[ConfigVisitor](#ConfigVisitor)</code>  
+
+| Param | Type |
+| --- | --- |
+| obj | <code>Object</code> | 
+
+<a name="ConfigVisitor.INSTANCE"></a>
+### ConfigVisitor.INSTANCE
+**Kind**: static property of <code>[ConfigVisitor](#ConfigVisitor)</code>  
+**Properties**
+
+| Type |
+| --- |
+| <code>[ConfigVisitor](#ConfigVisitor)</code> | 
+
+<a name="ConfigCloneMixin"></a>
+## ConfigCloneMixin
+**Kind**: global variable  
+<a name="ConfigCloneMixin.clone"></a>
+### ConfigCloneMixin.clone() ⇒ <code>[Config](#Config)</code>
+Creates a new config
+
+**Kind**: static method of <code>[ConfigCloneMixin](#ConfigCloneMixin)</code>  
+<a name="ConfigDefaultsMixin"></a>
+## ConfigDefaultsMixin
+**Kind**: global variable  
+<a name="ConfigDefaultsMixin.defaults"></a>
+### ConfigDefaultsMixin.defaults([options]) ⇒ <code>[Config](#Config)</code>
+Merges default options
+
+**Kind**: static method of <code>[ConfigDefaultsMixin](#ConfigDefaultsMixin)</code>  
+
+| Param | Type |
+| --- | --- |
+| [options] | <code>Object</code> | 
+
+<a name="ConfigEnvironment"></a>
+## ConfigEnvironment
+**Kind**: global variable  
+
+* [ConfigEnvironment](#ConfigEnvironment)
+  * [.webpack_env()](#ConfigEnvironment.webpack_env) ⇒ <code>String</code>
+  * [.node_env()](#ConfigEnvironment.node_env) ⇒ <code>String</code>
+  * [.env()](#ConfigEnvironment.env) ⇒ <code>String</code>
+
+<a name="ConfigEnvironment.webpack_env"></a>
+### ConfigEnvironment.webpack_env() ⇒ <code>String</code>
+Returns `process.env.WEBPACK_ENV`
+
+**Kind**: static method of <code>[ConfigEnvironment](#ConfigEnvironment)</code>  
+<a name="ConfigEnvironment.node_env"></a>
+### ConfigEnvironment.node_env() ⇒ <code>String</code>
+Returns `process.env.NODE_ENV`
+
+**Kind**: static method of <code>[ConfigEnvironment](#ConfigEnvironment)</code>  
+<a name="ConfigEnvironment.env"></a>
+### ConfigEnvironment.env() ⇒ <code>String</code>
+Returns `this.webpack_env() || this.node_env()`
+
+**Kind**: static method of <code>[ConfigEnvironment](#ConfigEnvironment)</code>  
+<a name="ConfigExtendMixin"></a>
+## ConfigExtendMixin
+**Kind**: global variable  
+<a name="ConfigExtendMixin.extend"></a>
+### ConfigExtendMixin.extend(options) ⇒ <code>[Config](#Config)</code>
+Extends config using external ones
+
+**Kind**: static method of <code>[ConfigExtendMixin](#ConfigExtendMixin)</code>  
+
+| Param | Type |
+| --- | --- |
+| options | <code>String</code> &#124; <code>Array.&lt;String&gt;</code> &#124; <code>Object.&lt;String, function()&gt;</code> &#124; <code>Object.&lt;String, Boolean&gt;</code> | 
+
+<a name="ConfigMergeMixin"></a>
+## ConfigMergeMixin
+**Kind**: global variable  
+<a name="ConfigMergeMixin.merge"></a>
+### ConfigMergeMixin.merge([options]) ⇒ <code>[Config](#Config)</code>
+Merges options
+
+**Kind**: static method of <code>[ConfigMergeMixin](#ConfigMergeMixin)</code>  
+
+| Param | Type |
+| --- | --- |
+| [options] | <code>Object</code> | 
+
+<a name="ConfigMixin"></a>
+## ConfigMixin : <code>Array.&lt;Object&gt;</code>
+**Kind**: global variable  
+<a name="ConfigToObjectMixin"></a>
+## ConfigToObjectMixin
+**Kind**: global variable  
+<a name="ConfigToObjectMixin.toObject"></a>
+### ConfigToObjectMixin.toObject() ⇒ <code>Object</code>
+Returns plain object
+
+**Kind**: static method of <code>[ConfigToObjectMixin](#ConfigToObjectMixin)</code>  
