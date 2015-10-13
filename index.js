@@ -54,7 +54,7 @@ Config.pathResolver = configPathResolver;
 /**
  * @const {String} - `webpack.config.js`
  */
-Config.CONFIG_FILENAME = 'webpack.config.js';
+Config.FILENAME = 'webpack.config.js';
 
 /**
  * @module webpack-config
