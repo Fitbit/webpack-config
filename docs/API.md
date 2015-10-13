@@ -306,17 +306,18 @@ Resolves path
 **Kind**: global class  
 
 * [ConfigVisitor](#ConfigVisitor)
-  * [new ConfigVisitor(loader, pathResolver, [fieldName])](#new_ConfigVisitor_new)
+  * [new ConfigVisitor(loader, pathResolver, [extendField], [excludeFields])](#new_ConfigVisitor_new)
   * [.visit(obj)](#ConfigVisitor+visit) ⇒ <code>Object.&lt;String, Config&gt;</code>
 
 <a name="new_ConfigVisitor_new"></a>
-### new ConfigVisitor(loader, pathResolver, [fieldName])
+### new ConfigVisitor(loader, pathResolver, [extendField], [excludeFields])
 
 | Param | Type | Default |
 | --- | --- | --- |
 | loader | <code>[ConfigLoader](#ConfigLoader)</code> |  | 
 | pathResolver | <code>[ConfigPathResolver](#ConfigPathResolver)</code> |  | 
-| [fieldName] | <code>String</code> | <code>&#x27;extend&#x27;</code> | 
+| [extendField] | <code>String</code> | <code>&#x27;extend&#x27;</code> | 
+| [excludeFields] | <code>Array.&lt;String&gt;</code> | <code>[&#x27;extend&#x27;,&#x27;filename&#x27;]</code> | 
 
 <a name="ConfigVisitor+visit"></a>
 ### configVisitor.visit(obj) ⇒ <code>Object.&lt;String, Config&gt;</code>
