@@ -20,31 +20,41 @@ var configFactory = new ConfigFactory(),
  * @static
  */
 Config.nameResolver = configNameResolver;
+
 /**
  * @property {ConfigFinder}
  * @static
  */
 Config.factory = configFactory;
+
 /**
  * @property {ConfigLoader}
  * @static
  */
 Config.loader = configLoader;
+
 /**
  * @property {ConfigFinder}
  * @static
  */
 Config.finder = configFinder;
+
 /**
  * @property {ConfigVisitor}
  * @static
  */
 Config.visitor = configVisitor;
+
 /**
  * @property {ConfigPathResolver}
  * @static
  */
 Config.pathResolver = configPathResolver;
+
+/**
+ * @const {String} - `webpack.config.js`
+ */
+Config.CONFIG_FILENAME = 'webpack.config.js';
 
 /**
  * @module webpack-config

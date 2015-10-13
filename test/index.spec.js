@@ -28,5 +28,6 @@ describe('Index', function () {
         expect(Index.finder).to.be.an(ConfigFinder);
         expect(Index.visitor).to.be.an(ConfigVisitor);
         expect(Index.pathResolver).to.be.an(ConfigPathResolver);
+        expect(Index.CONFIG_FILENAME).to.eql('webpack.config.js');
     });
 });
