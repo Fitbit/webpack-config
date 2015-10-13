@@ -1,6 +1,7 @@
 'use strict';
 
 var expect = require('expect.js'),
+    path = require('path'),
     Config = require('../lib/config'),
     ConfigLoader = require('../lib/configLoader'),
     ConfigFactory = require('../lib/configFactory'),
@@ -21,6 +22,7 @@ describe('ConfigFinder', function () {
 
             expect(config).to.be.a(Config);
             expect(config.toObject()).to.eql({
+                filename: path.resolve('./test/fixtures/webpack.1.config.js'),
                 foo: 'foo1'
             });
         });
