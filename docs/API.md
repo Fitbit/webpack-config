@@ -106,6 +106,7 @@
   * [.finder](#Config.finder)
   * [.visitor](#Config.visitor)
   * [.pathResolver](#Config.pathResolver)
+  * [.CONFIG_FILENAME](#Config.CONFIG_FILENAME) : <code>String</code>
 
 <a name="Config.nameResolver"></a>
 ### Config.nameResolver
@@ -161,6 +162,11 @@
 | --- |
 | <code>[ConfigPathResolver](#ConfigPathResolver)</code> | 
 
+<a name="Config.CONFIG_FILENAME"></a>
+### Config.CONFIG_FILENAME : <code>String</code>
+`webpack.config.js`
+
+**Kind**: static constant of <code>[Config](#Config)</code>  
 <a name="ConfigFactory"></a>
 ## ConfigFactory
 **Kind**: global class  
