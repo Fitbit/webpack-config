@@ -7,7 +7,7 @@ Helps to load, extend and merge webpack configs
 
 ## Documentation
 
-For API docs please see the [documentation page]({"gitdown": "gitinfo", "name": "url"}/blob/master/docs/API.md)!
+For API docs please see the [documentation page]({"gitdown": "gitinfo", "name": "url"}/blob/{"gitdown": "gitinfo", "name": "branch"}/docs/API.md)!
 
 ## Sample
 
