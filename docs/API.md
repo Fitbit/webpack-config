@@ -8,7 +8,7 @@
 <dd></dd>
 <dt><a href="#module_webpack-config/lib/configDefaultsMixin">webpack-config/lib/configDefaultsMixin</a> ⇒ <code><a href="#ConfigDefaultsMixin">ConfigDefaultsMixin</a></code></dt>
 <dd></dd>
-<dt><a href="#module_webpack-config/lib/configEnvironment">webpack-config/lib/configEnvironment</a> ⇒ <code><a href="#ConfigEnvironment">ConfigEnvironment</a></code></dt>
+<dt><a href="#module_webpack-config/lib/configEnvironment">webpack-config/lib/configEnvironment</a> ⇒ <code><a href="#CONFIG_ENVIRONMENT">CONFIG_ENVIRONMENT</a></code></dt>
 <dd></dd>
 <dt><a href="#module_webpack-config/lib/configExtendMixin">webpack-config/lib/configExtendMixin</a> ⇒ <code><a href="#ConfigExtendMixin">ConfigExtendMixin</a></code></dt>
 <dd></dd>
@@ -20,7 +20,7 @@
 <dd></dd>
 <dt><a href="#module_webpack-config/lib/configMergeMixin">webpack-config/lib/configMergeMixin</a> ⇒ <code><a href="#ConfigMergeMixin">ConfigMergeMixin</a></code></dt>
 <dd></dd>
-<dt><a href="#module_webpack-config/lib/configMixin">webpack-config/lib/configMixin</a> ⇒ <code><a href="#ConfigMixin">ConfigMixin</a></code></dt>
+<dt><a href="#module_webpack-config/lib/configMixin">webpack-config/lib/configMixin</a> ⇒ <code><a href="#CONFIG_MIXIN">CONFIG_MIXIN</a></code></dt>
 <dd></dd>
 <dt><a href="#module_webpack-config/lib/configNameResolver">webpack-config/lib/configNameResolver</a> ⇒ <code><a href="#ConfigNameResolver">ConfigNameResolver</a></code></dt>
 <dd></dd>
@@ -54,15 +54,18 @@
 <dd></dd>
 <dt><a href="#ConfigDefaultsMixin">ConfigDefaultsMixin</a></dt>
 <dd></dd>
-<dt><a href="#ConfigEnvironment">ConfigEnvironment</a></dt>
-<dd></dd>
 <dt><a href="#ConfigExtendMixin">ConfigExtendMixin</a></dt>
 <dd></dd>
 <dt><a href="#ConfigMergeMixin">ConfigMergeMixin</a></dt>
 <dd></dd>
-<dt><a href="#ConfigMixin">ConfigMixin</a> : <code>Array.&lt;Object&gt;</code></dt>
-<dd></dd>
 <dt><a href="#ConfigToObjectMixin">ConfigToObjectMixin</a></dt>
+<dd></dd>
+</dl>
+## Constants
+<dl>
+<dt><a href="#CONFIG_ENVIRONMENT">CONFIG_ENVIRONMENT</a> : <code>Object</code></dt>
+<dd></dd>
+<dt><a href="#CONFIG_MIXIN">CONFIG_MIXIN</a> : <code>Array.&lt;Object&gt;</code></dt>
 <dd></dd>
 </dl>
 <a name="module_webpack-config"></a>
@@ -74,7 +77,7 @@
 <a name="module_webpack-config/lib/configDefaultsMixin"></a>
 ## webpack-config/lib/configDefaultsMixin ⇒ <code>[ConfigDefaultsMixin](#ConfigDefaultsMixin)</code>
 <a name="module_webpack-config/lib/configEnvironment"></a>
-## webpack-config/lib/configEnvironment ⇒ <code>[ConfigEnvironment](#ConfigEnvironment)</code>
+## webpack-config/lib/configEnvironment ⇒ <code>[CONFIG_ENVIRONMENT](#CONFIG_ENVIRONMENT)</code>
 <a name="module_webpack-config/lib/configExtendMixin"></a>
 ## webpack-config/lib/configExtendMixin ⇒ <code>[ConfigExtendMixin](#ConfigExtendMixin)</code>
 <a name="module_webpack-config/lib/configFactory"></a>
@@ -86,7 +89,7 @@
 <a name="module_webpack-config/lib/configMergeMixin"></a>
 ## webpack-config/lib/configMergeMixin ⇒ <code>[ConfigMergeMixin](#ConfigMergeMixin)</code>
 <a name="module_webpack-config/lib/configMixin"></a>
-## webpack-config/lib/configMixin ⇒ <code>[ConfigMixin](#ConfigMixin)</code>
+## webpack-config/lib/configMixin ⇒ <code>[CONFIG_MIXIN](#CONFIG_MIXIN)</code>
 <a name="module_webpack-config/lib/configNameResolver"></a>
 ## webpack-config/lib/configNameResolver ⇒ <code>[ConfigNameResolver](#ConfigNameResolver)</code>
 <a name="module_webpack-config/lib/configPathResolver"></a>
@@ -350,30 +353,6 @@ Merges default options
 | --- | --- |
 | [options] | <code>Object</code> | 
 
-<a name="ConfigEnvironment"></a>
-## ConfigEnvironment
-**Kind**: global variable  
-
-* [ConfigEnvironment](#ConfigEnvironment)
-  * [.webpack_env()](#ConfigEnvironment.webpack_env) ⇒ <code>String</code>
-  * [.node_env()](#ConfigEnvironment.node_env) ⇒ <code>String</code>
-  * [.env()](#ConfigEnvironment.env) ⇒ <code>String</code>
-
-<a name="ConfigEnvironment.webpack_env"></a>
-### ConfigEnvironment.webpack_env() ⇒ <code>String</code>
-Returns `process.env.WEBPACK_ENV`
-
-**Kind**: static method of <code>[ConfigEnvironment](#ConfigEnvironment)</code>  
-<a name="ConfigEnvironment.node_env"></a>
-### ConfigEnvironment.node_env() ⇒ <code>String</code>
-Returns `process.env.NODE_ENV`
-
-**Kind**: static method of <code>[ConfigEnvironment](#ConfigEnvironment)</code>  
-<a name="ConfigEnvironment.env"></a>
-### ConfigEnvironment.env() ⇒ <code>String</code>
-Returns `this.webpack_env() || this.node_env()`
-
-**Kind**: static method of <code>[ConfigEnvironment](#ConfigEnvironment)</code>  
 <a name="ConfigExtendMixin"></a>
 ## ConfigExtendMixin
 **Kind**: global variable  
@@ -400,9 +379,6 @@ Merges options
 | --- | --- |
 | [options] | <code>Object</code> | 
 
-<a name="ConfigMixin"></a>
-## ConfigMixin : <code>Array.&lt;Object&gt;</code>
-**Kind**: global variable  
 <a name="ConfigToObjectMixin"></a>
 ## ConfigToObjectMixin
 **Kind**: global variable  
@@ -411,3 +387,30 @@ Merges options
 Returns plain object
 
 **Kind**: static method of <code>[ConfigToObjectMixin](#ConfigToObjectMixin)</code>  
+<a name="CONFIG_ENVIRONMENT"></a>
+## CONFIG_ENVIRONMENT : <code>Object</code>
+**Kind**: global constant  
+
+* [CONFIG_ENVIRONMENT](#CONFIG_ENVIRONMENT) : <code>Object</code>
+  * [.webpack_env()](#CONFIG_ENVIRONMENT.webpack_env) ⇒ <code>String</code>
+  * [.node_env()](#CONFIG_ENVIRONMENT.node_env) ⇒ <code>String</code>
+  * [.env()](#CONFIG_ENVIRONMENT.env) ⇒ <code>String</code>
+
+<a name="CONFIG_ENVIRONMENT.webpack_env"></a>
+### CONFIG_ENVIRONMENT.webpack_env() ⇒ <code>String</code>
+Returns `process.env.WEBPACK_ENV`
+
+**Kind**: static method of <code>[CONFIG_ENVIRONMENT](#CONFIG_ENVIRONMENT)</code>  
+<a name="CONFIG_ENVIRONMENT.node_env"></a>
+### CONFIG_ENVIRONMENT.node_env() ⇒ <code>String</code>
+Returns `process.env.NODE_ENV`
+
+**Kind**: static method of <code>[CONFIG_ENVIRONMENT](#CONFIG_ENVIRONMENT)</code>  
+<a name="CONFIG_ENVIRONMENT.env"></a>
+### CONFIG_ENVIRONMENT.env() ⇒ <code>String</code>
+Returns `this.webpack_env() || this.node_env()`
+
+**Kind**: static method of <code>[CONFIG_ENVIRONMENT](#CONFIG_ENVIRONMENT)</code>  
+<a name="CONFIG_MIXIN"></a>
+## CONFIG_MIXIN : <code>Array.&lt;Object&gt;</code>
+**Kind**: global constant  
