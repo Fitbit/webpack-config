@@ -1,6 +1,7 @@
 'use strict';
 
 var Config = require('./lib/config'),
+    ConfigEnvironment = require('./lib/configEnvironment'),
     ConfigNameResolver = require('./lib/configNameResolver'),
     ConfigPathResolver = require('./lib/configPathResolver'),
     ConfigFactory = require('./lib/configFactory'),
@@ -8,12 +9,19 @@ var Config = require('./lib/config'),
     ConfigFinder = require('./lib/configFinder'),
     ConfigVisitor = require('./lib/configVisitor');
 
-var configFactory = new ConfigFactory(),
-    configNameResolver = new ConfigNameResolver(),
+var configEnvironment = new ConfigEnvironment(),
+    configFactory = new ConfigFactory(),
+    configNameResolver = new ConfigNameResolver(configEnvironment),
     configPathResolver = new ConfigPathResolver(configNameResolver),
     configLoader = new ConfigLoader(configFactory, configPathResolver),
     configVisitor = new ConfigVisitor(configLoader, configPathResolver),
     configFinder = new ConfigFinder(configLoader, configPathResolver);
+
+/**
+ * @property {ConfigEnvironment}
+ * @static
+ */
+Config.environment = configEnvironment;
 
 /**
  * @property {ConfigNameResolver}

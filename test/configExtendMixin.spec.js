@@ -5,13 +5,15 @@ var expect = require('expect.js'),
     Config = require('../lib/config'),
     ConfigFactory = require('../lib/configFactory'),
     ConfigLoader = require('../lib/configLoader'),
+    ConfigEnvironment = require('../lib/configEnvironment'),
     ConfigVisitor = require('../lib/configVisitor'),
     ConfigNameResolver = require('../lib/configNameResolver'),
     ConfigPathResolver = require('../lib/configPathResolver');
 
 describe('ConfigExtendMixin', function () {
-    var configFactory = new ConfigFactory(),
-        configNameResolver = new ConfigNameResolver(),
+    var configEnvironment = new ConfigEnvironment(),
+        configFactory = new ConfigFactory(),
+        configNameResolver = new ConfigNameResolver(configEnvironment),
         configPathResolver = new ConfigPathResolver(configNameResolver),
         configLoader = new ConfigLoader(configFactory, configPathResolver),
         configVisitor = new ConfigVisitor(configLoader, configPathResolver);

@@ -2,11 +2,13 @@
 
 var path = require('path'),
     expect = require('expect.js'),
+    ConfigEnvironment = require('../lib/configEnvironment'),
     ConfigPathResolver = require('../lib/configPathResolver'),
     ConfigNameResolver = require('../lib/configNameResolver');
 
 describe('ConfigPathResolver', function () {
-    var configNameResolver = new ConfigNameResolver(),
+    var configEnvironment = new ConfigEnvironment(),
+        configNameResolver = new ConfigNameResolver(configEnvironment),
         configPathResolver = new ConfigPathResolver(configNameResolver);
 
     context('#resolve()', function() {

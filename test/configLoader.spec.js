@@ -5,11 +5,13 @@ var path = require('path'),
     expect = require('expect.js'),
     ConfigFactory = require('../lib/configFactory'),
     ConfigLoader = require('../lib/configLoader'),
+    ConfigEnvironment = require('../lib/configEnvironment'),
     ConfigNameResolver = require('../lib/configNameResolver'),
     ConfigPathResolver = require('../lib/configPathResolver');
 
 describe('ConfigLoader', function () {
-    var configNameResolver = new ConfigNameResolver(),
+    var configEnvironment = new ConfigEnvironment(),
+        configNameResolver = new ConfigNameResolver(configEnvironment),
         configPathResolver = new ConfigPathResolver(configNameResolver),
         configFactory = new ConfigFactory(),
         configLoader = new ConfigLoader(configFactory, configPathResolver),

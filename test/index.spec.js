@@ -3,6 +3,7 @@
 var expect = require('expect.js'),
     Index = require('../index'),
     Config = require('../lib/config'),
+    ConfigEnvironment = require('../lib/configEnvironment'),
     ConfigFactory = require('../lib/configFactory'),
     ConfigLoader = require('../lib/configLoader'),
     ConfigFinder = require('../lib/configFinder'),
@@ -22,6 +23,7 @@ describe('Index', function () {
     });
 
     it('should fill static properties', function() {
+        expect(Index.environment).to.be.an(ConfigEnvironment);
         expect(Index.nameResolver).to.be.an(ConfigNameResolver);
         expect(Index.factory).to.be.an(ConfigFactory);
         expect(Index.loader).to.be.an(ConfigLoader);
