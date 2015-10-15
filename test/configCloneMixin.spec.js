@@ -1,15 +1,12 @@
 'use strict';
 
 var expect = require('expect.js'),
-    Config = require('../lib/config'),
-    ConfigFactory = require('../lib/configFactory');
+    Config = require('../lib/config');
 
 describe('ConfigCloneMixin', function () {
-    var configFactory = new ConfigFactory();
-
     context('#clone()', function() {
         it('should return clone of "Config"', function() {
-            var config = configFactory.createInstance({});
+            var config = new Config();
 
             config.merge({
                 foo: 'foo1'

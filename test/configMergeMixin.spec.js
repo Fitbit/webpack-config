@@ -1,14 +1,12 @@
 'use strict';
 
 var expect = require('expect.js'),
-    ConfigFactory = require('../lib/configFactory');
+    Config = require('../lib/config');
 
 describe('ConfigMergeMixin', function () {
-    var configFactory = new ConfigFactory();
-
     context('#merge()', function() {
         it('should merge "options"', function() {
-            var config = configFactory.createInstance({});
+            var config = new Config();
 
             config.merge({
                 foo: {

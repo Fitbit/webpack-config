@@ -7,9 +7,9 @@ var expect = require('expect.js'),
 describe('ConfigFactory', function () {
     var configFactory = new ConfigFactory();
 
-    context('#createInstance()', function() {
+    context('#create()', function() {
         it('should create "Config" from "Object"', function() {
-            var config = configFactory.createInstance({
+            var config = configFactory.create({
                 foo: 'foo1'
             });
 
@@ -21,7 +21,7 @@ describe('ConfigFactory', function () {
         });
 
         it('should create "Config[]" from "Object[]"', function() {
-            var configs = configFactory.createInstance([{
+            var configs = configFactory.create([{
                 foo: 'foo1'
             }]);
 
@@ -34,7 +34,7 @@ describe('ConfigFactory', function () {
         });
 
         it('should create "Config" from "Object" via "Function"', function() {
-            var config = configFactory.createInstance(function() {
+            var config = configFactory.create(function() {
                 return {
                     foo: 'foo1'
                 };
@@ -48,7 +48,7 @@ describe('ConfigFactory', function () {
         });
 
         it('should create "Config[]" from "Object[]" via "Function"', function() {
-            var configs = configFactory.createInstance(function() {
+            var configs = configFactory.create(function() {
                 return [{
                     foo: 'foo1'
                 }];
@@ -63,7 +63,7 @@ describe('ConfigFactory', function () {
         });
 
         it('should create "Config" from "Config"', function() {
-            var config = configFactory.createInstance(new Config().merge({
+            var config = configFactory.create(new Config().merge({
                 foo: 'foo1'
             }));
 
@@ -75,7 +75,7 @@ describe('ConfigFactory', function () {
         });
 
         it('should create "Config[]" from "Config[]"', function() {
-            var configs = configFactory.createInstance([new Config().merge({
+            var configs = configFactory.create([new Config().merge({
                 foo: 'foo1'
             })]);
 
@@ -83,26 +83,6 @@ describe('ConfigFactory', function () {
             expect(configs).to.have.length(1);
             expect(configs[0]).to.be.a(Config);
             expect(configs[0].toObject()).to.eql({
-                foo: 'foo1'
-            });
-        });
-    });
-
-    context('#addMixins()', function() {
-        it('should add custom mixins', function() {
-            configFactory.addMixins({
-                test: function() {
-                    this.foo = 'foo1';
-                }
-            });
-
-            var config = configFactory.createInstance({});
-
-            config.test();
-
-            expect(config).to.be.a(Object);
-            expect(config).to.be.a(Config);
-            expect(config.toObject()).to.eql({
                 foo: 'foo1'
             });
         });

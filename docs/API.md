@@ -8,6 +8,8 @@
 <dd></dd>
 <dt><a href="#module_webpack-config/lib/configDefaultsMixin">webpack-config/lib/configDefaultsMixin</a> ⇒ <code><a href="#ConfigDefaultsMixin">ConfigDefaultsMixin</a></code></dt>
 <dd></dd>
+<dt><a href="#module_webpack-config/lib/configEnvironment">webpack-config/lib/configEnvironment</a> ⇒ <code><a href="#ConfigEnvironment">ConfigEnvironment</a></code></dt>
+<dd></dd>
 <dt><a href="#module_webpack-config/lib/configExtendMixin">webpack-config/lib/configExtendMixin</a> ⇒ <code><a href="#ConfigExtendMixin">ConfigExtendMixin</a></code></dt>
 <dd></dd>
 <dt><a href="#module_webpack-config/lib/configFactory">webpack-config/lib/configFactory</a> ⇒ <code><a href="#ConfigFactory">ConfigFactory</a></code></dt>
@@ -30,6 +32,8 @@
 ## Classes
 <dl>
 <dt><a href="#Config">Config</a></dt>
+<dd></dd>
+<dt><a href="#ConfigEnvironment">ConfigEnvironment</a></dt>
 <dd></dd>
 <dt><a href="#ConfigFactory">ConfigFactory</a></dt>
 <dd></dd>
@@ -65,6 +69,8 @@
 ## webpack-config/lib/configCloneMixin ⇒ <code>[ConfigCloneMixin](#ConfigCloneMixin)</code>
 <a name="module_webpack-config/lib/configDefaultsMixin"></a>
 ## webpack-config/lib/configDefaultsMixin ⇒ <code>[ConfigDefaultsMixin](#ConfigDefaultsMixin)</code>
+<a name="module_webpack-config/lib/configEnvironment"></a>
+## webpack-config/lib/configEnvironment ⇒ <code>[ConfigEnvironment](#ConfigEnvironment)</code>
 <a name="module_webpack-config/lib/configExtendMixin"></a>
 ## webpack-config/lib/configExtendMixin ⇒ <code>[ConfigExtendMixin](#ConfigExtendMixin)</code>
 <a name="module_webpack-config/lib/configFactory"></a>
@@ -88,6 +94,7 @@
 **Kind**: global class  
 
 * [Config](#Config)
+  * [.environment](#Config.environment)
   * [.nameResolver](#Config.nameResolver)
   * [.factory](#Config.factory)
   * [.loader](#Config.loader)
@@ -95,6 +102,15 @@
   * [.visitor](#Config.visitor)
   * [.pathResolver](#Config.pathResolver)
   * [.FILENAME](#Config.FILENAME) : <code>String</code>
+
+<a name="Config.environment"></a>
+### Config.environment
+**Kind**: static property of <code>[Config](#Config)</code>  
+**Properties**
+
+| Type |
+| --- |
+| <code>[ConfigEnvironment](#ConfigEnvironment)</code> | 
 
 <a name="Config.nameResolver"></a>
 ### Config.nameResolver
@@ -155,26 +171,53 @@
 `webpack.config.js`
 
 **Kind**: static constant of <code>[Config](#Config)</code>  
-<a name="ConfigFactory"></a>
-## ConfigFactory
+<a name="ConfigEnvironment"></a>
+## ConfigEnvironment
 **Kind**: global class  
 
-* [ConfigFactory](#ConfigFactory)
-  * [.addMixins(...arguments)](#ConfigFactory+addMixins)
-  * [.createInstance(obj)](#ConfigFactory+createInstance) ⇒ <code>[Config](#Config)</code> &#124; <code>[Array.&lt;Config&gt;](#Config)</code>
+* [ConfigEnvironment](#ConfigEnvironment)
+  * [new ConfigEnvironment(...arguments)](#new_ConfigEnvironment_new)
+  * [.add(...arguments)](#ConfigEnvironment+add)
+  * [.keys()](#ConfigEnvironment+keys) ⇒ <code>Object</code>
+  * [.value(key)](#ConfigEnvironment+value) ⇒ <code>\*</code>
 
-<a name="ConfigFactory+addMixins"></a>
-### configFactory.addMixins(...arguments)
-Adds custom `mixins`
-
-**Kind**: instance method of <code>[ConfigFactory](#ConfigFactory)</code>  
+<a name="new_ConfigEnvironment_new"></a>
+### new ConfigEnvironment(...arguments)
 
 | Param | Type |
 | --- | --- |
 | ...arguments | <code>Object</code> | 
 
-<a name="ConfigFactory+createInstance"></a>
-### configFactory.createInstance(obj) ⇒ <code>[Config](#Config)</code> &#124; <code>[Array.&lt;Config&gt;](#Config)</code>
+<a name="ConfigEnvironment+add"></a>
+### configEnvironment.add(...arguments)
+Adds custom `variables`
+
+**Kind**: instance method of <code>[ConfigEnvironment](#ConfigEnvironment)</code>  
+
+| Param | Type |
+| --- | --- |
+| ...arguments | <code>Object</code> | 
+
+<a name="ConfigEnvironment+keys"></a>
+### configEnvironment.keys() ⇒ <code>Object</code>
+Gets keys
+
+**Kind**: instance method of <code>[ConfigEnvironment](#ConfigEnvironment)</code>  
+<a name="ConfigEnvironment+value"></a>
+### configEnvironment.value(key) ⇒ <code>\*</code>
+Gets value
+
+**Kind**: instance method of <code>[ConfigEnvironment](#ConfigEnvironment)</code>  
+
+| Param | Type |
+| --- | --- |
+| key | <code>String</code> | 
+
+<a name="ConfigFactory"></a>
+## ConfigFactory
+**Kind**: global class  
+<a name="ConfigFactory+create"></a>
+### configFactory.create(obj) ⇒ <code>[Config](#Config)</code> &#124; <code>[Array.&lt;Config&gt;](#Config)</code>
 Creates config instance
 
 **Kind**: instance method of <code>[ConfigFactory](#ConfigFactory)</code>  
@@ -241,18 +284,15 @@ Loads config from file
 **Kind**: global class  
 
 * [ConfigNameResolver](#ConfigNameResolver)
-  * [.addVariables(...arguments)](#ConfigNameResolver+addVariables)
+  * [new ConfigNameResolver(environment)](#new_ConfigNameResolver_new)
   * [.resolve(filename)](#ConfigNameResolver+resolve) ⇒ <code>String</code>
 
-<a name="ConfigNameResolver+addVariables"></a>
-### configNameResolver.addVariables(...arguments)
-Adds custom `variables`
-
-**Kind**: instance method of <code>[ConfigNameResolver](#ConfigNameResolver)</code>  
+<a name="new_ConfigNameResolver_new"></a>
+### new ConfigNameResolver(environment)
 
 | Param | Type |
 | --- | --- |
-| ...arguments | <code>Object</code> | 
+| environment | <code>[ConfigEnvironment](#ConfigEnvironment)</code> | 
 
 <a name="ConfigNameResolver+resolve"></a>
 ### configNameResolver.resolve(filename) ⇒ <code>String</code>

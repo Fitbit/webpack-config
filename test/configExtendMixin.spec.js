@@ -22,7 +22,7 @@ describe('ConfigExtendMixin', function () {
 
     context('#extend()', function() {
         it('should accept "String"', function() {
-            var config = configFactory.createInstance({});
+            var config = new Config();
 
             config.extend('./test/fixtures/webpack.5.config.js');
 
@@ -46,7 +46,7 @@ describe('ConfigExtendMixin', function () {
         });
 
         it('should accept "String[]"', function() {
-            var config = configFactory.createInstance({});
+            var config = new Config();
 
             config.extend([
                 './test/fixtures/webpack.5.config.js'
@@ -74,7 +74,7 @@ describe('ConfigExtendMixin', function () {
         });
 
         it('should accept "Object<String,Function>"', function() {
-            var config = configFactory.createInstance({});
+            var config = new Config();
 
             function configTransform(x) {
                 return x;
@@ -106,7 +106,7 @@ describe('ConfigExtendMixin', function () {
         });
 
         it('should accept "Object<String,Boolean>"', function() {
-            var config = configFactory.createInstance({});
+            var config = new Config();
 
             config.extend({
                 './test/fixtures/webpack.5.config.js': true
