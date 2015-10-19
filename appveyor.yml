@@ -1,0 +1,14 @@
+build: off
+environment:
+  matrix:
+    - nodejs_version: 4.1
+    - nodejs_version: 4.0
+    - nodejs_version: 1.0
+    - nodejs_version: 0.12
+    - nodejs_version: 0.11
+install:
+  - ps: Install-Product node $env:nodejs_version
+test_script:
+  - node --version
+  - npm --version
+  - cmd: npm test
