@@ -1,4 +1,5 @@
 build: off
+deploy: off
 cache:
   - node_modules
   - '%APPDATA%\npm-cache'
