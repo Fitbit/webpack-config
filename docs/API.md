@@ -178,7 +178,7 @@
 * [ConfigEnvironment](#ConfigEnvironment)
   * [new ConfigEnvironment(...arguments)](#new_ConfigEnvironment_new)
   * [.add(...arguments)](#ConfigEnvironment+add)
-  * [.keys()](#ConfigEnvironment+keys) ⇒ <code>Object</code>
+  * [.keys()](#ConfigEnvironment+keys) ⇒ <code>Array.&lt;String&gt;</code>
   * [.value(key)](#ConfigEnvironment+value) ⇒ <code>\*</code>
 
 <a name="new_ConfigEnvironment_new"></a>
@@ -199,7 +199,7 @@ Adds custom `variables`
 | ...arguments | <code>Object</code> | 
 
 <a name="ConfigEnvironment+keys"></a>
-### configEnvironment.keys() ⇒ <code>Object</code>
+### configEnvironment.keys() ⇒ <code>Array.&lt;String&gt;</code>
 Gets keys
 
 **Kind**: instance method of <code>[ConfigEnvironment](#ConfigEnvironment)</code>  
@@ -218,7 +218,7 @@ Gets value
 **Kind**: global class  
 <a name="ConfigFactory+create"></a>
 ### configFactory.create(obj) ⇒ <code>[Config](#Config)</code> &#124; <code>[Array.&lt;Config&gt;](#Config)</code>
-Creates config instance
+Creates config
 
 **Kind**: instance method of <code>[ConfigFactory](#ConfigFactory)</code>  
 
@@ -271,7 +271,7 @@ Finds closest config
 
 <a name="ConfigLoader+load"></a>
 ### configLoader.load(filename) ⇒ <code>[Config](#Config)</code> &#124; <code>[Array.&lt;Config&gt;](#Config)</code>
-Loads config from file
+Loads config
 
 **Kind**: instance method of <code>[ConfigLoader](#ConfigLoader)</code>  
 
@@ -383,7 +383,7 @@ Merges default options
 **Kind**: global variable  
 <a name="ConfigExtendMixin.extend"></a>
 ### ConfigExtendMixin.extend(options) ⇒ <code>[Config](#Config)</code>
-Extends config using external ones
+Extends config
 
 **Kind**: static method of <code>[ConfigExtendMixin](#ConfigExtendMixin)</code>  
 
