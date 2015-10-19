@@ -3,6 +3,11 @@ deploy: off
 cache:
   - node_modules
   - '%APPDATA%\npm-cache'
+branches:
+  only:
+    - master
+  except:
+    - gh-pages
 environment:
   matrix:
     - nodejs_version: 4.1
