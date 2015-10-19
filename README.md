@@ -1,4 +1,4 @@
-[![NPM version](http://img.shields.io/npm/v/webpack-config.svg?style=flat)](https://www.npmjs.org/package/webpack-config) [![Travis build status](http://img.shields.io/travis/mdreizin/webpack-config/master.svg?style=flat)](https://travis-ci.org/mdreizin/webpack-config) [![Code Climate](https://codeclimate.com/github/mdreizin/webpack-config/badges/gpa.svg)](https://codeclimate.com/github/mdreizin/webpack-config) [![Code Climate](https://codeclimate.com/github/mdreizin/webpack-config/badges/coverage.svg)](https://codeclimate.com/github/mdreizin/webpack-config) [![Dependency Status](https://david-dm.org/mdreizin/webpack-config.svg?style=flat)](https://david-dm.org/mdreizin/webpack-config) [![Dependency Status](https://david-dm.org/mdreizin/webpack-config/dev-status.svg?style=flat)](https://david-dm.org/mdreizin/webpack-config#info=devDependencies)
+[![NPM version](http://img.shields.io/npm/v/webpack-config.svg?style=flat)](https://www.npmjs.org/package/webpack-config) [![Travis build status](http://img.shields.io/travis/mdreizin/webpack-config/develop.svg?style=flat)](https://travis-ci.org/mdreizin/webpack-config) [![Code Climate](https://codeclimate.com/github/mdreizin/webpack-config/badges/gpa.svg)](https://codeclimate.com/github/mdreizin/webpack-config) [![Code Climate](https://codeclimate.com/github/mdreizin/webpack-config/badges/coverage.svg)](https://codeclimate.com/github/mdreizin/webpack-config) [![Dependency Status](https://david-dm.org/mdreizin/webpack-config.svg?style=flat)](https://david-dm.org/mdreizin/webpack-config) [![Dependency Status](https://david-dm.org/mdreizin/webpack-config/dev-status.svg?style=flat)](https://david-dm.org/mdreizin/webpack-config#info=devDependencies)
 
 [webpack](https://github.com/webpack/webpack)-config
 ====================================================
@@ -7,11 +7,11 @@ Helps to load, extend and merge webpack configs
 
 <h2 id="documentation">Documentation</h2>
 
-For API docs please see the [documentation page](https://github.com/mdreizin/webpack-config/blob/master/docs/API.md)!
+For API docs please see the [documentation page](https://github.com/mdreizin/webpack-config/blob/develop/docs/API.md)!
 
 <h2 id="sample">Sample</h2>
 
-`webpack.config.js`
+`docs/samples/webpack.config.js`
 
 ``` javascript
 'use strict';
@@ -21,9 +21,10 @@ var path = require('path'),
     BowerPlugin = require('bower-webpack-plugin'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     ComponentPlugin = require('component-webpack-plugin'),
-    webpackConfig = require('webpack-config');
+    WebpackConfig = require('webpack-config');
 
-module.exports = webpackConfig.fromObject({
+module.exports = new WebpackConfig().merge({
+    filename: __filename,
     output: {
         filename: '[name].js'
     },
@@ -83,14 +84,15 @@ module.exports = webpackConfig.fromObject({
 
 ```
 
-`polyfills/webpack.config.js`
+`docs/samples/polyfills/webpack.config.js`
 
 ``` javascript
 'use strict';
 
-var webpackConfig = require('webpack-config');
+var WebpackConfig = require('webpack-config');
 
-module.exports = webpackConfig.fromCwd().extend({
+module.exports = new WebpackConfig().extend('../webpack.config.js').merge({
+    filename: __filename,
     entry: {
         vendor: [
             'consolelog',

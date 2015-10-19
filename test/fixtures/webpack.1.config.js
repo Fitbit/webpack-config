@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = {
-    foo: 'bar'
+    foo: 'foo1'
 };

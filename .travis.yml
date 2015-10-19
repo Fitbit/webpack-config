@@ -1,8 +1,11 @@
+sudo: false
 language: node_js
 node_js:
-  - "0.12"
-  - "0.11"
-  - "0.10"
+  - '4.1'
+  - '4.0'
+  - '0.12'
+  - '0.11'
+  - 'iojs'
 cache:
   directories:
     - node_modules
@@ -11,8 +14,12 @@ notifications:
 before_install:
   - npm install
 before_script:
-  - npm run clean
+  - npm dedupe
+  - npm prune
 script:
+  - npm run clean
   - npm run cover
 after_success:
+  - 'if [[ $TRAVIS_BRANCH == "master" ]]; then npm run doc; fi'
   - npm run codeclimate
+  - npm run semantic-release

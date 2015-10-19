@@ -1,6 +1,5 @@
 {
   "name": "webpack-config",
-  "version": "0.8.0",
   "description": "Helps to load, extend and merge webpack configs",
   "main": "index.js",
   "files": [
@@ -12,9 +11,12 @@
     "lint": "eslint --cache ./",
     "pretest": "npm run lint",
     "test": "mocha --full-trace --check-leaks -u exports -R spec",
-    "precover": "npm run clean && npm run lint",
+    "precover": "npm run lint",
     "cover": "istanbul cover _mocha -- --full-trace --check-leaks -u exports -R spec",
-    "codeclimate": "CODECLIMATE_REPO_TOKEN=e13b84f5a82863b03dae7d8d8261993786b6ac0a5f466e2537bbc1af7e70cf8c codeclimate-test-reporter < ./coverage/lcov.info"
+    "codeclimate": "codeclimate-test-reporter < ./coverage/lcov.info",
+    "doc": "gulp docs",
+    "postpublish": "publish-latest -a package.json README.md docs/API.md",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
@@ -33,23 +35,20 @@
   "devDependencies": {
     "codeclimate-test-reporter": "^0.1.0",
     "coding-style": "mdreizin/coding-style",
-    "del": "^2.0.2",
     "eslint": "^1.6.0",
     "expect.js": "^0.3.1",
     "fs-extra": "^0.24.0",
     "gitdown": "^1.3.0",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.5.2",
-    "gulp-eslint": "^1.0.0",
-    "gulp-istanbul": "^0.10.0",
     "gulp-jsdoc-to-markdown": "^1.1.1",
-    "gulp-mocha": "^2.1.0",
-    "gulp-util": "^3.0.4",
     "istanbul": "^0.3.22",
     "mocha": "^2.3.3",
-    "run-sequence": "^1.1.0"
+    "publish-latest": "^1.1.2",
+    "run-sequence": "^1.1.0",
+    "semantic-release": "^4.3.5",
+    "webpack": "^1.12.2"
   },
-  "directories": {},
   "dependencies": {
     "lodash": "^3.10.1"
   }

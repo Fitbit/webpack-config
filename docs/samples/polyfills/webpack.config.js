@@ -1,8 +1,9 @@
 'use strict';
 
-var webpackConfig = require('webpack-config');
+var WebpackConfig = require('webpack-config');
 
-module.exports = webpackConfig.fromCwd().extend({
+module.exports = new WebpackConfig().extend('../webpack.config.js').merge({
+    filename: __filename,
     entry: {
         vendor: [
             'consolelog',

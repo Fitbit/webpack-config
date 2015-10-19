@@ -5,9 +5,10 @@ var path = require('path'),
     BowerPlugin = require('bower-webpack-plugin'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     ComponentPlugin = require('component-webpack-plugin'),
-    webpackConfig = require('webpack-config');
+    WebpackConfig = require('webpack-config');
 
-module.exports = webpackConfig.fromObject({
+module.exports = new WebpackConfig().merge({
+    filename: __filename,
     output: {
         filename: '[name].js'
     },
