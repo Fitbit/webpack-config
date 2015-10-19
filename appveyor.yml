@@ -8,6 +8,8 @@ branches:
     - master
   except:
     - gh-pages
+matrix:
+  fast_finish: true
 environment:
   matrix:
     - nodejs_version: 4.1
