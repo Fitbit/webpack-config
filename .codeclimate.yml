@@ -1,8 +1,4 @@
 languages:
   JavaScript: true
-ratings:
-  paths:
-    - 'lib/*.js'
-    - '*.js'
 exclude_paths:
   - 'node_modules/**'
