@@ -1,3 +1,4 @@
+version: '{build}'
 build: off
 deploy: off
 cache:
