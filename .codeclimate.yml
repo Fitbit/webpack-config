@@ -1,8 +1,5 @@
 languages:
   JavaScript: true
-engines:
-  eslint:
-      enabled: true
 ratings:
   paths:
     - 'lib/*.js'
