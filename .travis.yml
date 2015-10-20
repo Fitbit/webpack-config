@@ -10,7 +10,6 @@ matrix:
   fast_finish: true
 os:
   - linux
-  - osx
 cache:
   directories:
     - node_modules
