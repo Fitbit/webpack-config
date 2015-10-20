@@ -21,9 +21,6 @@ environment:
 platform:
   - x86
   - x64
-init:
-  - git config --global core.autocrlf true
-  - git config --global core.longpaths true
 install:
   - ps: Install-Product node $env:nodejs_version
   - npm install
