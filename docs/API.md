@@ -48,7 +48,7 @@
 <dt><a href="#ConfigVisitor">ConfigVisitor</a></dt>
 <dd></dd>
 </dl>
-## Members
+## Mixins
 <dl>
 <dt><a href="#ConfigCloneMixin">ConfigCloneMixin</a></dt>
 <dd></dd>
@@ -92,17 +92,70 @@
 <a name="Config"></a>
 ## Config
 **Kind**: global class  
+**Mixes**: <code>[ConfigDefaultsMixin](#ConfigDefaultsMixin)</code>, <code>[ConfigMergeMixin](#ConfigMergeMixin)</code>, <code>[ConfigCloneMixin](#ConfigCloneMixin)</code>, <code>[ConfigExtendMixin](#ConfigExtendMixin)</code>, <code>[ConfigToObjectMixin](#ConfigToObjectMixin)</code>  
 
 * [Config](#Config)
-  * [.environment](#Config.environment)
-  * [.nameResolver](#Config.nameResolver)
-  * [.factory](#Config.factory)
-  * [.loader](#Config.loader)
-  * [.finder](#Config.finder)
-  * [.visitor](#Config.visitor)
-  * [.pathResolver](#Config.pathResolver)
-  * [.FILENAME](#Config.FILENAME) : <code>String</code>
+  * _instance_
+    * [.defaults([options])](#Config+defaults) ⇒ <code>[Config](#Config)</code>
+    * [.merge([options])](#Config+merge) ⇒ <code>[Config](#Config)</code>
+    * [.clone()](#Config+clone) ⇒ <code>[Config](#Config)</code>
+    * [.extend(options)](#Config+extend) ⇒ <code>[Config](#Config)</code>
+    * [.toObject()](#Config+toObject) ⇒ <code>Object</code>
+  * _static_
+    * [.environment](#Config.environment)
+    * [.nameResolver](#Config.nameResolver)
+    * [.factory](#Config.factory)
+    * [.loader](#Config.loader)
+    * [.finder](#Config.finder)
+    * [.visitor](#Config.visitor)
+    * [.pathResolver](#Config.pathResolver)
+    * [.FILENAME](#Config.FILENAME) : <code>String</code>
 
+<a name="Config+defaults"></a>
+### config.defaults([options]) ⇒ <code>[Config](#Config)</code>
+Merges default options
+
+**Kind**: instance method of <code>[Config](#Config)</code>  
+**Mixes**: <code>[defaults](#ConfigDefaultsMixin.defaults)</code>  
+
+| Param | Type |
+| --- | --- |
+| [options] | <code>Object</code> | 
+
+<a name="Config+merge"></a>
+### config.merge([options]) ⇒ <code>[Config](#Config)</code>
+Merges options
+
+**Kind**: instance method of <code>[Config](#Config)</code>  
+**Mixes**: <code>[merge](#ConfigMergeMixin.merge)</code>  
+
+| Param | Type |
+| --- | --- |
+| [options] | <code>Object</code> | 
+
+<a name="Config+clone"></a>
+### config.clone() ⇒ <code>[Config](#Config)</code>
+Creates a new config
+
+**Kind**: instance method of <code>[Config](#Config)</code>  
+**Mixes**: <code>[clone](#ConfigCloneMixin.clone)</code>  
+<a name="Config+extend"></a>
+### config.extend(options) ⇒ <code>[Config](#Config)</code>
+Extends config
+
+**Kind**: instance method of <code>[Config](#Config)</code>  
+**Mixes**: <code>[extend](#ConfigExtendMixin.extend)</code>  
+
+| Param | Type |
+| --- | --- |
+| options | <code>String</code> &#124; <code>Array.&lt;String&gt;</code> &#124; <code>Object.&lt;String, function()&gt;</code> &#124; <code>Object.&lt;String, Boolean&gt;</code> | 
+
+<a name="Config+toObject"></a>
+### config.toObject() ⇒ <code>Object</code>
+Returns plain object
+
+**Kind**: instance method of <code>[Config](#Config)</code>  
+**Mixes**: <code>[toObject](#ConfigToObjectMixin.toObject)</code>  
 <a name="Config.environment"></a>
 ### Config.environment
 **Kind**: static property of <code>[Config](#Config)</code>  
@@ -359,7 +412,7 @@ Returns `visited` configs
 
 <a name="ConfigCloneMixin"></a>
 ## ConfigCloneMixin
-**Kind**: global variable  
+**Kind**: global mixin  
 <a name="ConfigCloneMixin.clone"></a>
 ### ConfigCloneMixin.clone() ⇒ <code>[Config](#Config)</code>
 Creates a new config
@@ -367,7 +420,7 @@ Creates a new config
 **Kind**: static method of <code>[ConfigCloneMixin](#ConfigCloneMixin)</code>  
 <a name="ConfigDefaultsMixin"></a>
 ## ConfigDefaultsMixin
-**Kind**: global variable  
+**Kind**: global mixin  
 <a name="ConfigDefaultsMixin.defaults"></a>
 ### ConfigDefaultsMixin.defaults([options]) ⇒ <code>[Config](#Config)</code>
 Merges default options
@@ -380,7 +433,7 @@ Merges default options
 
 <a name="ConfigExtendMixin"></a>
 ## ConfigExtendMixin
-**Kind**: global variable  
+**Kind**: global mixin  
 <a name="ConfigExtendMixin.extend"></a>
 ### ConfigExtendMixin.extend(options) ⇒ <code>[Config](#Config)</code>
 Extends config
@@ -393,7 +446,7 @@ Extends config
 
 <a name="ConfigMergeMixin"></a>
 ## ConfigMergeMixin
-**Kind**: global variable  
+**Kind**: global mixin  
 <a name="ConfigMergeMixin.merge"></a>
 ### ConfigMergeMixin.merge([options]) ⇒ <code>[Config](#Config)</code>
 Merges options
@@ -406,7 +459,7 @@ Merges options
 
 <a name="ConfigToObjectMixin"></a>
 ## ConfigToObjectMixin
-**Kind**: global variable  
+**Kind**: global mixin  
 <a name="ConfigToObjectMixin.toObject"></a>
 ### ConfigToObjectMixin.toObject() ⇒ <code>Object</code>
 Returns plain object
