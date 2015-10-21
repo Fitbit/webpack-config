@@ -1,6 +1,7 @@
 'use strict';
 
 var expect = require('expect.js'),
+    Config = require('../lib/config'),
     ConfigFactory = require('../lib/configFactory'),
     ConfigLoader = require('../lib/configLoader'),
     ConfigEnvironment = require('../lib/configEnvironment'),
@@ -78,6 +79,58 @@ describe('ConfigVisitor', function () {
 
         it('should throw exception if "options" are not defined', function() {
             expect(configVisitor.visit).withArgs().to.throwError();
+        });
+
+        it('should not visit the same configs', function() {
+            var visited = configVisitor.visit({
+                extend: [
+                    './test/fixtures/webpack.6.config.js',
+                    './test/fixtures/webpack.6.config.js',
+                    './test/fixtures/webpack.6.config.js'
+                ]
+            });
+
+            expect(visited).to.only.have.keys([
+                configPathResolver.resolve('./test/fixtures/webpack.6.config.js')
+            ]);
+        });
+
+        it('should pass "Config" to transform "Function"', function() {
+            configVisitor.visit({
+                extend: {
+                    './test/fixtures/webpack.6.config.js': function(x) {
+                        expect(x).to.be.an(Config);
+
+                        return x;
+                    }
+                }
+            });
+        });
+
+        it('should accept plain "Object" which was returned from transform "Function"', function() {
+            var visited = configVisitor.visit({
+                extend: {
+                    './test/fixtures/webpack.6.config.js': function() {
+                        return {
+                            debug: false
+                        };
+                    }
+                }
+            });
+
+            expect(visited[configPathResolver.resolve('./test/fixtures/webpack.6.config.js')]).to.eql({
+                debug: false
+            });
+        });
+
+        it('should return empty "Object" when transform "Function" does not return nothing', function() {
+            var visited = configVisitor.visit({
+                extend: {
+                    './test/fixtures/webpack.6.config.js': function() {}
+                }
+            });
+
+            expect(visited[configPathResolver.resolve('./test/fixtures/webpack.6.config.js')]).to.eql({});
         });
     });
 });
