@@ -132,5 +132,65 @@ describe('ConfigExtendMixin', function () {
                 ]
             });
         });
+
+        it('should pass "Config" to transform "Function"', function() {
+            var config = new Config();
+
+            function configTransform(x) {
+                expect(x).to.be.an(Config);
+
+                return x;
+            }
+
+            config.extend({
+                './test/fixtures/webpack.6.config.js': configTransform
+            });
+
+            expect(config.toObject()).to.eql({
+                extend: {
+                    './test/fixtures/webpack.6.config.js': configTransform
+                },
+                plugins: [
+                    new webpack.optimize.OccurrenceOrderPlugin(true)
+                ]
+            });
+        });
+
+        it('should accept plain "Object" which was returned from transform "Function"', function() {
+            var config = new Config();
+
+            function configTransform() {
+                return {
+                    debug: false
+                };
+            }
+
+            config.extend({
+                './test/fixtures/webpack.6.config.js': configTransform
+            });
+
+            expect(config.toObject()).to.eql({
+                extend: {
+                    './test/fixtures/webpack.6.config.js': configTransform
+                },
+                debug: false
+            });
+        });
+
+        it('should return empty "Object" when transform "Function" does not return nothing', function() {
+            var config = new Config();
+
+            function configTransform() {}
+
+            config.extend({
+                './test/fixtures/webpack.6.config.js': configTransform
+            });
+
+            expect(config.toObject()).to.eql({
+                extend: {
+                    './test/fixtures/webpack.6.config.js': configTransform
+                }
+            });
+        });
     });
 });
