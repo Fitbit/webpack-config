@@ -1,17 +1,12 @@
 'use strict';
 
-module.exports = {
-    debug: false,
-    extend: {
-        './test/fixtures/webpack.4.config.js': function(config) {
-            config.visited = ['./test/fixtures/webpack.4.config.js'];
+var WebpackConfig = require('../../index');
 
-            return config;
-        }
-    },
+module.exports = new WebpackConfig().extend('./test/fixtures/webpack.4.config.js').merge({
+    debug: false,
     resolve: {
         alias: {
             config: './test/fixtures/webpack.5.config.js'
         }
     }
-};
+});

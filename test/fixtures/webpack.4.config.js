@@ -1,15 +1,9 @@
 'use strict';
 
-var webpack = require('webpack');
+var webpack = require('webpack'),
+    WebpackConfig = require('../../index');
 
-module.exports = {
-    extend: {
-        './test/fixtures/webpack.3.config.js': function(config) {
-            config.visited = ['./test/fixtures/webpack.3.config.js'];
-
-            return config;
-        }
-    },
+module.exports = new WebpackConfig().extend('./test/fixtures/webpack.3.config.js').merge({
     plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(true)
     ],
@@ -18,4 +12,4 @@ module.exports = {
             config: './test/fixtures/webpack.4.config.js'
         }
     }
-};
+});

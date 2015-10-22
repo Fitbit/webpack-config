@@ -21,14 +21,13 @@ describe('ConfigExtendMixin', function () {
     Config.visitor = configVisitor;
 
     context('#extend()', function() {
-        it('should accept "String"', function() {
+        it('should extend via "String"', function() {
             var config = new Config();
 
             config.extend('./test/fixtures/webpack.5.config.js');
 
             expect(config.toObject()).to.eql({
                 debug: false,
-                extend: './test/fixtures/webpack.5.config.js',
                 plugins: [
                     new webpack.optimize.UglifyJsPlugin(),
                     new webpack.optimize.OccurrenceOrderPlugin(true)
@@ -37,15 +36,11 @@ describe('ConfigExtendMixin', function () {
                     alias: {
                         config: './test/fixtures/webpack.5.config.js'
                     }
-                },
-                visited: [
-                    './test/fixtures/webpack.3.config.js',
-                    './test/fixtures/webpack.4.config.js'
-                ]
+                }
             });
         });
 
-        it('should accept "String[]"', function() {
+        it('should extend via "String[]"', function() {
             var config = new Config();
 
             config.extend([
@@ -54,9 +49,6 @@ describe('ConfigExtendMixin', function () {
 
             expect(config.toObject()).to.eql({
                 debug: false,
-                extend: [
-                    './test/fixtures/webpack.5.config.js'
-                ],
                 plugins: [
                     new webpack.optimize.UglifyJsPlugin(),
                     new webpack.optimize.OccurrenceOrderPlugin(true)
@@ -65,15 +57,11 @@ describe('ConfigExtendMixin', function () {
                     alias: {
                         config: './test/fixtures/webpack.5.config.js'
                     }
-                },
-                visited: [
-                    './test/fixtures/webpack.3.config.js',
-                    './test/fixtures/webpack.4.config.js'
-                ]
+                }
             });
         });
 
-        it('should accept "Object<String,Function>"', function() {
+        it('should extend via "Object<String,Function>"', function() {
             var config = new Config();
 
             function configTransform(x) {
@@ -86,9 +74,6 @@ describe('ConfigExtendMixin', function () {
 
             expect(config.toObject()).to.eql({
                 debug: false,
-                extend: {
-                    './test/fixtures/webpack.5.config.js': configTransform
-                },
                 plugins: [
                     new webpack.optimize.UglifyJsPlugin(),
                     new webpack.optimize.OccurrenceOrderPlugin(true)
@@ -97,26 +82,20 @@ describe('ConfigExtendMixin', function () {
                     alias: {
                         config: './test/fixtures/webpack.5.config.js'
                     }
-                },
-                visited: [
-                    './test/fixtures/webpack.3.config.js',
-                    './test/fixtures/webpack.4.config.js'
-                ]
+                }
             });
         });
 
-        it('should accept "Object<String,Boolean>"', function() {
+        it('should extend via "Object<String,Boolean>"', function() {
             var config = new Config();
 
             config.extend({
-                './test/fixtures/webpack.5.config.js': true
+                './test/fixtures/webpack.5.config.js': true,
+                './test/fixtures/webpack.6.config.js': false
             });
 
             expect(config.toObject()).to.eql({
                 debug: false,
-                extend: {
-                    './test/fixtures/webpack.5.config.js': true
-                },
                 plugins: [
                     new webpack.optimize.UglifyJsPlugin(),
                     new webpack.optimize.OccurrenceOrderPlugin(true)
@@ -125,11 +104,7 @@ describe('ConfigExtendMixin', function () {
                     alias: {
                         config: './test/fixtures/webpack.5.config.js'
                     }
-                },
-                visited: [
-                    './test/fixtures/webpack.3.config.js',
-                    './test/fixtures/webpack.4.config.js'
-                ]
+                }
             });
         });
 
@@ -147,9 +122,6 @@ describe('ConfigExtendMixin', function () {
             });
 
             expect(config.toObject()).to.eql({
-                extend: {
-                    './test/fixtures/webpack.6.config.js': configTransform
-                },
                 plugins: [
                     new webpack.optimize.OccurrenceOrderPlugin(true)
                 ]
@@ -170,9 +142,6 @@ describe('ConfigExtendMixin', function () {
             });
 
             expect(config.toObject()).to.eql({
-                extend: {
-                    './test/fixtures/webpack.6.config.js': configTransform
-                },
                 debug: false
             });
         });
@@ -186,11 +155,7 @@ describe('ConfigExtendMixin', function () {
                 './test/fixtures/webpack.6.config.js': configTransform
             });
 
-            expect(config.toObject()).to.eql({
-                extend: {
-                    './test/fixtures/webpack.6.config.js': configTransform
-                }
-            });
+            expect(config.toObject()).to.eql({});
         });
     });
 });
