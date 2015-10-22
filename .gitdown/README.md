@@ -9,16 +9,28 @@ Helps to load, extend and merge webpack configs
 
 For API docs please see the [documentation page]({"gitdown": "gitinfo", "name": "url"}/blob/{"gitdown": "gitinfo", "name": "branch"}/docs/API.md)!
 
-## Sample
+## Samples
+
+`docs/samples/conf/webpack.base.config.js`
+
+```javascript
+{"gitdown": "include", "file": "docs/samples/conf/webpack.base.config.js"}
+```
+
+`docs/samples/conf/webpack.dev.config.js`
+
+```javascript
+{"gitdown": "include", "file": "docs/samples/conf/webpack.dev.config.js"}
+```
+
+`docs/samples/conf/webpack.prod.config.js`
+
+```javascript
+{"gitdown": "include", "file": "docs/samples/conf/webpack.prod.config.js"}
+```
 
 `docs/samples/webpack.config.js`
 
-``` javascript
+```javascript
 {"gitdown": "include", "file": "docs/samples/webpack.config.js"}
-```
-
-`docs/samples/polyfills/webpack.config.js`
-
-``` javascript
-{"gitdown": "include", "file": "docs/samples/polyfills/webpack.config.js"}
 ```

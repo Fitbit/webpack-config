@@ -9,22 +9,20 @@ Helps to load, extend and merge webpack configs
 
 For API docs please see the [documentation page](https://github.com/mdreizin/webpack-config/blob/master/docs/API.md)!
 
-<h2 id="sample">Sample</h2>
+<h2 id="samples">Samples</h2>
 
-`docs/samples/webpack.config.js`
+`docs/samples/conf/webpack.base.config.js`
 
-``` javascript
+```javascript
 'use strict';
 
 var path = require('path'),
-    webpack = require('webpack'),
     BowerPlugin = require('bower-webpack-plugin'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     ComponentPlugin = require('component-webpack-plugin'),
     WebpackConfig = require('webpack-config');
 
 module.exports = new WebpackConfig().merge({
-    filename: __filename,
     output: {
         filename: '[name].js'
     },
@@ -46,8 +44,7 @@ module.exports = new WebpackConfig().merge({
                 /.*\.min.*/
             ]
         }),
-        new ExtractTextPlugin('[name].css'),
-        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js')
+        new ExtractTextPlugin('[name].css')
     ],
     module: {
         loaders: [{
@@ -84,15 +81,21 @@ module.exports = new WebpackConfig().merge({
 
 ```
 
-`docs/samples/polyfills/webpack.config.js`
+`docs/samples/conf/webpack.dev.config.js`
 
-``` javascript
+```javascript
 'use strict';
 
-var WebpackConfig = require('webpack-config');
+var webpack = require('webpack'),
+    WebpackConfig = require('webpack-config');
 
-module.exports = new WebpackConfig().extend('../webpack.config.js').merge({
+module.exports = new WebpackConfig().extend('./conf/webpack.base.config.js').merge({
     filename: __filename,
+    debug: true,
+    devtool: '#source-map',
+    output: {
+        pathinfo: true
+    },
     entry: {
         vendor: [
             'consolelog',
@@ -105,7 +108,56 @@ module.exports = new WebpackConfig().extend('../webpack.config.js').merge({
             'html5shiv/dist/html5shiv-printshiv.js',
             'respond'
         ]
-    }
+    },
+    plugins: [
+        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js')
+    ]
 });
+
+```
+
+`docs/samples/conf/webpack.prod.config.js`
+
+```javascript
+'use strict';
+
+var webpack = require('webpack'),
+    WebpackConfig = require('webpack-config');
+
+module.exports = new WebpackConfig().extend({
+    './conf/webpack.dev.config.js': function(config) {
+        delete config.debug;
+        delete config.devtool;
+        delete config.output.pathinfo;
+
+        return config;
+    }
+}).merge({
+    filename: __filename,
+    plugins: [
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.OccurrenceOrderPlugin(true),
+        new webpack.optimize.UglifyJsPlugin({
+            mangle: true,
+            output: {
+                comments: false
+            },
+            compress: {
+                warnings: false
+            }
+        })
+    ]
+});
+
+```
+
+`docs/samples/webpack.config.js`
+
+```javascript
+'use strict';
+
+var WebpackConfig = require('webpack-config');
+
+module.exports = new WebpackConfig().extend('./conf/webpack.[env].config.js');
 
 ```
