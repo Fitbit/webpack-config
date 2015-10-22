@@ -15,6 +15,8 @@
     "cover": "istanbul cover _mocha -- --full-trace --check-leaks -u exports -R spec",
     "codeclimate": "codeclimate-test-reporter < ./coverage/lcov.info",
     "doc": "gulp docs",
+    "build": "npm run doc",
+    "prepublish": "npm run build",
     "postpublish": "publish-latest -a package.json README.md docs/API.md",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },

@@ -29,6 +29,5 @@ script:
   - npm run clean
   - npm run cover
 after_success:
-  - npm run doc
   - npm run codeclimate
   - npm run semantic-release
