@@ -13,7 +13,7 @@ describe('ConfigMergeMixin', function () {
                     bar: 'bar1'
                 },
                 bar: ['bar1']
-            }).merge({
+            }, {
                 foo: {
                     bar: 'bar2'
                 },
