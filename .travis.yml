@@ -25,7 +25,6 @@ before_script:
 script:
   - npm run clean
   - npm run cover
-  - npm run doc
 after_script:
   - |
 
