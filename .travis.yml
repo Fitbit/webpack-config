@@ -25,7 +25,14 @@ before_script:
 script:
   - npm run clean
   - npm run cover
-after_success:
-  - npm run doc
-  - npm run codeclimate
-  - npm run semantic-release
+after_script:
+  - |
+
+      declare exitCode;
+      $(npm bin)/travis-after-all
+      exitCode=$?
+      if [ $exitCode -eq 0 ]; then
+        npm run doc;
+        npm run codeclimate;
+        npm run semantic-release;
+      fi
