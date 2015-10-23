@@ -4,7 +4,6 @@ node_js:
   - '4.1'
   - '4.0'
   - '0.12'
-  - '0.11'
   - 'iojs'
 matrix:
   fast_finish: true
