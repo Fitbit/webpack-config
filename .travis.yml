@@ -19,8 +19,6 @@ branches:
     - master
   except:
     - gh-pages
-before_install:
-  - npm install
 before_script:
   - npm dedupe
   - npm prune
