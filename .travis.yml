@@ -4,7 +4,6 @@ node_js:
   - '4.1'
   - '4.0'
   - '0.12'
-  - '0.11'
   - 'iojs'
 matrix:
   fast_finish: true
@@ -20,15 +19,10 @@ branches:
     - master
   except:
     - gh-pages
-before_install:
-  - npm install
 before_script:
   - npm dedupe
   - npm prune
 script:
   - npm run clean
   - npm run cover
-after_success:
-  - npm run doc
-  - npm run codeclimate
-  - npm run semantic-release
+after_script: .travis/after-all.sh
