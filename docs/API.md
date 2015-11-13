@@ -233,9 +233,12 @@ Returns plain object
   * [.add(...arguments)](#ConfigEnvironment+add)
   * [.keys()](#ConfigEnvironment+keys) ⇒ <code>Array.&lt;String&gt;</code>
   * [.value(key)](#ConfigEnvironment+value) ⇒ <code>\*</code>
+  * [.reset()](#ConfigEnvironment+reset)
 
 <a name="new_ConfigEnvironment_new"></a>
 ### new ConfigEnvironment(...arguments)
+Adds `process.env` to `variables` by default
+
 
 | Param | Type |
 | --- | --- |
@@ -258,7 +261,7 @@ Gets keys
 **Kind**: instance method of <code>[ConfigEnvironment](#ConfigEnvironment)</code>  
 <a name="ConfigEnvironment+value"></a>
 ### configEnvironment.value(key) ⇒ <code>\*</code>
-Gets value
+Gets value from `variables` or `process.env` as fallback
 
 **Kind**: instance method of <code>[ConfigEnvironment](#ConfigEnvironment)</code>  
 
@@ -266,6 +269,11 @@ Gets value
 | --- | --- |
 | key | <code>String</code> | 
 
+<a name="ConfigEnvironment+reset"></a>
+### configEnvironment.reset()
+Resets `variables` to default state
+
+**Kind**: instance method of <code>[ConfigEnvironment](#ConfigEnvironment)</code>  
 <a name="ConfigFactory"></a>
 ## ConfigFactory
 **Kind**: global class  
