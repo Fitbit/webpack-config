@@ -20,36 +20,36 @@ describe('ConfigEnvironment', function () {
         });
 
         it('should return "process.env.WEBPACK_ENV"', function() {
-            expect(configEnvironment.value('WEBPACK_ENV')).to.eql('foo');
+            expect(configEnvironment.get('WEBPACK_ENV')).to.eql('foo');
         });
 
         it('should return "process.env.NODE_ENV"', function() {
-            expect(configEnvironment.value('NODE_ENV')).to.eql('bar');
+            expect(configEnvironment.get('NODE_ENV')).to.eql('bar');
         });
 
         it('should return "env"', function() {
-            expect(configEnvironment.value('env')).to.eql('foo');
+            expect(configEnvironment.get('env')).to.eql('foo');
         });
     });
 
     context('#add()', function() {
         it('should add custom values', function() {
-            configEnvironment.add({
+            configEnvironment.set({
                 rev: 1
             });
 
-            expect(configEnvironment.value('rev')).to.eql(1);
+            expect(configEnvironment.get('rev')).to.eql(1);
         });
 
         it('should override existing values', function() {
-            configEnvironment.add({
+            configEnvironment.set({
                 WEBPACK_ENV: 1, // eslint-disable-line
                 NODE_ENV: 2 // eslint-disable-line
             });
 
-            expect(configEnvironment.value('WEBPACK_ENV')).to.eql(1);
-            expect(configEnvironment.value('NODE_ENV')).to.eql(2);
-            expect(configEnvironment.value('env')).to.eql(1);
+            expect(configEnvironment.get('WEBPACK_ENV')).to.eql(1);
+            expect(configEnvironment.get('NODE_ENV')).to.eql(2);
+            expect(configEnvironment.get('env')).to.eql(1);
         });
     });
 });
