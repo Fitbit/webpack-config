@@ -230,9 +230,9 @@ Returns plain object
 
 * [ConfigEnvironment](#ConfigEnvironment)
   * [new ConfigEnvironment(...arguments)](#new_ConfigEnvironment_new)
-  * [.add(...arguments)](#ConfigEnvironment+add)
+  * [.set(...arguments)](#ConfigEnvironment+set)
   * [.keys()](#ConfigEnvironment+keys) ⇒ <code>Array.&lt;String&gt;</code>
-  * [.value(key)](#ConfigEnvironment+value) ⇒ <code>\*</code>
+  * [.get(key)](#ConfigEnvironment+get) ⇒ <code>\*</code>
   * [.reset()](#ConfigEnvironment+reset)
 
 <a name="new_ConfigEnvironment_new"></a>
@@ -244,8 +244,8 @@ Adds `process.env` to `variables` by default
 | --- | --- |
 | ...arguments | <code>Object</code> | 
 
-<a name="ConfigEnvironment+add"></a>
-### configEnvironment.add(...arguments)
+<a name="ConfigEnvironment+set"></a>
+### configEnvironment.set(...arguments)
 Adds custom `variables`
 
 **Kind**: instance method of <code>[ConfigEnvironment](#ConfigEnvironment)</code>  
@@ -259,8 +259,8 @@ Adds custom `variables`
 Gets keys
 
 **Kind**: instance method of <code>[ConfigEnvironment](#ConfigEnvironment)</code>  
-<a name="ConfigEnvironment+value"></a>
-### configEnvironment.value(key) ⇒ <code>\*</code>
+<a name="ConfigEnvironment+get"></a>
+### configEnvironment.get(key) ⇒ <code>\*</code>
 Gets value from `variables` or `process.env` as fallback
 
 **Kind**: instance method of <code>[ConfigEnvironment](#ConfigEnvironment)</code>  
