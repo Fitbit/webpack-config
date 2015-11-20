@@ -120,7 +120,7 @@ Merges default options
 
 | Param | Type |
 | --- | --- |
-| ...arguments | <code>Object</code> | 
+| ...arguments | <code>Object</code> &#124; <code>function</code> | 
 
 <a name="Config+merge"></a>
 ### config.merge(...arguments) ⇒ <code>[Config](#Config)</code>
@@ -437,7 +437,7 @@ Merges default options
 
 | Param | Type |
 | --- | --- |
-| ...arguments | <code>Object</code> | 
+| ...arguments | <code>Object</code> &#124; <code>function</code> | 
 
 <a name="ConfigExtendMixin"></a>
 ## ConfigExtendMixin
