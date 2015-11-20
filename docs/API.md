@@ -396,7 +396,7 @@ Resolves path
 
 * [ConfigVisitor](#ConfigVisitor)
   * [new ConfigVisitor(loader, pathResolver, [excludeFields])](#new_ConfigVisitor_new)
-  * [.visit(...arguments)](#ConfigVisitor+visit) ⇒ <code>Object.&lt;String, Config&gt;</code>
+  * [.visit(options, context)](#ConfigVisitor+visit) ⇒ <code>Object.&lt;String, Config&gt;</code>
 
 <a name="new_ConfigVisitor_new"></a>
 ### new ConfigVisitor(loader, pathResolver, [excludeFields])
@@ -408,14 +408,15 @@ Resolves path
 | [excludeFields] | <code>Array.&lt;String&gt;</code> | <code>[&#x27;filename&#x27;]</code> | 
 
 <a name="ConfigVisitor+visit"></a>
-### configVisitor.visit(...arguments) ⇒ <code>Object.&lt;String, Config&gt;</code>
+### configVisitor.visit(options, context) ⇒ <code>Object.&lt;String, Config&gt;</code>
 Returns `visited` configs
 
 **Kind**: instance method of <code>[ConfigVisitor](#ConfigVisitor)</code>  
 
 | Param | Type |
 | --- | --- |
-| ...arguments | <code>ExtendOptions</code> | 
+| options | <code>Array.&lt;ExtendOptions&gt;</code> | 
+| context | <code>\*</code> | 
 
 <a name="ConfigCloneMixin"></a>
 ## ConfigCloneMixin
