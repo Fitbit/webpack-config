@@ -18,16 +18,7 @@ describe('ConfigVisitor', function () {
         configVisitor = new ConfigVisitor(configLoader, configPathResolver);
 
     context('#visit()', function() {
-        it('should visit via "String"', function() {
-            var visited = configVisitor.visit('./test/fixtures/webpack.4.config.js', { './test/fixtures/webpack.3.config.js': true });
-
-            expect(visited).to.only.have.keys([
-                configPathResolver.resolve('./test/fixtures/webpack.3.config.js'),
-                configPathResolver.resolve('./test/fixtures/webpack.4.config.js')
-            ]);
-        });
-
-        it('should visit via "String[]"', function() {
+        it('should visit via `String[]`', function() {
             var visited = configVisitor.visit([
                 './test/fixtures/webpack.4.config.js',
                 './test/fixtures/webpack.5.config.js'
@@ -39,15 +30,15 @@ describe('ConfigVisitor', function () {
             ]);
         });
 
-        it('should visit via "Object<String,Function>', function() {
-            var visited = configVisitor.visit({
+        it('should visit via `Object<String,Function>`', function() {
+            var visited = configVisitor.visit([{
                 './test/fixtures/webpack.4.config.js': function(config) {
                     return config;
                 },
                 './test/fixtures/webpack.5.config.js': function(config) {
                     return config;
                 }
-            });
+            }]);
 
             expect(visited).to.only.have.keys([
                 configPathResolver.resolve('./test/fixtures/webpack.4.config.js'),
@@ -55,11 +46,11 @@ describe('ConfigVisitor', function () {
             ]);
         });
 
-        it('should visit via "Object<String,Boolean>', function() {
-            var visited = configVisitor.visit({
+        it('should visit via `Object<String,Boolean>`', function() {
+            var visited = configVisitor.visit([{
                 './test/fixtures/webpack.4.config.js': true,
                 './test/fixtures/webpack.5.config.js': false
-            });
+            }]);
 
             expect(visited).to.only.have.keys([
                 configPathResolver.resolve('./test/fixtures/webpack.4.config.js')
@@ -78,36 +69,53 @@ describe('ConfigVisitor', function () {
             ]);
         });
 
-        it('should pass "Config" to transform "Function"', function() {
-            configVisitor.visit({
+        it('should pass `Config` to transform `Function`', function() {
+            configVisitor.visit([{
                 './test/fixtures/webpack.6.config.js': function(x) {
                     expect(x).to.be.an(Config);
 
                     return x;
                 }
-            });
+            }]);
         });
 
-        it('should accept plain "Object" which was returned from transform "Function"', function() {
-            var visited = configVisitor.visit({
+        it('should accept plain `Object` which was returned from transform `Function`', function() {
+            var visited = configVisitor.visit([{
                 './test/fixtures/webpack.6.config.js': function() {
                     return {
                         debug: false
                     };
                 }
-            });
+            }]);
 
             expect(visited[configPathResolver.resolve('./test/fixtures/webpack.6.config.js')]).to.eql({
                 debug: false
             });
         });
 
-        it('should return empty "Object" when transform "Function" does not return nothing', function() {
-            var visited = configVisitor.visit({
+        it('should return empty `Object` when transform `Function` does not return nothing', function() {
+            var visited = configVisitor.visit([{
                 './test/fixtures/webpack.6.config.js': function() {}
-            });
+            }]);
 
             expect(visited[configPathResolver.resolve('./test/fixtures/webpack.6.config.js')]).to.eql({});
+        });
+
+        it('should have ability to use `this` context in transform `Function`', function() {
+            var config = new Config().merge({
+                    debug: false
+                }),
+                visited = configVisitor.visit([{
+                    './test/fixtures/webpack.6.config.js': function() {
+                        expect(this).to.be.a(Config);
+
+                        return this;
+                    }
+                }], config);
+
+            expect(visited[configPathResolver.resolve('./test/fixtures/webpack.6.config.js')]).to.eql({
+                debug: false
+            });
         });
     });
 });

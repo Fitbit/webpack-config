@@ -5,7 +5,7 @@ var expect = require('expect.js'),
 
 describe('ConfigDefaultsMixin', function () {
     context('#defaults()', function() {
-        it('should add missing "options"', function() {
+        it('should add missing `options`', function() {
             var config = new Config(),
                 date1 = new Date(),
                 date2 = new Date();

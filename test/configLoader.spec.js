@@ -32,7 +32,7 @@ describe('ConfigLoader', function () {
             fs.remove(path.dirname(filename), done);
         });
 
-        it('should return same configs when "useCache" is "true"', function() {
+        it('should return same configs when `useCache` is `true`', function() {
             var config1 = configLoader.load(filename);
 
             updateConfig();
@@ -42,7 +42,7 @@ describe('ConfigLoader', function () {
             expect(config1.toObject()).to.eql(config2.toObject());
         });
 
-        it('should return different configs when "useCache" is "false"', function () {
+        it('should return different configs when `useCache` is `false`', function () {
             var config1 = configLoader.load(filename);
 
             configLoader.useCache = false;
@@ -54,7 +54,7 @@ describe('ConfigLoader', function () {
             expect(config1.toObject()).not.to.eql(config2.toObject());
         });
 
-        it('should throw exception if "filename" does not exist', function () {
+        it('should throw exception if `filename` does not exist', function () {
             expect(configLoader.load).withArgs('./test/fixtures/webpack.not-found.config.js').to.throwError();
         });
     });
