@@ -108,11 +108,12 @@ describe('ConfigExtendMixin', function () {
             });
         });
 
-        it('should pass `Config` to transform `Function`', function() {
+        it('should pass `Config` and `this` context to transform `Function`', function() {
             var config = new Config();
 
             function configTransform(x) {
                 expect(x).to.be.an(Config);
+                expect(this).to.be(config);
 
                 return x;
             }
