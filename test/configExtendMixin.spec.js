@@ -21,7 +21,7 @@ describe('ConfigExtendMixin', function () {
     Config.visitor = configVisitor;
 
     context('#extend()', function() {
-        it('should extend via "String"', function() {
+        it('should extend via `String`', function() {
             var config = new Config();
 
             config.extend('./test/fixtures/webpack.5.config.js');
@@ -40,7 +40,7 @@ describe('ConfigExtendMixin', function () {
             });
         });
 
-        it('should extend via "String[]"', function() {
+        it('should extend via `String[]`', function() {
             var config = new Config();
 
             config.extend([
@@ -61,7 +61,7 @@ describe('ConfigExtendMixin', function () {
             });
         });
 
-        it('should extend via "Object<String,Function>"', function() {
+        it('should extend via `Object<String,Function>`', function() {
             var config = new Config();
 
             function configTransform(x) {
@@ -86,7 +86,7 @@ describe('ConfigExtendMixin', function () {
             });
         });
 
-        it('should extend via "Object<String,Boolean>"', function() {
+        it('should extend via `Object<String,Boolean>`', function() {
             var config = new Config();
 
             config.extend({
@@ -108,7 +108,7 @@ describe('ConfigExtendMixin', function () {
             });
         });
 
-        it('should pass "Config" to transform "Function"', function() {
+        it('should pass `Config` to transform `Function`', function() {
             var config = new Config();
 
             function configTransform(x) {
@@ -128,7 +128,7 @@ describe('ConfigExtendMixin', function () {
             });
         });
 
-        it('should accept plain "Object" which was returned from transform "Function"', function() {
+        it('should accept plain `Object` which was returned from transform `Function`', function() {
             var config = new Config();
 
             function configTransform() {
@@ -146,7 +146,7 @@ describe('ConfigExtendMixin', function () {
             });
         });
 
-        it('should return empty "Object" when transform "Function" does not return nothing', function() {
+        it('should return empty `Object` when transform `Function` does not return nothing', function() {
             var config = new Config();
 
             function configTransform() {}

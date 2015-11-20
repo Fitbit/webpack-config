@@ -5,7 +5,7 @@ var expect = require('expect.js'),
 
 describe('ConfigToObjectMixin', function () {
     context('#toObject()', function() {
-        it('should return plain "Object"', function() {
+        it('should return plain `Object`', function() {
             var config = new Config();
 
             config.merge({

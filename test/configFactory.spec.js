@@ -8,7 +8,7 @@ describe('ConfigFactory', function () {
     var configFactory = new ConfigFactory();
 
     context('#create()', function() {
-        it('should create "Config" from "Object"', function() {
+        it('should create `Config` from `Object`', function() {
             var config = configFactory.create({
                 foo: 'foo1'
             });
@@ -20,7 +20,7 @@ describe('ConfigFactory', function () {
             });
         });
 
-        it('should create "Config[]" from "Object[]"', function() {
+        it('should create `Config[]` from `Object[]`', function() {
             var configs = configFactory.create([{
                 foo: 'foo1'
             }]);
@@ -33,7 +33,7 @@ describe('ConfigFactory', function () {
             });
         });
 
-        it('should create "Config" from "Object" via "Function"', function() {
+        it('should create `Config` from `Object` via `Function`', function() {
             var config = configFactory.create(function() {
                 return {
                     foo: 'foo1'
@@ -47,7 +47,7 @@ describe('ConfigFactory', function () {
             });
         });
 
-        it('should create "Config[]" from "Object[]" via "Function"', function() {
+        it('should create `Config[]` from `Object[]` via `Function`', function() {
             var configs = configFactory.create(function() {
                 return [{
                     foo: 'foo1'
@@ -62,7 +62,7 @@ describe('ConfigFactory', function () {
             });
         });
 
-        it('should create "Config" from "Config"', function() {
+        it('should create `Config` from `Config`', function() {
             var config = configFactory.create(new Config().merge({
                 foo: 'foo1'
             }));
@@ -74,7 +74,7 @@ describe('ConfigFactory', function () {
             });
         });
 
-        it('should create "Config[]" from "Config[]"', function() {
+        it('should create `Config[]` from `Config[]`', function() {
             var configs = configFactory.create([new Config().merge({
                 foo: 'foo1'
             })]);

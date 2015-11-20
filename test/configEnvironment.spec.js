@@ -19,15 +19,15 @@ describe('ConfigEnvironment', function () {
             delete process.env.NODE_ENV;
         });
 
-        it('should return "process.env.WEBPACK_ENV"', function() {
+        it('should return `process.env.WEBPACK_ENV`', function() {
             expect(configEnvironment.get('WEBPACK_ENV')).to.eql('foo');
         });
 
-        it('should return "process.env.NODE_ENV"', function() {
+        it('should return `process.env.NODE_ENV`', function() {
             expect(configEnvironment.get('NODE_ENV')).to.eql('bar');
         });
 
-        it('should return "env"', function() {
+        it('should return `env`', function() {
             expect(configEnvironment.get('env')).to.eql('foo');
         });
     });

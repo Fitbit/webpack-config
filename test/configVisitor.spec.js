@@ -18,7 +18,7 @@ describe('ConfigVisitor', function () {
         configVisitor = new ConfigVisitor(configLoader, configPathResolver);
 
     context('#visit()', function() {
-        it('should visit via "String[]"', function() {
+        it('should visit via `String[]`', function() {
             var visited = configVisitor.visit([
                 './test/fixtures/webpack.4.config.js',
                 './test/fixtures/webpack.5.config.js'
@@ -30,7 +30,7 @@ describe('ConfigVisitor', function () {
             ]);
         });
 
-        it('should visit via "Object<String,Function>', function() {
+        it('should visit via `Object<String,Function>`', function() {
             var visited = configVisitor.visit([{
                 './test/fixtures/webpack.4.config.js': function(config) {
                     return config;
@@ -46,7 +46,7 @@ describe('ConfigVisitor', function () {
             ]);
         });
 
-        it('should visit via "Object<String,Boolean>', function() {
+        it('should visit via `Object<String,Boolean>`', function() {
             var visited = configVisitor.visit([{
                 './test/fixtures/webpack.4.config.js': true,
                 './test/fixtures/webpack.5.config.js': false
@@ -69,7 +69,7 @@ describe('ConfigVisitor', function () {
             ]);
         });
 
-        it('should pass "Config" to transform "Function"', function() {
+        it('should pass `Config` to transform `Function`', function() {
             configVisitor.visit([{
                 './test/fixtures/webpack.6.config.js': function(x) {
                     expect(x).to.be.an(Config);
@@ -79,7 +79,7 @@ describe('ConfigVisitor', function () {
             }]);
         });
 
-        it('should accept plain "Object" which was returned from transform "Function"', function() {
+        it('should accept plain `Object` which was returned from transform `Function`', function() {
             var visited = configVisitor.visit([{
                 './test/fixtures/webpack.6.config.js': function() {
                     return {
@@ -93,7 +93,7 @@ describe('ConfigVisitor', function () {
             });
         });
 
-        it('should return empty "Object" when transform "Function" does not return nothing', function() {
+        it('should return empty `Object` when transform `Function` does not return nothing', function() {
             var visited = configVisitor.visit([{
                 './test/fixtures/webpack.6.config.js': function() {}
             }]);

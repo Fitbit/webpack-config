@@ -29,7 +29,7 @@ describe('ConfigFinder', function () {
             });
         });
 
-        it('should return "null" when config does not exist', function() {
+        it('should return `null` when config does not exist', function() {
             var config = configFinder.closest('./webpack.config.js');
 
             expect(config).to.eql(null);

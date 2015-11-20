@@ -16,25 +16,25 @@ describe('ConfigNameResolver', function () {
         configNameResolver = new ConfigNameResolver(configEnvironment);
 
     context('#resolve()', function() {
-        it('should replace "[env]" with "bar"', function() {
+        it('should replace `[env]` with `bar`', function() {
             var filename = configNameResolver.resolve('webpack.[env].config.js');
 
             expect(filename).to.eql('webpack.bar.config.js');
         });
 
-        it('should replace "[webpack_env]" with "foo"', function() {
+        it('should replace `[webpack_env]` with `foo`', function() {
             var filename = configNameResolver.resolve('webpack.[webpack_env].config.js');
 
             expect(filename).to.eql('webpack.foo.config.js');
         });
 
-        it('should replace "[node_env]" with "bar"', function() {
+        it('should replace `[node_env]` with `bar`', function() {
             var filename = configNameResolver.resolve('webpack.[node_env].config.js');
 
             expect(filename).to.eql('webpack.bar.config.js');
         });
 
-        it('should replace "[rev]" with "1"', function() {
+        it('should replace `[rev]` with `1`', function() {
             var filename = configNameResolver.resolve('webpack.[rev].config.js');
 
             expect(filename).to.eql('webpack.1.config.js');

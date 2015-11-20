@@ -5,7 +5,7 @@ var expect = require('expect.js'),
 
 describe('ConfigCloneMixin', function () {
     context('#clone()', function() {
-        it('should return clone of "Config"', function() {
+        it('should return clone of `Config`', function() {
             var config = new Config();
 
             config.merge({

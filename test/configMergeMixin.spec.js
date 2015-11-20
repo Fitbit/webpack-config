@@ -5,7 +5,7 @@ var expect = require('expect.js'),
 
 describe('ConfigMergeMixin', function () {
     context('#merge()', function() {
-        it('should merge "options"', function() {
+        it('should merge `options`', function() {
             var config = new Config();
 
             config.merge({
