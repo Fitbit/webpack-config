@@ -107,7 +107,7 @@ describe('ConfigVisitor', function () {
                 }),
                 visited = configVisitor.visit([{
                     './test/fixtures/webpack.6.config.js': function() {
-                        expect(this).to.be.a(Config);
+                        expect(this).to.be(config);
 
                         return this;
                     }

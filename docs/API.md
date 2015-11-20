@@ -120,7 +120,7 @@ Merges default options
 
 | Param | Type |
 | --- | --- |
-| ...arguments | <code>Object</code> | 
+| ...arguments | <code>Object</code> &#124; <code>function</code> | 
 
 <a name="Config+merge"></a>
 ### config.merge(...arguments) ⇒ <code>[Config](#Config)</code>
@@ -131,7 +131,7 @@ Merges options
 
 | Param | Type |
 | --- | --- |
-| ...arguments | <code>Object</code> | 
+| ...arguments | <code>Object</code> &#124; <code>function</code> | 
 
 <a name="Config+clone"></a>
 ### config.clone() ⇒ <code>[Config](#Config)</code>
@@ -396,7 +396,7 @@ Resolves path
 
 * [ConfigVisitor](#ConfigVisitor)
   * [new ConfigVisitor(loader, pathResolver, [excludeFields])](#new_ConfigVisitor_new)
-  * [.visit(options, context)](#ConfigVisitor+visit) ⇒ <code>Object.&lt;String, Config&gt;</code>
+  * [.visit(options, [context])](#ConfigVisitor+visit) ⇒ <code>Object.&lt;String, Config&gt;</code>
 
 <a name="new_ConfigVisitor_new"></a>
 ### new ConfigVisitor(loader, pathResolver, [excludeFields])
@@ -408,7 +408,7 @@ Resolves path
 | [excludeFields] | <code>Array.&lt;String&gt;</code> | <code>[&#x27;filename&#x27;]</code> | 
 
 <a name="ConfigVisitor+visit"></a>
-### configVisitor.visit(options, context) ⇒ <code>Object.&lt;String, Config&gt;</code>
+### configVisitor.visit(options, [context]) ⇒ <code>Object.&lt;String, Config&gt;</code>
 Returns `visited` configs
 
 **Kind**: instance method of <code>[ConfigVisitor](#ConfigVisitor)</code>  
@@ -416,7 +416,7 @@ Returns `visited` configs
 | Param | Type |
 | --- | --- |
 | options | <code>Array.&lt;ExtendOptions&gt;</code> | 
-| context | <code>\*</code> | 
+| [context] | <code>\*</code> | 
 
 <a name="ConfigCloneMixin"></a>
 ## ConfigCloneMixin
@@ -437,7 +437,7 @@ Merges default options
 
 | Param | Type |
 | --- | --- |
-| ...arguments | <code>Object</code> | 
+| ...arguments | <code>Object</code> &#124; <code>function</code> | 
 
 <a name="ConfigExtendMixin"></a>
 ## ConfigExtendMixin
@@ -463,7 +463,7 @@ Merges options
 
 | Param | Type |
 | --- | --- |
-| ...arguments | <code>Object</code> | 
+| ...arguments | <code>Object</code> &#124; <code>function</code> | 
 
 <a name="ConfigToObjectMixin"></a>
 ## ConfigToObjectMixin

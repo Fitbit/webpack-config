@@ -17,6 +17,12 @@ describe('ConfigDefaultsMixin', function () {
                 foo: 'foo2',
                 bar: ['bar2'],
                 date: date2
+            }, function() {
+                expect(this).to.be(config);
+
+                return {
+                    foo: 'foo2'
+                };
             });
 
             expect(config.toObject()).to.eql({
