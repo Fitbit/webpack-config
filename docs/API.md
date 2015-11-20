@@ -131,7 +131,7 @@ Merges options
 
 | Param | Type |
 | --- | --- |
-| ...arguments | <code>Object</code> | 
+| ...arguments | <code>Object</code> &#124; <code>function</code> | 
 
 <a name="Config+clone"></a>
 ### config.clone() ⇒ <code>[Config](#Config)</code>
@@ -463,7 +463,7 @@ Merges options
 
 | Param | Type |
 | --- | --- |
-| ...arguments | <code>Object</code> | 
+| ...arguments | <code>Object</code> &#124; <code>function</code> | 
 
 <a name="ConfigToObjectMixin"></a>
 ## ConfigToObjectMixin
