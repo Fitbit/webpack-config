@@ -1,7 +1,6 @@
 'use strict';
 
-var expect = require('expect.js'),
-    Config = require('../lib/config'),
+var Config = require('../lib/config'),
     ConfigFactory = require('../lib/configFactory'),
     ConfigLoader = require('../lib/configLoader'),
     ConfigEnvironment = require('../lib/configEnvironment'),
@@ -17,14 +16,14 @@ describe('ConfigVisitor', function () {
         configLoader = new ConfigLoader(configFactory, configPathResolver),
         configVisitor = new ConfigVisitor(configLoader, configPathResolver);
 
-    context('#visit()', function() {
+    describe('#visit()', function() {
         it('should visit via `String[]`', function() {
             var visited = configVisitor.visit([
                 './test/fixtures/webpack.4.config.js',
                 './test/fixtures/webpack.5.config.js'
             ]);
 
-            expect(visited).to.only.have.keys([
+            expect(Object.keys(visited)).toEqual([
                 configPathResolver.resolve('./test/fixtures/webpack.4.config.js'),
                 configPathResolver.resolve('./test/fixtures/webpack.5.config.js')
             ]);
@@ -40,7 +39,7 @@ describe('ConfigVisitor', function () {
                 }
             }]);
 
-            expect(visited).to.only.have.keys([
+            expect(Object.keys(visited)).toEqual([
                 configPathResolver.resolve('./test/fixtures/webpack.4.config.js'),
                 configPathResolver.resolve('./test/fixtures/webpack.5.config.js')
             ]);
@@ -52,7 +51,7 @@ describe('ConfigVisitor', function () {
                 './test/fixtures/webpack.5.config.js': false
             }]);
 
-            expect(visited).to.only.have.keys([
+            expect(Object.keys(visited)).toEqual([
                 configPathResolver.resolve('./test/fixtures/webpack.4.config.js')
             ]);
         });
@@ -64,7 +63,7 @@ describe('ConfigVisitor', function () {
                 './test/fixtures/webpack.6.config.js'
             ]);
 
-            expect(visited).to.only.have.keys([
+            expect(Object.keys(visited)).toEqual([
                 configPathResolver.resolve('./test/fixtures/webpack.6.config.js')
             ]);
         });
@@ -72,7 +71,7 @@ describe('ConfigVisitor', function () {
         it('should pass `Config` to transform `Function`', function() {
             configVisitor.visit([{
                 './test/fixtures/webpack.6.config.js': function(x) {
-                    expect(x).to.be.an(Config);
+                    expect(x instanceof Config).toBeTruthy();
 
                     return x;
                 }
@@ -88,7 +87,7 @@ describe('ConfigVisitor', function () {
                 }
             }]);
 
-            expect(visited[configPathResolver.resolve('./test/fixtures/webpack.6.config.js')]).to.eql({
+            expect(visited[configPathResolver.resolve('./test/fixtures/webpack.6.config.js')]).toEqual({
                 debug: false
             });
         });
@@ -98,24 +97,21 @@ describe('ConfigVisitor', function () {
                 './test/fixtures/webpack.6.config.js': function() {}
             }]);
 
-            expect(visited[configPathResolver.resolve('./test/fixtures/webpack.6.config.js')]).to.eql({});
+            expect(visited[configPathResolver.resolve('./test/fixtures/webpack.6.config.js')]).toEqual({});
         });
 
         it('should have ability to use `this` context in transform `Function`', function() {
             var config = new Config().merge({
-                    debug: false
-                }),
-                visited = configVisitor.visit([{
-                    './test/fixtures/webpack.6.config.js': function() {
-                        expect(this).to.be(config);
-
-                        return this;
-                    }
-                }], config);
-
-            expect(visited[configPathResolver.resolve('./test/fixtures/webpack.6.config.js')]).to.eql({
                 debug: false
             });
+
+            configVisitor.visit([{
+                './test/fixtures/webpack.6.config.js': function() {
+                    expect(this).toEqual(config);
+
+                    return this;
+                }
+            }], config);
         });
     });
 });

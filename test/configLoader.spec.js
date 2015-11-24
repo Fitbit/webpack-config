@@ -2,7 +2,6 @@
 
 var path = require('path'),
     fs = require('fs-extra'),
-    expect = require('expect.js'),
     ConfigFactory = require('../lib/configFactory'),
     ConfigLoader = require('../lib/configLoader'),
     ConfigEnvironment = require('../lib/configEnvironment'),
@@ -17,7 +16,7 @@ describe('ConfigLoader', function () {
         configLoader = new ConfigLoader(configFactory, configPathResolver),
         filename = configPathResolver.resolve('./test/fixtures/tmp/webpack.config.js');
 
-    context('#load()', function() {
+    describe('#load()', function() {
         function updateConfig() {
             fs.copySync(configPathResolver.resolve('./test/fixtures/webpack.2.config.js'), filename);
         }
@@ -39,7 +38,7 @@ describe('ConfigLoader', function () {
 
             var config2 = configLoader.load(filename);
 
-            expect(config1.toObject()).to.eql(config2.toObject());
+            expect(config1.toObject()).toEqual(config2.toObject());
         });
 
         it('should return different configs when `useCache` is `false`', function () {
@@ -51,11 +50,11 @@ describe('ConfigLoader', function () {
 
             var config2 = configLoader.load(filename);
 
-            expect(config1.toObject()).not.to.eql(config2.toObject());
+            expect(config1.toObject()).not.toEqual(config2.toObject());
         });
 
         it('should throw exception if `filename` does not exist', function () {
-            expect(configLoader.load).withArgs('./test/fixtures/webpack.not-found.config.js').to.throwError();
+            expect(configLoader.load, './test/fixtures/webpack.not-found.config.js').toThrow();
         });
     });
 });

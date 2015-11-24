@@ -1,7 +1,6 @@
 'use strict';
 
-var expect = require('expect.js'),
-    ConfigEnvironment = require('../lib/configEnvironment'),
+var ConfigEnvironment = require('../lib/configEnvironment'),
     ConfigNameResolver = require('../lib/configNameResolver');
 
 describe('ConfigNameResolver', function () {
@@ -15,29 +14,29 @@ describe('ConfigNameResolver', function () {
         }),
         configNameResolver = new ConfigNameResolver(configEnvironment);
 
-    context('#resolve()', function() {
+    describe('#resolve()', function() {
         it('should replace `[env]` with `bar`', function() {
             var filename = configNameResolver.resolve('webpack.[env].config.js');
 
-            expect(filename).to.eql('webpack.bar.config.js');
+            expect(filename).toEqual('webpack.bar.config.js');
         });
 
         it('should replace `[webpack_env]` with `foo`', function() {
             var filename = configNameResolver.resolve('webpack.[webpack_env].config.js');
 
-            expect(filename).to.eql('webpack.foo.config.js');
+            expect(filename).toEqual('webpack.foo.config.js');
         });
 
         it('should replace `[node_env]` with `bar`', function() {
             var filename = configNameResolver.resolve('webpack.[node_env].config.js');
 
-            expect(filename).to.eql('webpack.bar.config.js');
+            expect(filename).toEqual('webpack.bar.config.js');
         });
 
         it('should replace `[rev]` with `1`', function() {
             var filename = configNameResolver.resolve('webpack.[rev].config.js');
 
-            expect(filename).to.eql('webpack.1.config.js');
+            expect(filename).toEqual('webpack.1.config.js');
         });
     });
 });

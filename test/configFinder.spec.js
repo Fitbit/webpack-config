@@ -1,7 +1,6 @@
 'use strict';
 
-var expect = require('expect.js'),
-    path = require('path'),
+var path = require('path'),
     Config = require('../lib/config'),
     ConfigLoader = require('../lib/configLoader'),
     ConfigEnvironment = require('../lib/configEnvironment'),
@@ -18,12 +17,12 @@ describe('ConfigFinder', function () {
         configLoader = new ConfigLoader(configFactory, configPathResolver),
         configFinder = new ConfigFinder(configLoader, configPathResolver);
 
-    context('#closest()', function() {
+    describe('#closest()', function() {
         it('should find config', function() {
             var config = configFinder.closest('./test/fixtures/dir1/dir2/dir3/webpack.1.config.js');
 
-            expect(config).to.be.a(Config);
-            expect(config.toObject()).to.eql({
+            expect(config instanceof Config).toBeTruthy();
+            expect(config.toObject()).toEqual({
                 filename: path.resolve('./test/fixtures/webpack.1.config.js'),
                 foo: 'foo1'
             });
@@ -32,7 +31,7 @@ describe('ConfigFinder', function () {
         it('should return `null` when config does not exist', function() {
             var config = configFinder.closest('./webpack.config.js');
 
-            expect(config).to.eql(null);
+            expect(config).toEqual(null);
         });
     });
 });

@@ -1,7 +1,6 @@
 'use strict';
 
-var expect = require('expect.js'),
-    Index = require('../index'),
+var Index = require('../index'),
     Config = require('../lib/config'),
     ConfigEnvironment = require('../lib/configEnvironment'),
     ConfigFactory = require('../lib/configFactory'),
@@ -15,17 +14,17 @@ describe('Index', function () {
     it('should export config', function() {
         var config = new Index();
 
-        expect(config).to.be.an(Config);
+        expect(config instanceof Config).toBeTruthy();
     });
 
     it('should have static properties', function() {
-        expect(Index.environment).to.be.an(ConfigEnvironment);
-        expect(Index.nameResolver).to.be.an(ConfigNameResolver);
-        expect(Index.factory).to.be.an(ConfigFactory);
-        expect(Index.loader).to.be.an(ConfigLoader);
-        expect(Index.finder).to.be.an(ConfigFinder);
-        expect(Index.visitor).to.be.an(ConfigVisitor);
-        expect(Index.pathResolver).to.be.an(ConfigPathResolver);
-        expect(Index.FILENAME).to.eql('webpack.config.js');
+        expect(Index.environment instanceof ConfigEnvironment).toBeTruthy();
+        expect(Index.nameResolver instanceof ConfigNameResolver).toBeTruthy();
+        expect(Index.factory instanceof ConfigFactory).toBeTruthy();
+        expect(Index.loader instanceof ConfigLoader).toBeTruthy();
+        expect(Index.finder instanceof ConfigFinder).toBeTruthy();
+        expect(Index.visitor instanceof ConfigVisitor).toBeTruthy();
+        expect(Index.pathResolver instanceof ConfigPathResolver).toBeTruthy();
+        expect(Index.FILENAME).toEqual('webpack.config.js');
     });
 });

@@ -1,12 +1,11 @@
 'use strict';
 
-var expect = require('expect.js'),
-    ConfigEnvironment = require('../lib/configEnvironment');
+var ConfigEnvironment = require('../lib/configEnvironment');
 
 describe('ConfigEnvironment', function () {
     var configEnvironment;
 
-    context('#value()', function() {
+    describe('#value()', function() {
         beforeEach(function() {
             process.env.WEBPACK_ENV = 'foo';
             process.env.NODE_ENV = 'bar';
@@ -20,25 +19,25 @@ describe('ConfigEnvironment', function () {
         });
 
         it('should return `process.env.WEBPACK_ENV`', function() {
-            expect(configEnvironment.get('WEBPACK_ENV')).to.eql('foo');
+            expect(configEnvironment.get('WEBPACK_ENV')).toEqual('foo');
         });
 
         it('should return `process.env.NODE_ENV`', function() {
-            expect(configEnvironment.get('NODE_ENV')).to.eql('bar');
+            expect(configEnvironment.get('NODE_ENV')).toEqual('bar');
         });
 
         it('should return `env`', function() {
-            expect(configEnvironment.get('env')).to.eql('foo');
+            expect(configEnvironment.get('env')).toEqual('foo');
         });
     });
 
-    context('#add()', function() {
+    describe('#add()', function() {
         it('should add custom values', function() {
             configEnvironment.set({
                 rev: 1
             });
 
-            expect(configEnvironment.get('rev')).to.eql(1);
+            expect(configEnvironment.get('rev')).toEqual(1);
         });
 
         it('should override existing values', function() {
@@ -47,9 +46,9 @@ describe('ConfigEnvironment', function () {
                 NODE_ENV: 2 // eslint-disable-line
             });
 
-            expect(configEnvironment.get('WEBPACK_ENV')).to.eql(1);
-            expect(configEnvironment.get('NODE_ENV')).to.eql(2);
-            expect(configEnvironment.get('env')).to.eql(1);
+            expect(configEnvironment.get('WEBPACK_ENV')).toEqual(1);
+            expect(configEnvironment.get('NODE_ENV')).toEqual(2);
+            expect(configEnvironment.get('env')).toEqual(1);
         });
     });
 });

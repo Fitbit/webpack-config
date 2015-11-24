@@ -1,17 +1,16 @@
 'use strict';
 
-var expect = require('expect.js'),
-    Config = require('../lib/config');
+var Config = require('../lib/config');
 
 describe('Config', function () {
-    context('#ctor()', function() {
+    describe('#ctor()', function() {
         it('should create config', function() {
             var config = new Config();
 
-            expect(config).to.be.an(Config);
+            expect(config instanceof Config).toBeTruthy();
 
             ['extend', 'merge', 'defaults', 'toObject', 'clone'].forEach(function(name) {
-                expect(config[name]).to.be.an(Function);
+                expect(typeof config[name] === 'function').toBeTruthy();
             });
         });
     });

@@ -1,7 +1,6 @@
 'use strict';
 
-var expect = require('expect.js'),
-    webpack = require('webpack'),
+var webpack = require('webpack'),
     Config = require('../lib/config'),
     ConfigFactory = require('../lib/configFactory'),
     ConfigLoader = require('../lib/configLoader'),
@@ -20,13 +19,13 @@ describe('ConfigExtendMixin', function () {
 
     Config.visitor = configVisitor;
 
-    context('#extend()', function() {
+    describe('#extend()', function() {
         it('should extend via `String`', function() {
             var config = new Config();
 
             config.extend('./test/fixtures/webpack.5.config.js');
 
-            expect(config.toObject()).to.eql({
+            expect(config.toObject()).toEqual({
                 debug: false,
                 plugins: [
                     new webpack.optimize.UglifyJsPlugin(),
@@ -47,7 +46,7 @@ describe('ConfigExtendMixin', function () {
                 './test/fixtures/webpack.5.config.js'
             ]);
 
-            expect(config.toObject()).to.eql({
+            expect(config.toObject()).toEqual({
                 debug: false,
                 plugins: [
                     new webpack.optimize.UglifyJsPlugin(),
@@ -72,7 +71,7 @@ describe('ConfigExtendMixin', function () {
                 './test/fixtures/webpack.5.config.js': configTransform
             });
 
-            expect(config.toObject()).to.eql({
+            expect(config.toObject()).toEqual({
                 debug: false,
                 plugins: [
                     new webpack.optimize.UglifyJsPlugin(),
@@ -94,7 +93,7 @@ describe('ConfigExtendMixin', function () {
                 './test/fixtures/webpack.6.config.js': false
             });
 
-            expect(config.toObject()).to.eql({
+            expect(config.toObject()).toEqual({
                 debug: false,
                 plugins: [
                     new webpack.optimize.UglifyJsPlugin(),
@@ -112,8 +111,8 @@ describe('ConfigExtendMixin', function () {
             var config = new Config();
 
             function configTransform(x) {
-                expect(x).to.be.an(Config);
-                expect(this).to.be(config);
+                expect(x instanceof Config).toBeTruthy();
+                expect(this).toBe(config);
 
                 return x;
             }
@@ -122,7 +121,7 @@ describe('ConfigExtendMixin', function () {
                 './test/fixtures/webpack.6.config.js': configTransform
             });
 
-            expect(config.toObject()).to.eql({
+            expect(config.toObject()).toEqual({
                 plugins: [
                     new webpack.optimize.OccurrenceOrderPlugin(true)
                 ]
@@ -142,7 +141,7 @@ describe('ConfigExtendMixin', function () {
                 './test/fixtures/webpack.6.config.js': configTransform
             });
 
-            expect(config.toObject()).to.eql({
+            expect(config.toObject()).toEqual({
                 debug: false
             });
         });
@@ -156,7 +155,7 @@ describe('ConfigExtendMixin', function () {
                 './test/fixtures/webpack.6.config.js': configTransform
             });
 
-            expect(config.toObject()).to.eql({});
+            expect(config.toObject()).toEqual({});
         });
     });
 });
