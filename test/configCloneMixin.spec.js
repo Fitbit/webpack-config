@@ -14,7 +14,7 @@ describe('ConfigCloneMixin', function () {
             var clone = config.clone();
 
             expect(config).not.toBe(clone);
-            expect(clone instanceof Config).toBeTruthy();
+            expect(clone).toEqual(jasmine.any(Config));
             expect(config.toObject()).toEqual({
                 foo: 'foo1'
             });

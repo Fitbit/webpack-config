@@ -21,7 +21,7 @@ describe('ConfigFinder', function () {
         it('should find config', function() {
             var config = configFinder.closest('./test/fixtures/dir1/dir2/dir3/webpack.1.config.js');
 
-            expect(config instanceof Config).toBeTruthy();
+            expect(config).toEqual(jasmine.any(Config));
             expect(config.toObject()).toEqual({
                 filename: path.resolve('./test/fixtures/webpack.1.config.js'),
                 foo: 'foo1'

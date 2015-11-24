@@ -71,7 +71,7 @@ describe('ConfigVisitor', function () {
         it('should pass `Config` to transform `Function`', function() {
             configVisitor.visit([{
                 './test/fixtures/webpack.6.config.js': function(x) {
-                    expect(x instanceof Config).toBeTruthy();
+                    expect(x).toEqual(jasmine.any(Config));
 
                     return x;
                 }

@@ -111,7 +111,7 @@ describe('ConfigExtendMixin', function () {
             var config = new Config();
 
             function configTransform(x) {
-                expect(x instanceof Config).toBeTruthy();
+                expect(x).toEqual(jasmine.any(Config));
                 expect(this).toBe(config);
 
                 return x;

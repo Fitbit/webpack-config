@@ -12,8 +12,8 @@ describe('ConfigFactory', function () {
                 foo: 'foo1'
             });
 
-            expect(typeof config === 'object').toBeTruthy();
-            expect(config instanceof Config).toBeTruthy();
+            expect(config).toEqual(jasmine.any(Object));
+            expect(config).toEqual(jasmine.any(Config));
             expect(config.toObject()).toEqual({
                 foo: 'foo1'
             });
@@ -24,9 +24,10 @@ describe('ConfigFactory', function () {
                 foo: 'foo1'
             }]);
 
-            expect(Array.isArray(configs)).toBeTruthy();
+            expect(configs).toEqual(jasmine.any(Array));
             expect(configs.length).toEqual(1);
-            expect(configs[0] instanceof Config).toBeTruthy();
+            expect(configs[0]).toEqual(jasmine.any(Object));
+            expect(configs[0]).toEqual(jasmine.any(Config));
             expect(configs[0].toObject()).toEqual({
                 foo: 'foo1'
             });
@@ -39,8 +40,8 @@ describe('ConfigFactory', function () {
                 };
             });
 
-            expect(typeof config === 'object').toBeTruthy();
-            expect(config instanceof Config).toBeTruthy();
+            expect(config).toEqual(jasmine.any(Object));
+            expect(config).toEqual(jasmine.any(Config));
             expect(config.toObject()).toEqual({
                 foo: 'foo1'
             });
@@ -53,9 +54,10 @@ describe('ConfigFactory', function () {
                 }];
             });
 
-            expect(Array.isArray(configs)).toBeTruthy();
+            expect(configs).toEqual(jasmine.any(Array));
             expect(configs.length).toEqual(1);
-            expect(configs[0] instanceof Config).toBeTruthy();
+            expect(configs[0]).toEqual(jasmine.any(Object));
+            expect(configs[0]).toEqual(jasmine.any(Config));
             expect(configs[0].toObject()).toEqual({
                 foo: 'foo1'
             });
@@ -66,8 +68,8 @@ describe('ConfigFactory', function () {
                 foo: 'foo1'
             }));
 
-            expect(typeof config === 'object').toBeTruthy();
-            expect(config instanceof Config).toBeTruthy();
+            expect(config).toEqual(jasmine.any(Object));
+            expect(config).toEqual(jasmine.any(Config));
             expect(config.toObject()).toEqual({
                 foo: 'foo1'
             });
@@ -78,9 +80,9 @@ describe('ConfigFactory', function () {
                 foo: 'foo1'
             })]);
 
-            expect(Array.isArray(configs)).toBeTruthy();
+            expect(configs).toEqual(jasmine.any(Array));
             expect(configs.length).toEqual(1);
-            expect(configs[0] instanceof Config).toBeTruthy();
+            expect(configs[0]).toEqual(jasmine.any(Config));
             expect(configs[0].toObject()).toEqual({
                 foo: 'foo1'
             });

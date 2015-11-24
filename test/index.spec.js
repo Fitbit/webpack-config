@@ -14,17 +14,17 @@ describe('Index', function () {
     it('should export config', function() {
         var config = new Index();
 
-        expect(config instanceof Config).toBeTruthy();
+        expect(config).toEqual(jasmine.any(Config));
     });
 
     it('should have static properties', function() {
-        expect(Index.environment instanceof ConfigEnvironment).toBeTruthy();
-        expect(Index.nameResolver instanceof ConfigNameResolver).toBeTruthy();
-        expect(Index.factory instanceof ConfigFactory).toBeTruthy();
-        expect(Index.loader instanceof ConfigLoader).toBeTruthy();
-        expect(Index.finder instanceof ConfigFinder).toBeTruthy();
-        expect(Index.visitor instanceof ConfigVisitor).toBeTruthy();
-        expect(Index.pathResolver instanceof ConfigPathResolver).toBeTruthy();
+        expect(Index.environment).toEqual(jasmine.any(ConfigEnvironment));
+        expect(Index.nameResolver).toEqual(jasmine.any(ConfigNameResolver));
+        expect(Index.factory).toEqual(jasmine.any(ConfigFactory));
+        expect(Index.loader).toEqual(jasmine.any(ConfigLoader));
+        expect(Index.finder).toEqual(jasmine.any(ConfigFinder));
+        expect(Index.visitor).toEqual(jasmine.any(ConfigVisitor));
+        expect(Index.pathResolver).toEqual(jasmine.any(ConfigPathResolver));
         expect(Index.FILENAME).toEqual('webpack.config.js');
     });
 });
