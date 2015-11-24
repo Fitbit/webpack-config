@@ -1,21 +1,20 @@
 'use strict';
 
-var expect = require('expect.js'),
-    Config = require('../lib/config'),
+var Config = require('../lib/config'),
     ConfigFactory = require('../lib/configFactory');
 
 describe('ConfigFactory', function () {
     var configFactory = new ConfigFactory();
 
-    context('#create()', function() {
+    describe('#create()', function() {
         it('should create `Config` from `Object`', function() {
             var config = configFactory.create({
                 foo: 'foo1'
             });
 
-            expect(config).to.be.a(Object);
-            expect(config).to.be.a(Config);
-            expect(config.toObject()).to.eql({
+            expect(config).toEqual(jasmine.any(Object));
+            expect(config).toEqual(jasmine.any(Config));
+            expect(config.toObject()).toEqual({
                 foo: 'foo1'
             });
         });
@@ -25,10 +24,11 @@ describe('ConfigFactory', function () {
                 foo: 'foo1'
             }]);
 
-            expect(configs).to.be.a(Array);
-            expect(configs).to.have.length(1);
-            expect(configs[0]).to.be.a(Config);
-            expect(configs[0].toObject()).to.eql({
+            expect(configs).toEqual(jasmine.any(Array));
+            expect(configs.length).toEqual(1);
+            expect(configs[0]).toEqual(jasmine.any(Object));
+            expect(configs[0]).toEqual(jasmine.any(Config));
+            expect(configs[0].toObject()).toEqual({
                 foo: 'foo1'
             });
         });
@@ -40,9 +40,9 @@ describe('ConfigFactory', function () {
                 };
             });
 
-            expect(config).to.be.a(Object);
-            expect(config).to.be.a(Config);
-            expect(config.toObject()).to.eql({
+            expect(config).toEqual(jasmine.any(Object));
+            expect(config).toEqual(jasmine.any(Config));
+            expect(config.toObject()).toEqual({
                 foo: 'foo1'
             });
         });
@@ -54,10 +54,11 @@ describe('ConfigFactory', function () {
                 }];
             });
 
-            expect(configs).to.be.a(Array);
-            expect(configs).to.have.length(1);
-            expect(configs[0]).to.be.a(Config);
-            expect(configs[0].toObject()).to.eql({
+            expect(configs).toEqual(jasmine.any(Array));
+            expect(configs.length).toEqual(1);
+            expect(configs[0]).toEqual(jasmine.any(Object));
+            expect(configs[0]).toEqual(jasmine.any(Config));
+            expect(configs[0].toObject()).toEqual({
                 foo: 'foo1'
             });
         });
@@ -67,9 +68,9 @@ describe('ConfigFactory', function () {
                 foo: 'foo1'
             }));
 
-            expect(config).to.be.a(Object);
-            expect(config).to.be.a(Config);
-            expect(config.toObject()).to.eql({
+            expect(config).toEqual(jasmine.any(Object));
+            expect(config).toEqual(jasmine.any(Config));
+            expect(config.toObject()).toEqual({
                 foo: 'foo1'
             });
         });
@@ -79,10 +80,10 @@ describe('ConfigFactory', function () {
                 foo: 'foo1'
             })]);
 
-            expect(configs).to.be.a(Array);
-            expect(configs).to.have.length(1);
-            expect(configs[0]).to.be.a(Config);
-            expect(configs[0].toObject()).to.eql({
+            expect(configs).toEqual(jasmine.any(Array));
+            expect(configs.length).toEqual(1);
+            expect(configs[0]).toEqual(jasmine.any(Config));
+            expect(configs[0].toObject()).toEqual({
                 foo: 'foo1'
             });
         });
