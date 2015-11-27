@@ -1,6 +1,7 @@
 'use strict';
 
-var Index = require('../index'),
+var _ = require('lodash'),
+    Index = require('../index'),
     Config = require('../lib/config'),
     ConfigEnvironment = require('../lib/configEnvironment'),
     ConfigFactory = require('../lib/configFactory'),
@@ -18,13 +19,19 @@ describe('Index', function () {
     });
 
     it('should have static properties', function() {
-        expect(Index.environment).toEqual(jasmine.any(ConfigEnvironment));
-        expect(Index.nameResolver).toEqual(jasmine.any(ConfigNameResolver));
-        expect(Index.factory).toEqual(jasmine.any(ConfigFactory));
-        expect(Index.loader).toEqual(jasmine.any(ConfigLoader));
-        expect(Index.finder).toEqual(jasmine.any(ConfigFinder));
-        expect(Index.visitor).toEqual(jasmine.any(ConfigVisitor));
-        expect(Index.pathResolver).toEqual(jasmine.any(ConfigPathResolver));
+        _.each({
+            environment: ConfigEnvironment,
+            nameResolver: ConfigNameResolver,
+            factory: ConfigFactory,
+            loader: ConfigLoader,
+            finder: ConfigFinder,
+            visitor: ConfigVisitor,
+            pathResolver: ConfigPathResolver,
+            FILENAME: String
+        }, function(value, key) {
+            expect(_.get(Index, key)).toEqual(jasmine.any(value));
+        });
+
         expect(Index.FILENAME).toEqual('webpack.config.js');
     });
 });
