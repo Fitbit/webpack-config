@@ -26,8 +26,6 @@
 <dd></dd>
 <dt><a href="#module_webpack-config/lib/configToObjectMixin">webpack-config/lib/configToObjectMixin</a> ⇒ <code><a href="#ConfigToObjectMixin">ConfigToObjectMixin</a></code></dt>
 <dd></dd>
-<dt><a href="#module_webpack-config/lib/configVisitor">webpack-config/lib/configVisitor</a> ⇒ <code><a href="#ConfigVisitor">ConfigVisitor</a></code></dt>
-<dd></dd>
 </dl>
 ## Classes
 <dl>
@@ -44,8 +42,6 @@
 <dt><a href="#ConfigNameResolver">ConfigNameResolver</a></dt>
 <dd></dd>
 <dt><a href="#ConfigPathResolver">ConfigPathResolver</a></dt>
-<dd></dd>
-<dt><a href="#ConfigVisitor">ConfigVisitor</a></dt>
 <dd></dd>
 </dl>
 ## Mixins
@@ -87,8 +83,6 @@
 ## webpack-config/lib/configPathResolver ⇒ <code>[ConfigPathResolver](#ConfigPathResolver)</code>
 <a name="module_webpack-config/lib/configToObjectMixin"></a>
 ## webpack-config/lib/configToObjectMixin ⇒ <code>[ConfigToObjectMixin](#ConfigToObjectMixin)</code>
-<a name="module_webpack-config/lib/configVisitor"></a>
-## webpack-config/lib/configVisitor ⇒ <code>[ConfigVisitor](#ConfigVisitor)</code>
 <a name="Config"></a>
 ## Config
 **Kind**: global class  
@@ -148,7 +142,7 @@ Extends config
 
 | Param | Type |
 | --- | --- |
-| ...arguments | <code>ExtendOptions</code> | 
+| ...arguments | <code>Array.&lt;String&gt;</code> &#124; <code>Object.&lt;String, function()&gt;</code> &#124; <code>Object.&lt;String, Boolean&gt;</code> | 
 
 <a name="Config+toObject"></a>
 ### config.toObject() ⇒ <code>Object</code>
@@ -208,7 +202,7 @@ Returns plain object
 
 | Type |
 | --- |
-| <code>[ConfigVisitor](#ConfigVisitor)</code> | 
+| <code>[ConfigVisitor](#new_ConfigVisitor_new)</code> | 
 
 <a name="Config.pathResolver"></a>
 ### Config.pathResolver
@@ -390,34 +384,6 @@ Resolves path
 | --- | --- |
 | filename | <code>String</code> | 
 
-<a name="ConfigVisitor"></a>
-## ConfigVisitor
-**Kind**: global class  
-
-* [ConfigVisitor](#ConfigVisitor)
-  * [new ConfigVisitor(loader, pathResolver, [excludeFields])](#new_ConfigVisitor_new)
-  * [.visit(options, [context])](#ConfigVisitor+visit) ⇒ <code>Object.&lt;String, Config&gt;</code>
-
-<a name="new_ConfigVisitor_new"></a>
-### new ConfigVisitor(loader, pathResolver, [excludeFields])
-
-| Param | Type | Default |
-| --- | --- | --- |
-| loader | <code>[ConfigLoader](#ConfigLoader)</code> |  | 
-| pathResolver | <code>[ConfigPathResolver](#ConfigPathResolver)</code> |  | 
-| [excludeFields] | <code>Array.&lt;String&gt;</code> | <code>[&#x27;filename&#x27;]</code> | 
-
-<a name="ConfigVisitor+visit"></a>
-### configVisitor.visit(options, [context]) ⇒ <code>Object.&lt;String, Config&gt;</code>
-Returns `visited` configs
-
-**Kind**: instance method of <code>[ConfigVisitor](#ConfigVisitor)</code>  
-
-| Param | Type |
-| --- | --- |
-| options | <code>Array.&lt;ExtendOptions&gt;</code> | 
-| [context] | <code>\*</code> | 
-
 <a name="ConfigCloneMixin"></a>
 ## ConfigCloneMixin
 **Kind**: global mixin  
@@ -450,7 +416,7 @@ Extends config
 
 | Param | Type |
 | --- | --- |
-| ...arguments | <code>ExtendOptions</code> | 
+| ...arguments | <code>Array.&lt;String&gt;</code> &#124; <code>Object.&lt;String, function()&gt;</code> &#124; <code>Object.&lt;String, Boolean&gt;</code> | 
 
 <a name="ConfigMergeMixin"></a>
 ## ConfigMergeMixin
