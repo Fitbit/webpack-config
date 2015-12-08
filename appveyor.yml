@@ -22,9 +22,9 @@ platform:
   - x64
 install:
   - ps: Install-Product node $env:nodejs_version
-  - npm install
   - npm dedupe
   - npm prune
+  - npm install
 test_script:
   - node --version
   - npm --version
