@@ -1,9 +1,9 @@
 version: '{build}'
 build: off
 deploy: off
-cache:
-  - node_modules
-  - '%APPDATA%\npm-cache'
+#cache:
+#  - node_modules
+#  - '%APPDATA%\npm-cache'
 branches:
   only:
     - master
@@ -22,8 +22,8 @@ platform:
   - x64
 install:
   - ps: Install-Product node $env:nodejs_version
-  - npm dedupe
-  - npm prune
+#  - npm dedupe
+#  - npm prune
   - npm install
 test_script:
   - node --version
