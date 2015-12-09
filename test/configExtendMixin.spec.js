@@ -7,13 +7,13 @@ var webpack = require('webpack'),
     ConfigEnvironment = require('../lib/configEnvironment'),
     ConfigVisitor = require('../lib/configVisitor'),
     DefaultConfigNameResolver = require('../lib/defaultConfigNameResolver'),
-    ConfigPathResolver = require('../lib/configPathResolver');
+    DefaultConfigPathResolver = require('../lib/defaultConfigPathResolver');
 
 describe('ConfigExtendMixin', function () {
     var configEnvironment = new ConfigEnvironment(),
         configFactory = new DefaultConfigFactory(),
         configNameResolver = new DefaultConfigNameResolver(configEnvironment),
-        configPathResolver = new ConfigPathResolver(configNameResolver),
+        configPathResolver = new DefaultConfigPathResolver(configNameResolver),
         configLoader = new ConfigLoader(configFactory, configPathResolver),
         configVisitor = new ConfigVisitor(configLoader, configPathResolver);
 

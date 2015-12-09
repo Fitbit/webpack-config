@@ -6,13 +6,13 @@ var Config = require('../lib/config'),
     ConfigEnvironment = require('../lib/configEnvironment'),
     ConfigVisitor = require('../lib/configVisitor'),
     DefaultConfigNameResolver = require('../lib/defaultConfigNameResolver'),
-    ConfigPathResolver = require('../lib/configPathResolver');
+    DefaultConfigPathResolver = require('../lib/defaultConfigPathResolver');
 
 describe('ConfigVisitor', function () {
     var configEnvironment = new ConfigEnvironment(),
         configFactory = new DefaultConfigFactory(),
         configNameResolver = new DefaultConfigNameResolver(configEnvironment),
-        configPathResolver = new ConfigPathResolver(configNameResolver),
+        configPathResolver = new DefaultConfigPathResolver(configNameResolver),
         configLoader = new ConfigLoader(configFactory, configPathResolver),
         configVisitor = new ConfigVisitor(configLoader, configPathResolver);
 
@@ -24,8 +24,8 @@ describe('ConfigVisitor', function () {
             ]);
 
             expect(Object.keys(visited)).toEqual([
-                configPathResolver.resolve('./test/fixtures/webpack.4.config.js'),
-                configPathResolver.resolve('./test/fixtures/webpack.5.config.js')
+                configPathResolver.resolvePath('./test/fixtures/webpack.4.config.js'),
+                configPathResolver.resolvePath('./test/fixtures/webpack.5.config.js')
             ]);
         });
 
@@ -40,8 +40,8 @@ describe('ConfigVisitor', function () {
             }]);
 
             expect(Object.keys(visited)).toEqual([
-                configPathResolver.resolve('./test/fixtures/webpack.4.config.js'),
-                configPathResolver.resolve('./test/fixtures/webpack.5.config.js')
+                configPathResolver.resolvePath('./test/fixtures/webpack.4.config.js'),
+                configPathResolver.resolvePath('./test/fixtures/webpack.5.config.js')
             ]);
         });
 
@@ -52,7 +52,7 @@ describe('ConfigVisitor', function () {
             }]);
 
             expect(Object.keys(visited)).toEqual([
-                configPathResolver.resolve('./test/fixtures/webpack.4.config.js')
+                configPathResolver.resolvePath('./test/fixtures/webpack.4.config.js')
             ]);
         });
 
@@ -64,7 +64,7 @@ describe('ConfigVisitor', function () {
             ]);
 
             expect(Object.keys(visited)).toEqual([
-                configPathResolver.resolve('./test/fixtures/webpack.6.config.js')
+                configPathResolver.resolvePath('./test/fixtures/webpack.6.config.js')
             ]);
         });
 
@@ -87,7 +87,7 @@ describe('ConfigVisitor', function () {
                 }
             }]);
 
-            expect(visited[configPathResolver.resolve('./test/fixtures/webpack.6.config.js')]).toEqual({
+            expect(visited[configPathResolver.resolvePath('./test/fixtures/webpack.6.config.js')]).toEqual({
                 debug: false
             });
         });
@@ -97,7 +97,7 @@ describe('ConfigVisitor', function () {
                 './test/fixtures/webpack.6.config.js': function() {}
             }]);
 
-            expect(visited[configPathResolver.resolve('./test/fixtures/webpack.6.config.js')]).toEqual({});
+            expect(visited[configPathResolver.resolvePath('./test/fixtures/webpack.6.config.js')]).toEqual({});
         });
 
         it('should have ability to use `this` context in transform `Function`', function() {

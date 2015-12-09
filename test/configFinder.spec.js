@@ -6,14 +6,14 @@ var path = require('path'),
     ConfigEnvironment = require('../lib/configEnvironment'),
     DefaultConfigFactory = require('../lib/defaultConfigFactory'),
     DefaultConfigNameResolver = require('../lib/defaultConfigNameResolver'),
-    ConfigPathResolver = require('../lib/configPathResolver'),
+    DefaultConfigPathResolver = require('../lib/defaultConfigPathResolver'),
     ConfigFinder = require('../lib/configFinder');
 
 describe('ConfigFinder', function () {
     var configFactory = new DefaultConfigFactory(),
         configEnvironment = new ConfigEnvironment(),
         configNameResolver = new DefaultConfigNameResolver(configEnvironment),
-        configPathResolver = new ConfigPathResolver(configNameResolver),
+        configPathResolver = new DefaultConfigPathResolver(configNameResolver),
         configLoader = new ConfigLoader(configFactory, configPathResolver),
         configFinder = new ConfigFinder(configLoader, configPathResolver);
 

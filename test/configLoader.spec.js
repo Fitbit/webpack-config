@@ -6,25 +6,25 @@ var path = require('path'),
     ConfigLoader = require('../lib/configLoader'),
     ConfigEnvironment = require('../lib/configEnvironment'),
     DefaultConfigNameResolver = require('../lib/defaultConfigNameResolver'),
-    ConfigPathResolver = require('../lib/configPathResolver');
+    DefaultConfigPathResolver = require('../lib/defaultConfigPathResolver');
 
 describe('ConfigLoader', function () {
     var configEnvironment = new ConfigEnvironment(),
         configNameResolver = new DefaultConfigNameResolver(configEnvironment),
-        configPathResolver = new ConfigPathResolver(configNameResolver),
+        configPathResolver = new DefaultConfigPathResolver(configNameResolver),
         configFactory = new DefaultConfigFactory(),
         configLoader = new ConfigLoader(configFactory, configPathResolver),
-        filename = configPathResolver.resolve('./test/fixtures/tmp/webpack.config.js');
+        filename = configPathResolver.resolvePath('./test/fixtures/tmp/webpack.config.js');
 
     describe('#load()', function() {
         function updateConfig() {
-            fs.copySync(configPathResolver.resolve('./test/fixtures/webpack.2.config.js'), filename);
+            fs.copySync(configPathResolver.resolvePath('./test/fixtures/webpack.2.config.js'), filename);
         }
 
         beforeEach(function(done) {
             configLoader.useCache = true;
 
-            fs.copy(configPathResolver.resolve('./test/fixtures/webpack.1.config.js'), filename, done);
+            fs.copy(configPathResolver.resolvePath('./test/fixtures/webpack.1.config.js'), filename, done);
         });
 
         afterEach(function(done) {

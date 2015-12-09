@@ -9,7 +9,7 @@ var _ = require('lodash'),
     ConfigFinder = require('../lib/configFinder'),
     ConfigVisitor = require('../lib/configVisitor'),
     DefaultConfigNameResolver = require('../lib/defaultConfigNameResolver'),
-    ConfigPathResolver = require('../lib/configPathResolver');
+    DefaultConfigPathResolver = require('../lib/defaultConfigPathResolver');
 
 describe('Index', function () {
     it('should export config', function() {
@@ -26,7 +26,7 @@ describe('Index', function () {
             loader: ConfigLoader,
             finder: ConfigFinder,
             visitor: ConfigVisitor,
-            pathResolver: ConfigPathResolver,
+            pathResolver: DefaultConfigPathResolver,
             FILENAME: String
         }, function(value, key) {
             expect(_.get(Index, key)).toEqual(jasmine.any(value));
