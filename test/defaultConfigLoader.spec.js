@@ -3,20 +3,20 @@
 var path = require('path'),
     fs = require('fs-extra'),
     DefaultConfigFactory = require('../lib/defaultConfigFactory'),
-    ConfigLoader = require('../lib/configLoader'),
+    DefaultConfigLoader = require('../lib/defaultConfigLoader'),
     ConfigEnvironment = require('../lib/configEnvironment'),
     DefaultConfigNameResolver = require('../lib/defaultConfigNameResolver'),
     DefaultConfigPathResolver = require('../lib/defaultConfigPathResolver');
 
-describe('ConfigLoader', function () {
+describe('DefaultConfigLoader', function () {
     var configEnvironment = new ConfigEnvironment(),
         configNameResolver = new DefaultConfigNameResolver(configEnvironment),
         configPathResolver = new DefaultConfigPathResolver(configNameResolver),
         configFactory = new DefaultConfigFactory(),
-        configLoader = new ConfigLoader(configFactory, configPathResolver),
+        configLoader = new DefaultConfigLoader(configFactory, configPathResolver),
         filename = configPathResolver.resolvePath('./test/fixtures/tmp/webpack.config.js');
 
-    describe('#load()', function() {
+    describe('#loadConfig()', function() {
         function updateConfig() {
             fs.copySync(configPathResolver.resolvePath('./test/fixtures/webpack.2.config.js'), filename);
         }
@@ -32,29 +32,29 @@ describe('ConfigLoader', function () {
         });
 
         it('should return same configs when `useCache` is `true`', function() {
-            var config1 = configLoader.load(filename);
+            var config1 = configLoader.loadConfig(filename);
 
             updateConfig();
 
-            var config2 = configLoader.load(filename);
+            var config2 = configLoader.loadConfig(filename);
 
             expect(config1.toObject()).toEqual(config2.toObject());
         });
 
         it('should return different configs when `useCache` is `false`', function () {
-            var config1 = configLoader.load(filename);
+            var config1 = configLoader.loadConfig(filename);
 
             configLoader.useCache = false;
 
             updateConfig();
 
-            var config2 = configLoader.load(filename);
+            var config2 = configLoader.loadConfig(filename);
 
             expect(config1.toObject()).not.toEqual(config2.toObject());
         });
 
         it('should throw exception if `filename` does not exist', function () {
-            expect(configLoader.load, './test/fixtures/webpack.not-found.config.js').toThrow();
+            expect(configLoader.loadConfig, './test/fixtures/webpack.not-found.config.js').toThrow();
         });
     });
 });

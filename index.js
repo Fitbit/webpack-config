@@ -5,7 +5,7 @@ var Config = require('./lib/config'),
     DefaultConfigNameResolver = require('./lib/defaultConfigNameResolver'),
     DefaultConfigPathResolver = require('./lib/defaultConfigPathResolver'),
     DefaultConfigFactory = require('./lib/defaultConfigFactory'),
-    ConfigLoader = require('./lib/configLoader'),
+    DefaultConfigLoader = require('./lib/defaultConfigLoader'),
     ConfigFinder = require('./lib/configFinder'),
     ConfigVisitor = require('./lib/configVisitor');
 
@@ -13,7 +13,7 @@ var configEnvironment = new ConfigEnvironment(),
     configFactory = DefaultConfigFactory.INSTANCE,
     configNameResolver = new DefaultConfigNameResolver(configEnvironment),
     configPathResolver = new DefaultConfigPathResolver(configNameResolver),
-    configLoader = new ConfigLoader(configFactory, configPathResolver),
+    configLoader = new DefaultConfigLoader(configFactory, configPathResolver),
     configVisitor = new ConfigVisitor(configLoader, configPathResolver),
     configFinder = new ConfigFinder(configLoader, configPathResolver);
 

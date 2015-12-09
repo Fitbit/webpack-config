@@ -2,7 +2,7 @@
 
 var Config = require('../lib/config'),
     DefaultConfigFactory = require('../lib/defaultConfigFactory'),
-    ConfigLoader = require('../lib/configLoader'),
+    DefaultConfigLoader = require('../lib/defaultConfigLoader'),
     ConfigEnvironment = require('../lib/configEnvironment'),
     ConfigVisitor = require('../lib/configVisitor'),
     DefaultConfigNameResolver = require('../lib/defaultConfigNameResolver'),
@@ -13,7 +13,7 @@ describe('ConfigVisitor', function () {
         configFactory = new DefaultConfigFactory(),
         configNameResolver = new DefaultConfigNameResolver(configEnvironment),
         configPathResolver = new DefaultConfigPathResolver(configNameResolver),
-        configLoader = new ConfigLoader(configFactory, configPathResolver),
+        configLoader = new DefaultConfigLoader(configFactory, configPathResolver),
         configVisitor = new ConfigVisitor(configLoader, configPathResolver);
 
     describe('#visit()', function() {

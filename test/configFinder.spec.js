@@ -2,7 +2,7 @@
 
 var path = require('path'),
     Config = require('../lib/config'),
-    ConfigLoader = require('../lib/configLoader'),
+    DefaultConfigLoader = require('../lib/defaultConfigLoader'),
     ConfigEnvironment = require('../lib/configEnvironment'),
     DefaultConfigFactory = require('../lib/defaultConfigFactory'),
     DefaultConfigNameResolver = require('../lib/defaultConfigNameResolver'),
@@ -14,7 +14,7 @@ describe('ConfigFinder', function () {
         configEnvironment = new ConfigEnvironment(),
         configNameResolver = new DefaultConfigNameResolver(configEnvironment),
         configPathResolver = new DefaultConfigPathResolver(configNameResolver),
-        configLoader = new ConfigLoader(configFactory, configPathResolver),
+        configLoader = new DefaultConfigLoader(configFactory, configPathResolver),
         configFinder = new ConfigFinder(configLoader, configPathResolver);
 
     describe('#closest()', function() {
