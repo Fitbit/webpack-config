@@ -2,7 +2,7 @@
 
 var path = require('path'),
     fs = require('fs-extra'),
-    ConfigFactory = require('../lib/configFactory'),
+    DefaultConfigFactory = require('../lib/defaultConfigFactory'),
     ConfigLoader = require('../lib/configLoader'),
     ConfigEnvironment = require('../lib/configEnvironment'),
     ConfigNameResolver = require('../lib/configNameResolver'),
@@ -12,7 +12,7 @@ describe('ConfigLoader', function () {
     var configEnvironment = new ConfigEnvironment(),
         configNameResolver = new ConfigNameResolver(configEnvironment),
         configPathResolver = new ConfigPathResolver(configNameResolver),
-        configFactory = new ConfigFactory(),
+        configFactory = new DefaultConfigFactory(),
         configLoader = new ConfigLoader(configFactory, configPathResolver),
         filename = configPathResolver.resolve('./test/fixtures/tmp/webpack.config.js');
 

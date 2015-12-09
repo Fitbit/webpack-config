@@ -1,7 +1,7 @@
 'use strict';
 
 var Config = require('../lib/config'),
-    ConfigFactory = require('../lib/configFactory'),
+    DefaultConfigFactory = require('../lib/defaultConfigFactory'),
     ConfigLoader = require('../lib/configLoader'),
     ConfigEnvironment = require('../lib/configEnvironment'),
     ConfigVisitor = require('../lib/configVisitor'),
@@ -10,7 +10,7 @@ var Config = require('../lib/config'),
 
 describe('ConfigVisitor', function () {
     var configEnvironment = new ConfigEnvironment(),
-        configFactory = new ConfigFactory(),
+        configFactory = new DefaultConfigFactory(),
         configNameResolver = new ConfigNameResolver(configEnvironment),
         configPathResolver = new ConfigPathResolver(configNameResolver),
         configLoader = new ConfigLoader(configFactory, configPathResolver),

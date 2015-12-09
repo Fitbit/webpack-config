@@ -1,14 +1,14 @@
 'use strict';
 
 var Config = require('../lib/config'),
-    ConfigFactory = require('../lib/configFactory');
+    DefaultConfigFactory = require('../lib/defaultConfigFactory');
 
-describe('ConfigFactory', function () {
-    var configFactory = new ConfigFactory();
+describe('DefaultConfigFactory', function () {
+    var configFactory = new DefaultConfigFactory();
 
     describe('#create()', function() {
         it('should create `Config` from `Object`', function() {
-            var config = configFactory.create({
+            var config = configFactory.createConfig({
                 foo: 'foo1'
             });
 
@@ -20,7 +20,7 @@ describe('ConfigFactory', function () {
         });
 
         it('should create `Config[]` from `Object[]`', function() {
-            var configs = configFactory.create([{
+            var configs = configFactory.createConfig([{
                 foo: 'foo1'
             }]);
 
@@ -34,7 +34,7 @@ describe('ConfigFactory', function () {
         });
 
         it('should create `Config` from `Object` via `Function`', function() {
-            var config = configFactory.create(function() {
+            var config = configFactory.createConfig(function() {
                 return {
                     foo: 'foo1'
                 };
@@ -48,7 +48,7 @@ describe('ConfigFactory', function () {
         });
 
         it('should create `Config[]` from `Object[]` via `Function`', function() {
-            var configs = configFactory.create(function() {
+            var configs = configFactory.createConfig(function() {
                 return [{
                     foo: 'foo1'
                 }];
@@ -64,7 +64,7 @@ describe('ConfigFactory', function () {
         });
 
         it('should create `Config` from `Config`', function() {
-            var config = configFactory.create(new Config().merge({
+            var config = configFactory.createConfig(new Config().merge({
                 foo: 'foo1'
             }));
 
@@ -76,7 +76,7 @@ describe('ConfigFactory', function () {
         });
 
         it('should create `Config[]` from `Config[]`', function() {
-            var configs = configFactory.create([new Config().merge({
+            var configs = configFactory.createConfig([new Config().merge({
                 foo: 'foo1'
             })]);
 

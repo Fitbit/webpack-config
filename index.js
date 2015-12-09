@@ -4,13 +4,13 @@ var Config = require('./lib/config'),
     ConfigEnvironment = require('./lib/configEnvironment'),
     ConfigNameResolver = require('./lib/configNameResolver'),
     ConfigPathResolver = require('./lib/configPathResolver'),
-    ConfigFactory = require('./lib/configFactory'),
+    DefaultConfigFactory = require('./lib/defaultConfigFactory'),
     ConfigLoader = require('./lib/configLoader'),
     ConfigFinder = require('./lib/configFinder'),
     ConfigVisitor = require('./lib/configVisitor');
 
 var configEnvironment = new ConfigEnvironment(),
-    configFactory = new ConfigFactory(),
+    configFactory = DefaultConfigFactory.INSTANCE,
     configNameResolver = new ConfigNameResolver(configEnvironment),
     configPathResolver = new ConfigPathResolver(configNameResolver),
     configLoader = new ConfigLoader(configFactory, configPathResolver),
@@ -30,7 +30,7 @@ Config.environment = configEnvironment;
 Config.nameResolver = configNameResolver;
 
 /**
- * @property {ConfigFinder}
+ * @property {ConfigFactory}
  * @static
  */
 Config.factory = configFactory;
