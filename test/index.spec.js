@@ -8,7 +8,7 @@ var _ = require('lodash'),
     ConfigLoader = require('../lib/configLoader'),
     ConfigFinder = require('../lib/configFinder'),
     ConfigVisitor = require('../lib/configVisitor'),
-    ConfigNameResolver = require('../lib/configNameResolver'),
+    DefaultConfigNameResolver = require('../lib/defaultConfigNameResolver'),
     ConfigPathResolver = require('../lib/configPathResolver');
 
 describe('Index', function () {
@@ -21,7 +21,7 @@ describe('Index', function () {
     it('should have static properties', function() {
         _.each({
             environment: ConfigEnvironment,
-            nameResolver: ConfigNameResolver,
+            nameResolver: DefaultConfigNameResolver,
             factory: DefaultConfigFactory,
             loader: ConfigLoader,
             finder: ConfigFinder,

@@ -3,11 +3,11 @@
 var path = require('path'),
     ConfigEnvironment = require('../lib/configEnvironment'),
     ConfigPathResolver = require('../lib/configPathResolver'),
-    ConfigNameResolver = require('../lib/configNameResolver');
+    DefaultConfigNameResolver = require('../lib/defaultConfigNameResolver');
 
 describe('ConfigPathResolver', function () {
     var configEnvironment = new ConfigEnvironment(),
-        configNameResolver = new ConfigNameResolver(configEnvironment),
+        configNameResolver = new DefaultConfigNameResolver(configEnvironment),
         configPathResolver = new ConfigPathResolver(configNameResolver);
 
     describe('#resolve()', function() {

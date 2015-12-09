@@ -5,12 +5,12 @@ var path = require('path'),
     DefaultConfigFactory = require('../lib/defaultConfigFactory'),
     ConfigLoader = require('../lib/configLoader'),
     ConfigEnvironment = require('../lib/configEnvironment'),
-    ConfigNameResolver = require('../lib/configNameResolver'),
+    DefaultConfigNameResolver = require('../lib/defaultConfigNameResolver'),
     ConfigPathResolver = require('../lib/configPathResolver');
 
 describe('ConfigLoader', function () {
     var configEnvironment = new ConfigEnvironment(),
-        configNameResolver = new ConfigNameResolver(configEnvironment),
+        configNameResolver = new DefaultConfigNameResolver(configEnvironment),
         configPathResolver = new ConfigPathResolver(configNameResolver),
         configFactory = new DefaultConfigFactory(),
         configLoader = new ConfigLoader(configFactory, configPathResolver),

@@ -5,13 +5,13 @@ var Config = require('../lib/config'),
     ConfigLoader = require('../lib/configLoader'),
     ConfigEnvironment = require('../lib/configEnvironment'),
     ConfigVisitor = require('../lib/configVisitor'),
-    ConfigNameResolver = require('../lib/configNameResolver'),
+    DefaultConfigNameResolver = require('../lib/defaultConfigNameResolver'),
     ConfigPathResolver = require('../lib/configPathResolver');
 
 describe('ConfigVisitor', function () {
     var configEnvironment = new ConfigEnvironment(),
         configFactory = new DefaultConfigFactory(),
-        configNameResolver = new ConfigNameResolver(configEnvironment),
+        configNameResolver = new DefaultConfigNameResolver(configEnvironment),
         configPathResolver = new ConfigPathResolver(configNameResolver),
         configLoader = new ConfigLoader(configFactory, configPathResolver),
         configVisitor = new ConfigVisitor(configLoader, configPathResolver);
