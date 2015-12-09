@@ -5,7 +5,7 @@ var _ = require('lodash'),
 
 describe('Config', function () {
     describe('#ctor()', function() {
-        it('should create config', function() {
+        it('should have mixins', function() {
             var config = new Config();
 
             _.each({
