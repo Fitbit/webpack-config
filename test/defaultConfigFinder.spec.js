@@ -7,19 +7,21 @@ var path = require('path'),
     DefaultConfigFactory = require('../lib/defaultConfigFactory'),
     DefaultConfigNameResolver = require('../lib/defaultConfigNameResolver'),
     DefaultConfigPathResolver = require('../lib/defaultConfigPathResolver'),
-    ConfigFinder = require('../lib/configFinder');
+    DefaultConfigFinder = require('../lib/defaultConfigFinder'),
+    ClosestConfigFinderStrategy = require('../lib/closestConfigFinderStrategy');
 
-describe('ConfigFinder', function () {
+describe('DefaultConfigFinder', function () {
     var configFactory = new DefaultConfigFactory(),
         configEnvironment = new ConfigEnvironment(),
         configNameResolver = new DefaultConfigNameResolver(configEnvironment),
         configPathResolver = new DefaultConfigPathResolver(configNameResolver),
         configLoader = new DefaultConfigLoader(configFactory, configPathResolver),
-        configFinder = new ConfigFinder(configLoader, configPathResolver);
+        closestConfigFinderStrategy = new ClosestConfigFinderStrategy(configLoader, configPathResolver),
+        defaultConfigFinder = new DefaultConfigFinder(closestConfigFinderStrategy);
 
-    describe('#closest()', function() {
+    describe('#findClosestConfig()', function() {
         it('should find config', function() {
-            var config = configFinder.closest('./test/fixtures/dir1/dir2/dir3/webpack.1.config.js');
+            var config = defaultConfigFinder.findClosestConfig('./test/fixtures/dir1/dir2/dir3/webpack.1.config.js');
 
             expect(config).toEqual(jasmine.any(Config));
             expect(config.toObject()).toEqual({
@@ -29,7 +31,7 @@ describe('ConfigFinder', function () {
         });
 
         it('should return `null` when config does not exist', function() {
-            var config = configFinder.closest('./webpack.config.js');
+            var config = defaultConfigFinder.findClosestConfig('./webpack.config.js');
 
             expect(config).toEqual(null);
         });

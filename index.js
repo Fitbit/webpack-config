@@ -6,7 +6,8 @@ var Config = require('./lib/config'),
     DefaultConfigPathResolver = require('./lib/defaultConfigPathResolver'),
     DefaultConfigFactory = require('./lib/defaultConfigFactory'),
     DefaultConfigLoader = require('./lib/defaultConfigLoader'),
-    ConfigFinder = require('./lib/configFinder'),
+    DefaultConfigFinder = require('./lib/defaultConfigFinder'),
+    ClosestConfigFinderStrategy = require('./lib/closestConfigFinderStrategy'),
     ConfigVisitor = require('./lib/configVisitor');
 
 var configEnvironment = new ConfigEnvironment(),
@@ -15,7 +16,8 @@ var configEnvironment = new ConfigEnvironment(),
     configPathResolver = new DefaultConfigPathResolver(configNameResolver),
     configLoader = new DefaultConfigLoader(configFactory, configPathResolver),
     configVisitor = new ConfigVisitor(configLoader, configPathResolver),
-    configFinder = new ConfigFinder(configLoader, configPathResolver);
+    closestConfigFinderStrategy = new ClosestConfigFinderStrategy(configLoader, configPathResolver),
+    configFinder = new DefaultConfigFinder(closestConfigFinderStrategy);
 
 /**
  * @property {ConfigEnvironment}

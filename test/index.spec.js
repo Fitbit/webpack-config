@@ -6,7 +6,7 @@ var _ = require('lodash'),
     ConfigEnvironment = require('../lib/configEnvironment'),
     DefaultConfigFactory = require('../lib/defaultConfigFactory'),
     DefaultConfigLoader = require('../lib/defaultConfigLoader'),
-    ConfigFinder = require('../lib/configFinder'),
+    DefaultConfigFinder = require('../lib/defaultConfigFinder'),
     ConfigVisitor = require('../lib/configVisitor'),
     DefaultConfigNameResolver = require('../lib/defaultConfigNameResolver'),
     DefaultConfigPathResolver = require('../lib/defaultConfigPathResolver');
@@ -24,7 +24,7 @@ describe('Index', function () {
             nameResolver: DefaultConfigNameResolver,
             factory: DefaultConfigFactory,
             loader: DefaultConfigLoader,
-            finder: ConfigFinder,
+            finder: DefaultConfigFinder,
             visitor: ConfigVisitor,
             pathResolver: DefaultConfigPathResolver,
             FILENAME: String
