@@ -4,12 +4,12 @@ var _ = require('lodash'),
     Index = require('../index'),
     Config = require('../lib/config'),
     ConfigEnvironment = require('../lib/configEnvironment'),
-    DefaultConfigFactory = require('../lib/defaultConfigFactory'),
-    DefaultConfigLoader = require('../lib/defaultConfigLoader'),
-    DefaultConfigFinder = require('../lib/defaultConfigFinder'),
+    ConfigFactory = require('../lib/configFactory'),
+    ConfigLoader = require('../lib/configLoader'),
+    ConfigFinder = require('../lib/configFinder'),
     ConfigVisitor = require('../lib/configVisitor'),
-    DefaultConfigNameResolver = require('../lib/defaultConfigNameResolver'),
-    DefaultConfigPathResolver = require('../lib/defaultConfigPathResolver');
+    ConfigNameResolver = require('../lib/configNameResolver'),
+    ConfigPathResolver = require('../lib/configPathResolver');
 
 describe('Index', function () {
     it('should export config', function() {
@@ -21,12 +21,12 @@ describe('Index', function () {
     it('should have static properties', function() {
         _.each({
             environment: ConfigEnvironment,
-            nameResolver: DefaultConfigNameResolver,
-            factory: DefaultConfigFactory,
-            loader: DefaultConfigLoader,
-            finder: DefaultConfigFinder,
+            nameResolver: ConfigNameResolver,
+            factory: ConfigFactory,
+            loader: ConfigLoader,
+            finder: ConfigFinder,
             visitor: ConfigVisitor,
-            pathResolver: DefaultConfigPathResolver,
+            pathResolver: ConfigPathResolver,
             FILENAME: String
         }, function(value, key) {
             expect(_.get(Index, key)).toEqual(jasmine.any(value));
