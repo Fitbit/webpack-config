@@ -1,7 +1,9 @@
 'use strict';
 
 var Config = require('./lib/config'),
-    ConfigEnvironment = require('./lib/configEnvironment'),
+    DefaultConfigEnvironment = require('./lib/defaultConfigEnvironment'),
+    InMemoryConfigEnvironment = require('./lib/inMemoryConfigEnvironment'),
+    ProcessEnvConfigEnvironment = require('./lib/processEnvConfigEnvironment'),
     DefaultConfigNameResolver = require('./lib/defaultConfigNameResolver'),
     DefaultConfigPathResolver = require('./lib/defaultConfigPathResolver'),
     DefaultConfigFactory = require('./lib/defaultConfigFactory'),
@@ -10,7 +12,9 @@ var Config = require('./lib/config'),
     ClosestConfigFinderStrategy = require('./lib/closestConfigFinderStrategy'),
     ConfigVisitor = require('./lib/configVisitor');
 
-var configEnvironment = new ConfigEnvironment(),
+var inMemoryConfigEnvironment = new InMemoryConfigEnvironment(),
+    processEnvConfigEnvironment = ProcessEnvConfigEnvironment.INSTANCE,
+    configEnvironment = new DefaultConfigEnvironment(inMemoryConfigEnvironment, processEnvConfigEnvironment),
     configFactory = DefaultConfigFactory.INSTANCE,
     configNameResolver = new DefaultConfigNameResolver(configEnvironment),
     configPathResolver = new DefaultConfigPathResolver(configNameResolver),

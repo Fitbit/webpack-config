@@ -3,7 +3,7 @@
 var path = require('path'),
     Config = require('../lib/config'),
     DefaultConfigLoader = require('../lib/defaultConfigLoader'),
-    ConfigEnvironment = require('../lib/configEnvironment'),
+    InMemoryConfigEnvironment = require('../lib/inMemoryConfigEnvironment'),
     DefaultConfigFactory = require('../lib/defaultConfigFactory'),
     DefaultConfigNameResolver = require('../lib/defaultConfigNameResolver'),
     DefaultConfigPathResolver = require('../lib/defaultConfigPathResolver'),
@@ -12,7 +12,7 @@ var path = require('path'),
 
 describe('DefaultConfigFinder', function () {
     var configFactory = new DefaultConfigFactory(),
-        configEnvironment = new ConfigEnvironment(),
+        configEnvironment = new InMemoryConfigEnvironment(),
         configNameResolver = new DefaultConfigNameResolver(configEnvironment),
         configPathResolver = new DefaultConfigPathResolver(configNameResolver),
         configLoader = new DefaultConfigLoader(configFactory, configPathResolver),

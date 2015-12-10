@@ -1,12 +1,12 @@
 'use strict';
 
 var path = require('path'),
-    ConfigEnvironment = require('../lib/configEnvironment'),
+    InMemoryConfigEnvironment = require('../lib/inMemoryConfigEnvironment'),
     DefaultConfigPathResolver = require('../lib/defaultConfigPathResolver'),
     DefaultConfigNameResolver = require('../lib/defaultConfigNameResolver');
 
 describe('DefaultConfigPathResolver', function () {
-    var configEnvironment = new ConfigEnvironment(),
+    var configEnvironment = new InMemoryConfigEnvironment(),
         configNameResolver = new DefaultConfigNameResolver(configEnvironment),
         configPathResolver = new DefaultConfigPathResolver(configNameResolver);
 

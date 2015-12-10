@@ -4,12 +4,12 @@ var path = require('path'),
     fs = require('fs-extra'),
     DefaultConfigFactory = require('../lib/defaultConfigFactory'),
     DefaultConfigLoader = require('../lib/defaultConfigLoader'),
-    ConfigEnvironment = require('../lib/configEnvironment'),
+    InMemoryConfigEnvironment = require('../lib/inMemoryConfigEnvironment'),
     DefaultConfigNameResolver = require('../lib/defaultConfigNameResolver'),
     DefaultConfigPathResolver = require('../lib/defaultConfigPathResolver');
 
 describe('DefaultConfigLoader', function () {
-    var configEnvironment = new ConfigEnvironment(),
+    var configEnvironment = new InMemoryConfigEnvironment(),
         configNameResolver = new DefaultConfigNameResolver(configEnvironment),
         configPathResolver = new DefaultConfigPathResolver(configNameResolver),
         configFactory = new DefaultConfigFactory(),

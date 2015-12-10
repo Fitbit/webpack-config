@@ -4,13 +4,13 @@ var webpack = require('webpack'),
     Config = require('../lib/config'),
     DefaultConfigFactory = require('../lib/defaultConfigFactory'),
     DefaultConfigLoader = require('../lib/defaultConfigLoader'),
-    ConfigEnvironment = require('../lib/configEnvironment'),
+    InMemoryConfigEnvironment = require('../lib/inMemoryConfigEnvironment'),
     ConfigVisitor = require('../lib/configVisitor'),
     DefaultConfigNameResolver = require('../lib/defaultConfigNameResolver'),
     DefaultConfigPathResolver = require('../lib/defaultConfigPathResolver');
 
 describe('ConfigExtendMixin', function () {
-    var configEnvironment = new ConfigEnvironment(),
+    var configEnvironment = new InMemoryConfigEnvironment(),
         configFactory = new DefaultConfigFactory(),
         configNameResolver = new DefaultConfigNameResolver(configEnvironment),
         configPathResolver = new DefaultConfigPathResolver(configNameResolver),

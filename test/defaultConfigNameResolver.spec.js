@@ -1,42 +1,46 @@
 'use strict';
 
-var ConfigEnvironment = require('../lib/configEnvironment'),
+var InMemoryConfigEnvironment = require('../lib/inMemoryConfigEnvironment'),
     DefaultConfigNameResolver = require('../lib/defaultConfigNameResolver');
 
 describe('DefaultConfigNameResolver', function () {
-    var configEnvironment = new ConfigEnvironment({
-            env: function() {
-                return this.node_env;
-            },
-            webpack_env: 'foo', // eslint-disable-line
-            node_env: 'bar', // eslint-disable-line
-            rev: 1
-        }),
+    var configEnvironment = new InMemoryConfigEnvironment(),
         configNameResolver = new DefaultConfigNameResolver(configEnvironment);
 
+    configEnvironment.setAll({
+        foo: 'foo',
+        bar: 'bar',
+        qux: function() {
+            return 'qux';
+        },
+        quux: function() {
+            return this.foo;
+        }
+    });
+
     describe('#resolveName()', function() {
-        it('should replace `[env]` with `bar`', function() {
-            var filename = configNameResolver.resolveName('webpack.[env].config.js');
-
-            expect(filename).toEqual('webpack.bar.config.js');
-        });
-
-        it('should replace `[webpack_env]` with `foo`', function() {
-            var filename = configNameResolver.resolveName('webpack.[webpack_env].config.js');
+        it('should replace `[foo]` with `foo`', function() {
+            var filename = configNameResolver.resolveName('webpack.[foo].config.js');
 
             expect(filename).toEqual('webpack.foo.config.js');
         });
 
-        it('should replace `[node_env]` with `bar`', function() {
-            var filename = configNameResolver.resolveName('webpack.[node_env].config.js');
+        it('should replace `[bar]` with `bar`', function() {
+            var filename = configNameResolver.resolveName('webpack.[bar].config.js');
 
             expect(filename).toEqual('webpack.bar.config.js');
         });
 
-        it('should replace `[rev]` with `1`', function() {
-            var filename = configNameResolver.resolveName('webpack.[rev].config.js');
+        it('should replace `[qux]` with `qux', function() {
+            var filename = configNameResolver.resolveName('webpack.[qux].config.js');
 
-            expect(filename).toEqual('webpack.1.config.js');
+            expect(filename).toEqual('webpack.qux.config.js');
         });
-    });
+
+        it('should replace `[quux]` with `foo', function() {
+            var filename = configNameResolver.resolveName('webpack.[quux].config.js');
+
+            expect(filename).toEqual('webpack.foo.config.js');
+        });
+});
 });
