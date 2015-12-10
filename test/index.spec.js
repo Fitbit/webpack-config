@@ -7,7 +7,6 @@ var _ = require('lodash'),
     ConfigFactory = require('../lib/configFactory'),
     ConfigLoader = require('../lib/configLoader'),
     ConfigFinder = require('../lib/configFinder'),
-    ConfigVisitor = require('../lib/configVisitor'),
     ConfigNameResolver = require('../lib/configNameResolver'),
     ConfigPathResolver = require('../lib/configPathResolver');
 
@@ -25,7 +24,6 @@ describe('Index', function () {
             factory: ConfigFactory,
             loader: ConfigLoader,
             finder: ConfigFinder,
-            visitor: ConfigVisitor,
             pathResolver: ConfigPathResolver,
             FILENAME: String
         }, function(value, key) {

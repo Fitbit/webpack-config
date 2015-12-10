@@ -9,8 +9,7 @@ var Config = require('./lib/config'),
     DefaultConfigFactory = require('./lib/defaultConfigFactory'),
     DefaultConfigLoader = require('./lib/defaultConfigLoader'),
     DefaultConfigFinder = require('./lib/defaultConfigFinder'),
-    ClosestConfigFinderStrategy = require('./lib/closestConfigFinderStrategy'),
-    ConfigVisitor = require('./lib/configVisitor');
+    ClosestConfigFinderStrategy = require('./lib/closestConfigFinderStrategy');
 
 var inMemoryConfigEnvironment = new InMemoryConfigEnvironment(),
     processEnvConfigEnvironment = ProcessEnvConfigEnvironment.INSTANCE,
@@ -19,7 +18,6 @@ var inMemoryConfigEnvironment = new InMemoryConfigEnvironment(),
     configNameResolver = new DefaultConfigNameResolver(configEnvironment),
     configPathResolver = new DefaultConfigPathResolver(configNameResolver),
     configLoader = new DefaultConfigLoader(configFactory, configPathResolver),
-    configVisitor = new ConfigVisitor(configLoader, configPathResolver),
     closestConfigFinderStrategy = new ClosestConfigFinderStrategy(configLoader, configPathResolver),
     configFinder = new DefaultConfigFinder(closestConfigFinderStrategy);
 
@@ -52,12 +50,6 @@ Config.loader = configLoader;
  * @static
  */
 Config.finder = configFinder;
-
-/**
- * @property {ConfigVisitor}
- * @static
- */
-Config.visitor = configVisitor;
 
 /**
  * @property {ConfigPathResolver}
