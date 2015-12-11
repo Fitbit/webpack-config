@@ -2,7 +2,7 @@
 
 var ProcessEnvConfigEnvironment = require('../lib/processEnvConfigEnvironment');
 
-describe('InMemoryConfigEnvironment', function () {
+describe('ProcessEnvConfigEnvironment', function () {
     var configEnvironment;
 
     beforeEach(function() {

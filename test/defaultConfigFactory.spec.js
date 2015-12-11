@@ -6,7 +6,7 @@ var Config = require('../lib/config'),
 describe('DefaultConfigFactory', function () {
     var configFactory = new DefaultConfigFactory();
 
-    describe('#create()', function() {
+    describe('#createConfig()', function() {
         it('should create `Config` from `Object`', function() {
             var config = configFactory.createConfig({
                 foo: 'foo1'
