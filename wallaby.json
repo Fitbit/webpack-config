@@ -7,7 +7,7 @@
   "tests": [
     "test/*spec.js"
   ],
-  "testFramework": "mocha",
+  "testFramework": "jasmine",
   "env": {
     "type": "node"
   }

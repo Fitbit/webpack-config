@@ -1,63 +1,48 @@
 'use strict';
 
 var Config = require('./lib/config'),
-    ConfigEnvironment = require('./lib/configEnvironment'),
-    ConfigNameResolver = require('./lib/configNameResolver'),
-    ConfigPathResolver = require('./lib/configPathResolver'),
-    ConfigFactory = require('./lib/configFactory'),
-    ConfigLoader = require('./lib/configLoader'),
-    ConfigFinder = require('./lib/configFinder'),
-    ConfigVisitor = require('./lib/configVisitor');
-
-var configEnvironment = new ConfigEnvironment(),
-    configFactory = new ConfigFactory(),
-    configNameResolver = new ConfigNameResolver(configEnvironment),
-    configPathResolver = new ConfigPathResolver(configNameResolver),
-    configLoader = new ConfigLoader(configFactory, configPathResolver),
-    configVisitor = new ConfigVisitor(configLoader, configPathResolver),
-    configFinder = new ConfigFinder(configLoader, configPathResolver);
+    DefaultConfigEnvironment = require('./lib/defaultConfigEnvironment'),
+    DefaultConfigNameResolver = require('./lib/defaultConfigNameResolver'),
+    DefaultConfigPathResolver = require('./lib/defaultConfigPathResolver'),
+    DefaultConfigFactory = require('./lib/defaultConfigFactory'),
+    DefaultConfigLoader = require('./lib/defaultConfigLoader'),
+    DefaultConfigFinder = require('./lib/defaultConfigFinder');
 
 /**
  * @property {ConfigEnvironment}
  * @static
  */
-Config.environment = configEnvironment;
+Config.environment = DefaultConfigEnvironment.INSTANCE;
 
 /**
  * @property {ConfigNameResolver}
  * @static
  */
-Config.nameResolver = configNameResolver;
+Config.nameResolver = DefaultConfigNameResolver.INSTANCE;
 
 /**
- * @property {ConfigFinder}
+ * @property {ConfigFactory}
  * @static
  */
-Config.factory = configFactory;
+Config.factory = DefaultConfigFactory.INSTANCE;
 
 /**
  * @property {ConfigLoader}
  * @static
  */
-Config.loader = configLoader;
+Config.loader = DefaultConfigLoader.INSTANCE;
 
 /**
  * @property {ConfigFinder}
  * @static
  */
-Config.finder = configFinder;
-
-/**
- * @property {ConfigVisitor}
- * @static
- */
-Config.visitor = configVisitor;
+Config.finder = DefaultConfigFinder.INSTANCE;
 
 /**
  * @property {ConfigPathResolver}
  * @static
  */
-Config.pathResolver = configPathResolver;
+Config.pathResolver = DefaultConfigPathResolver.INSTANCE;
 
 /**
  * @const {String} - `webpack.config.js`

@@ -1,10 +1,9 @@
 'use strict';
 
-var expect = require('expect.js'),
-    Config = require('../lib/config');
+var Config = require('../lib/config');
 
 describe('ConfigMergeMixin', function () {
-    context('#merge()', function() {
+    describe('#merge()', function() {
         it('should merge `options`', function() {
             var config = new Config();
 
@@ -19,7 +18,7 @@ describe('ConfigMergeMixin', function () {
                 },
                 bar: ['bar2']
             }, function() {
-                expect(this).to.be(config);
+                expect(this).toBe(config);
 
                 return {
                     foo: {
@@ -28,7 +27,7 @@ describe('ConfigMergeMixin', function () {
                 };
             });
 
-            expect(config.toObject()).to.eql({
+            expect(config.toObject()).toEqual({
                 foo: {
                     bar: 'bar3'
                 },

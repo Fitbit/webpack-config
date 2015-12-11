@@ -1,13 +1,12 @@
 'use strict';
 
-var expect = require('expect.js'),
+var _ = require('lodash'),
     Index = require('../index'),
     Config = require('../lib/config'),
     ConfigEnvironment = require('../lib/configEnvironment'),
     ConfigFactory = require('../lib/configFactory'),
     ConfigLoader = require('../lib/configLoader'),
     ConfigFinder = require('../lib/configFinder'),
-    ConfigVisitor = require('../lib/configVisitor'),
     ConfigNameResolver = require('../lib/configNameResolver'),
     ConfigPathResolver = require('../lib/configPathResolver');
 
@@ -15,17 +14,22 @@ describe('Index', function () {
     it('should export config', function() {
         var config = new Index();
 
-        expect(config).to.be.an(Config);
+        expect(config).toEqual(jasmine.any(Config));
     });
 
     it('should have static properties', function() {
-        expect(Index.environment).to.be.an(ConfigEnvironment);
-        expect(Index.nameResolver).to.be.an(ConfigNameResolver);
-        expect(Index.factory).to.be.an(ConfigFactory);
-        expect(Index.loader).to.be.an(ConfigLoader);
-        expect(Index.finder).to.be.an(ConfigFinder);
-        expect(Index.visitor).to.be.an(ConfigVisitor);
-        expect(Index.pathResolver).to.be.an(ConfigPathResolver);
-        expect(Index.FILENAME).to.eql('webpack.config.js');
+        _.each({
+            environment: ConfigEnvironment,
+            nameResolver: ConfigNameResolver,
+            factory: ConfigFactory,
+            loader: ConfigLoader,
+            finder: ConfigFinder,
+            pathResolver: ConfigPathResolver,
+            FILENAME: String
+        }, function(value, key) {
+            expect(_.get(Index, key)).toEqual(jasmine.any(value));
+        });
+
+        expect(Index.FILENAME).toEqual('webpack.config.js');
     });
 });

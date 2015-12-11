@@ -1,10 +1,9 @@
 'use strict';
 
-var expect = require('expect.js'),
-    Config = require('../lib/config');
+var Config = require('../lib/config');
 
 describe('ConfigCloneMixin', function () {
-    context('#clone()', function() {
+    describe('#clone()', function() {
         it('should return clone of `Config`', function() {
             var config = new Config();
 
@@ -14,9 +13,9 @@ describe('ConfigCloneMixin', function () {
 
             var clone = config.clone();
 
-            expect(config).not.to.be(clone);
-            expect(clone).to.be.a(Config);
-            expect(config.toObject()).to.eql({
+            expect(config).not.toBe(clone);
+            expect(clone).toEqual(jasmine.any(Config));
+            expect(config.toObject()).toEqual({
                 foo: 'foo1'
             });
         });
