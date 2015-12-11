@@ -2,60 +2,47 @@
 
 var Config = require('./lib/config'),
     DefaultConfigEnvironment = require('./lib/defaultConfigEnvironment'),
-    InMemoryConfigEnvironment = require('./lib/inMemoryConfigEnvironment'),
-    ProcessEnvConfigEnvironment = require('./lib/processEnvConfigEnvironment'),
     DefaultConfigNameResolver = require('./lib/defaultConfigNameResolver'),
     DefaultConfigPathResolver = require('./lib/defaultConfigPathResolver'),
     DefaultConfigFactory = require('./lib/defaultConfigFactory'),
     DefaultConfigLoader = require('./lib/defaultConfigLoader'),
-    DefaultConfigFinder = require('./lib/defaultConfigFinder'),
-    ClosestConfigFinderStrategy = require('./lib/closestConfigFinderStrategy');
-
-var inMemoryConfigEnvironment = new InMemoryConfigEnvironment(),
-    processEnvConfigEnvironment = ProcessEnvConfigEnvironment.INSTANCE,
-    configEnvironment = new DefaultConfigEnvironment(inMemoryConfigEnvironment, processEnvConfigEnvironment),
-    configFactory = DefaultConfigFactory.INSTANCE,
-    configNameResolver = new DefaultConfigNameResolver(configEnvironment),
-    configPathResolver = new DefaultConfigPathResolver(configNameResolver),
-    configLoader = new DefaultConfigLoader(configFactory, configPathResolver),
-    closestConfigFinderStrategy = new ClosestConfigFinderStrategy(configLoader, configPathResolver),
-    configFinder = new DefaultConfigFinder(closestConfigFinderStrategy);
+    DefaultConfigFinder = require('./lib/defaultConfigFinder');
 
 /**
  * @property {ConfigEnvironment}
  * @static
  */
-Config.environment = configEnvironment;
+Config.environment = DefaultConfigEnvironment.INSTANCE;
 
 /**
  * @property {ConfigNameResolver}
  * @static
  */
-Config.nameResolver = configNameResolver;
+Config.nameResolver = DefaultConfigNameResolver.INSTANCE;
 
 /**
  * @property {ConfigFactory}
  * @static
  */
-Config.factory = configFactory;
+Config.factory = DefaultConfigFactory.INSTANCE;
 
 /**
  * @property {ConfigLoader}
  * @static
  */
-Config.loader = configLoader;
+Config.loader = DefaultConfigLoader.INSTANCE;
 
 /**
  * @property {ConfigFinder}
  * @static
  */
-Config.finder = configFinder;
+Config.finder = DefaultConfigFinder.INSTANCE;
 
 /**
  * @property {ConfigPathResolver}
  * @static
  */
-Config.pathResolver = configPathResolver;
+Config.pathResolver = DefaultConfigPathResolver.INSTANCE;
 
 /**
  * @const {String} - `webpack.config.js`
