@@ -52,4 +52,10 @@ describe('ProcessEnvConfigEnvironment', function () {
             expect(configEnvironment.clear).toThrow();
         });
     });
+
+    describe('#getAll()', function() {
+        it('should return `process.env`', function() {
+            expect(configEnvironment.getAll()).toEqual(process.env);
+        });
+    });
 });

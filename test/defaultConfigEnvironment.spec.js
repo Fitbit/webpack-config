@@ -84,4 +84,18 @@ describe('DefaultConfigEnvironment', function () {
             expect(configEnvironment.keys()).toEqual(processEnvConfigEnvironment.keys());
         });
     });
+
+    describe('#getAll()', function() {
+        it('should return all key/value pairs', function() {
+            configEnvironment.setAll({
+                foo: 'foo',
+                bar: 'bar'
+            });
+
+            expect(configEnvironment.getAll()).toEqual({
+                foo: 'foo',
+                bar: 'bar'
+            });
+        });
+    });
 });
