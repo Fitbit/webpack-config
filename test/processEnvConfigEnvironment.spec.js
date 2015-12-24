@@ -2,7 +2,7 @@
 
 var ProcessEnvConfigEnvironment = require('../lib/processEnvConfigEnvironment');
 
-describe('InMemoryConfigEnvironment', function () {
+describe('ProcessEnvConfigEnvironment', function () {
     var configEnvironment;
 
     beforeEach(function() {
@@ -50,6 +50,12 @@ describe('InMemoryConfigEnvironment', function () {
     describe('#clear()', function() {
         it('should throw error', function() {
             expect(configEnvironment.clear).toThrow();
+        });
+    });
+
+    describe('#getAll()', function() {
+        it('should return `process.env`', function() {
+            expect(configEnvironment.getAll()).toEqual(process.env);
         });
     });
 });
