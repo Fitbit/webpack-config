@@ -37,7 +37,7 @@
     "coding-style": "mdreizin/coding-style",
     "eslint": "^2.1.0",
     "fs-extra": "^0.26.5",
-    "gitdown": "^2.4.0",
+    "gitdown": "1.3.0",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-jsdoc-to-markdown": "^1.2.1",
