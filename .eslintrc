@@ -1,6 +1,13 @@
 {
   "extends": [
-    "./node_modules/coding-style/base/eslintrc.json",
-    "./node_modules/coding-style/node/eslintrc.json"
-  ]
+    "mdreizin/base",
+    "mdreizin/node-es6",
+    "mdreizin/babel"
+  ],
+  "rules": {
+    "valid-jsdoc": ["error", {
+      "requireParamDescription": false,
+      "requireReturnDescription": false
+    }]
+  }
 }
