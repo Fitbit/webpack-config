@@ -54,6 +54,8 @@
   },
   "dependencies": {
     "babel-runtime": "^6.6.1",
+    "glob": "^7.0.3",
+    "glob2base": "0.0.12",
     "lodash": "^4.5.0",
     "recursive-iterator": "^2.0.0"
   }

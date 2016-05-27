@@ -1,16 +1,18 @@
 import {
-    existsSync
-} from 'fs';
-import {
-    dirname,
     sep,
     join,
     basename
 } from 'path';
 import {
+    trimEnd,
     dropRight,
     includes
 } from 'lodash';
+import {
+    sync,
+    Glob
+} from 'glob';
+import glob2base from 'glob2base';
 import ConfigLoader from './ConfigLoader';
 import ConfigPathResolver from './ConfigPathResolver';
 import ConfigServiceLocator from './ConfigServiceLocator';
@@ -26,6 +28,16 @@ const LOADER = new WeakMap();
  * @type {WeakMap}
  */
 const PATH_RESOLVER = new WeakMap();
+
+/**
+ * @private
+ * @type {Object}
+ */
+const GLOB_OPTIONS = {
+    cache: true,
+    dot: false,
+    silent: true
+};
 
 /**
  * @class
@@ -58,28 +70,41 @@ class ConfigFinder {
     }
 
     /**
-     * @param {String} filename
+     * @param {String} pattern
      * @param {String[]} [visited]
-     * @returns {Config|ConfigList}
+     * @returns {String[]}
      */
-    findClosestConfig(filename, visited = []) {
-        if (includes(visited, filename)) {
-            return null;
+    findClosestConfigs(pattern, visited = []) {
+        pattern = this.pathResolver.resolvePath(pattern);
+
+        if (includes(visited, pattern)) {
+            return [];
         }
 
-        filename = this.pathResolver.resolvePath(filename);
+        visited.push(pattern);
 
-        visited.push(filename);
+        const configs = this.findConfigs(pattern);
 
-        if (existsSync(filename)) {
-            return this.loader.loadConfig(filename);
+        if (configs.length > 0) {
+            return configs;
         }
 
-        const paths = dirname(filename).split(sep);
+        const cwd = glob2base(new Glob(pattern)),
+            paths = trimEnd(cwd, sep).split(sep);
 
-        filename = join(dropRight(paths).join(sep), basename(filename));
+        pattern = join(dropRight(paths).join(sep), basename(pattern));
 
-        return this.findClosestConfig(filename, visited);
+        return this.findClosestConfigs(pattern, visited);
+    }
+
+    /**
+     * @param {String} pattern
+     * @returns {String[]}
+     */
+    findConfigs(pattern) {
+        pattern = this.pathResolver.resolvePath(pattern);
+
+        return sync(pattern, GLOB_OPTIONS).map(filename => this.pathResolver.resolvePath(filename));
     }
 
     /**

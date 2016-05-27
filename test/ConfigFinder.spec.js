@@ -1,7 +1,6 @@
 import {
     resolve
 } from 'path';
-import Config from '../src/Config';
 import ConfigLoader from '../src/ConfigLoader';
 import ConfigEnvironment from '../src/ConfigEnvironment';
 import ConfigPatternCache from '../src/ConfigPatternCache';
@@ -35,27 +34,48 @@ describe('ConfigFinder', () => {
         });
     });
 
-    describe('#findClosestConfig()', () => {
-        it('should find config closet config', () => {
-            let config = finder.findClosestConfig('./test/fixtures/dir1/dir2/dir3/webpack.1.config.js');
+    describe('#findConfigs()', () => {
+        it('should find configs using pattern `./test/fixtures/webpack.*.config.js`', () => {
+            let configs = finder.findConfigs('./test/fixtures/webpack.*.config.js');
 
-            expect(config).toEqual(jasmine.any(Config));
-            expect(config.toObject()).toEqual({
-                filename: resolve('./test/fixtures/webpack.1.config.js'),
-                tags: [
-                    'config1',
-                    'config2',
-                    'config3',
-                    'config5',
-                    'config4'
-                ]
-            });
+            expect(configs).toEqual(jasmine.any(Array));
+            expect(configs.length).toEqual(5);
         });
 
-        it('should return `null` when closet config is not found', () => {
-            let config = finder.findClosestConfig('./webpack.config.js');
+        it('should find configs using pattern `./test/fixtures/webpack.1.config.js`', () => {
+            let configs = finder.findConfigs('./test/fixtures/webpack.1.config.js');
 
-            expect(config).toEqual(null);
+            expect(configs).toEqual(jasmine.any(Array));
+            expect(configs.length).toEqual(1);
+        });
+
+        it('should return `[]` when configs are not found', () => {
+            let configs = finder.findConfigs('./webpack.config.js');
+
+            expect(configs).toEqual([]);
+        });
+    });
+
+    describe('#findClosestConfigs()', () => {
+        it('should find closet configs using pattern `./test/fixtures/dir1/dir2/dir3/webpack.*.config.js`', () => {
+            let configs = finder.findClosestConfigs('./test/fixtures/dir1/dir2/dir3/webpack.*.config.js');
+
+            expect(configs).toEqual(jasmine.any(Array));
+            expect(configs.length).toEqual(5);
+        });
+
+        it('should find closet configs using pattern `./test/fixtures/webpack.1.config.js`', () => {
+            let configs = finder.findClosestConfigs('./test/fixtures/webpack.1.config.js');
+
+            expect(configs).toEqual(jasmine.any(Array));
+            expect(configs.length).toEqual(1);
+            expect(configs[0]).toEqual(resolve('./test/fixtures/webpack.1.config.js'));
+        });
+
+        it('should return `[]` when closet configs are not found', () => {
+            let configs = finder.findClosestConfigs('./webpack.config.js');
+
+            expect(configs).toEqual([]);
         });
     });
 });
