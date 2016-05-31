@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "clean": "rm -rf ./dist && rm -rf ./coverage && rm -rf ./docs",
-    "lint": "eslint ./ --cache",
+    "eslint": "eslint ./ --cache",
     "test": "babel-node ./jasmine.js",
     "build": "babel ./src --out-dir ./dist --source-maps",
     "cover": "babel-node ./node_modules/.bin/babel-istanbul cover jasmine JASMINE_CONFIG_PATH=./jasmine.json",
