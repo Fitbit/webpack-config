@@ -8,6 +8,6 @@ engines:
         - javascript
 ratings:
   paths:
-    - '**.js"'
+    - '**.js'
 exclude_paths:
   - 'node_modules/**'
