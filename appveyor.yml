@@ -3,7 +3,7 @@ build: off
 deploy: off
 cache:
   - node_modules -> package.json
-  - '%APPDATA%\npm-cache'
+  - '%APPDATA%\npm-cache -> package.json'
 branches:
   only:
     - master
