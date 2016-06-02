@@ -6,8 +6,8 @@
 [![Dependency Status](https://img.shields.io/david/mdreizin/webpack-config.svg?style=flat-square)](https://david-dm.org/mdreizin/webpack-config)
 [![Development Dependency Status](https://img.shields.io/david/dev/mdreizin/webpack-config.svg?style=flat-square)](https://david-dm.org/mdreizin/webpack-config#info=devDependencies)
 
-[webpack](https://github.com/webpack/webpack)-config
-====================================================
+webpack-config
+==============
 
 Helps to load, extend and merge webpack configs
 

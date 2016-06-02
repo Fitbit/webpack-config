@@ -6,8 +6,8 @@
 {"gitdown": "badge", "name": "david"}
 {"gitdown": "badge", "name": "david-dev"}
 
-[webpack](https://github.com/webpack/webpack)-config
-====================================================
+webpack-config
+==============
 
 Helps to load, extend and merge webpack configs
 
