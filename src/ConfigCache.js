@@ -54,6 +54,14 @@ class ConfigCache extends Map {
     }
 
     /**
+     * @example
+     * import {
+     *   ConfigCache
+     * } from 'webpack-config';
+     *
+     * ConfigCache.INSTANCE.persistent = false;
+     * @example
+     * WEBPACK_CONFIG_CACHE=false npm run build
      * @param {Boolean} value
      */
     set persistent(value) {
