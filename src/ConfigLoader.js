@@ -49,7 +49,6 @@ class ConfigLoader {
     }
 
     /**
-     * @abstract
      * @param {String} filename
      * @returns {Config|ConfigList}
      */
