@@ -1,6 +1,3 @@
-import {
-    isUndefined
-} from 'lodash';
 import ConfigEnvironment from './ConfigEnvironment';
 import ConfigPatternCache from './ConfigPatternCache';
 import ConfigServiceLocator from './ConfigServiceLocator';
@@ -52,16 +49,13 @@ class ConfigNameResolver {
      * @returns {String}
      */
     resolveName(filename) {
-        for (const key of this.environment.keys()) {
-            const pattern = this.patternCache.getOrSet(key),
-                value = this.environment.valueOf(key);
+        const options = {};
 
-            if (!isUndefined(value)) {
-                filename = filename.replace(pattern, value);
-            }
+        for (const key of this.environment.keys()) {
+            options[key] = this.environment.valueOf(key);
         }
 
-        return filename;
+        return this.patternCache.eval(filename, options);
     }
 
     /**

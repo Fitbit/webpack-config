@@ -1,19 +1,19 @@
 import {
-    escapeRegExp
+    template
 } from 'lodash';
 import ConfigServiceLocator from './ConfigServiceLocator';
 
 /**
  * @private
- * @type {String}
+ * @type {RegExp}
  */
-const BEGIN_TAG = '[';
+const DEFAULT_INTERPOLATE = /\[([\s\S]+?)]/g;
 
 /**
  * @private
- * @type {String}
+ * @type {WeakMap}
  */
-const END_TAG = ']';
+const INTERPOLATE = new WeakMap();
 
 /**
  * @class
@@ -21,6 +21,30 @@ const END_TAG = ']';
  * @private
  */
 class ConfigPatternCache extends Map {
+    /**
+     * @constructor
+     * @param {RegExp} [interpolate]
+     */
+    constructor(interpolate = DEFAULT_INTERPOLATE) {
+        super();
+
+        this.interpolate = interpolate;
+    }
+
+    /**
+     * @type {RegExp}
+     */
+    get interpolate() {
+        return INTERPOLATE.get(this);
+    }
+
+    /**
+     * @param {RegExp} value
+     */
+    set interpolate(value) {
+        INTERPOLATE.set(this, value);
+    }
+
     /**
      * @param {*} key
      * @returns {RegExp}
@@ -37,15 +61,28 @@ class ConfigPatternCache extends Map {
      * @override
      */
     set(key, value) {
-        return super.set(key, ConfigPatternCache.compile(value));
+        return super.set(key, this.compile(value));
     }
 
     /**
-     * @param {*} value
-     * @returns {RegExp}
+     * @param {String} value
+     * @param {Object} options
+     * @returns {String}
      */
-    static compile(value) {
-        return new RegExp(escapeRegExp(`${BEGIN_TAG}${value}${END_TAG}`));
+    eval(value, options = {}) {
+        const compiledTemplate = this.getOrSet(value);
+
+        return compiledTemplate(options);
+    }
+
+    /**
+     * @param {String} value
+     * @returns {Function}
+     */
+    compile(value) {
+        return template(value, {
+            interpolate: this.interpolate
+        });
     }
 
     /**

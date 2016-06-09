@@ -14,17 +14,17 @@ describe('ConfigPatternCache', () => {
     });
 
     describe('#set()', () => {
-        it('should always add compiled `RegExp`', () => {
+        it('should always add compiled `Function`', () => {
             patternCache.set('foo', 'foo');
             patternCache.set(1, 2);
 
-            expect(patternCache.get('foo')).toEqual(ConfigPatternCache.compile('foo'));
-            expect(patternCache.get(1)).toEqual(ConfigPatternCache.compile('2'));
+            expect(patternCache.get('foo')).toEqual(jasmine.any(Function));
+            expect(patternCache.get(1)).toEqual(jasmine.any(Function));
         });
     });
 
     describe('#getOrSet()', () => {
-        it('should `.compile` to `RegExp` once', () => {
+        it('should `.compile` to `Function` once', () => {
             let value1 = patternCache.getOrSet('value');
             let value2 = patternCache.getOrSet('value');
 
@@ -33,9 +33,29 @@ describe('ConfigPatternCache', () => {
         });
     });
 
-    describe('.compile()', () => {
-        it('should compile to `RegExp`', () => {
-            expect(ConfigPatternCache.compile('foo')).toEqual(jasmine.any(RegExp));
+    describe('#compile()', () => {
+        it('should compile to `Function`', () => {
+            expect(patternCache.compile('foo')).toEqual(jasmine.any(Function));
+        });
+    });
+
+    describe('#eval()', () => {
+        it('should replace `[foo]` with `bar`', () => {
+            const value = patternCache.eval('[foo]-[foo]', {
+                foo: 'bar'
+            });
+
+            expect(value).toEqual('bar-bar');
+        });
+
+        it('should replace `{foo}` with `bar`', () => {
+            patternCache.interpolate = /{([\s\S]+?)}/g;
+
+            const value = patternCache.eval('{foo}-{foo}', {
+                foo: 'bar'
+            });
+
+            expect(value).toEqual('bar-bar');
         });
     });
 });
