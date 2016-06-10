@@ -24,7 +24,7 @@ class ConfigDependencyIterator extends RecursiveIterator {
     /**
      * @override
      */
-    isLeaf(any) {
+    isLeaf(any) { /* istanbul ignore next: covered by `RecursiveIterator` */
         return super.isLeaf(any) && !any.children.length;
     }
 
