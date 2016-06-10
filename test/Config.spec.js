@@ -195,6 +195,54 @@ describe('Config', () => {
         });
     });
 
+    describe('#set()', () => {
+        it('should add `value` at `path`', () => {
+            config.set('foo', {
+                bar: 'bar1'
+            });
+
+            expect(config.toObject()).toEqual({
+                foo: {
+                    bar: 'bar1'
+                }
+            });
+        });
+    });
+
+    describe('#remove()', () => {
+        it('should remove `value` at `path`', () => {
+            config.merge({
+                foo: 'foo1'
+            }).remove('foo');
+
+            expect(config.toObject()).toEqual({});
+        });
+    });
+
+    describe('#get()', () => {
+        it('should get `value` at `path`', () => {
+            config.merge({
+                foo: 'foo1'
+            });
+
+            expect(config.get('foo')).toEqual('foo1');
+        });
+    });
+
+    describe('#has()', () => {
+        it('should return `true` if `path` exist', () => {
+            config.merge({
+                foo: 'foo1'
+            });
+
+            expect(config.has('foo')).toEqual(true);
+        });
+
+        it('should return `false` if `path` absent', () => {
+            expect(config.has('foo')).toEqual(false);
+        });
+    });
+
     describe('.initWith()', () => {
         it('should return `Config`', () => {
             config = Config.initWith({

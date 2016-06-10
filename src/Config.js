@@ -2,7 +2,11 @@ import {
     isFunction,
     isObject,
     defaultsDeep,
-    mergeWith
+    mergeWith,
+    set,
+    unset,
+    get,
+    has
 } from 'lodash';
 import ConfigLoader from './ConfigLoader';
 import ConfigTransform from './ConfigTransform';
@@ -228,7 +232,7 @@ class Config {
         const properties = {};
 
         for (const [key, value] of Object.entries(this)) {
-            if (this.hasOwnProperty(key)) {
+            if (this.has(key)) {
                 properties[key] = value;
             }
         }
@@ -236,6 +240,47 @@ class Config {
         delete properties[DEPENDENCY_TREE];
 
         return properties;
+    }
+
+    /**
+     * Sets `value` at `path`
+     * @param {String} path
+     * @param {*} value
+     * @return {Config}
+     */
+    set(path, value) {
+        set(this, path, value);
+
+        return this;
+    }
+
+    /**
+     * Gets `value` at `path`
+     * @param {String} path
+     * @return {*}
+     */
+    get(path) {
+        return get(this, path);
+    }
+
+    /**
+     * Removes `value` at `path`
+     * @param {String} path
+     * @return {Config}
+     */
+    remove(path) {
+        unset(this, path);
+
+        return this;
+    }
+
+    /**
+     * Checks if `value` exist at `path`
+     * @param {String} path
+     * @return {Boolean}
+     */
+    has(path) {
+        return has(this, path);
     }
 
     /**
