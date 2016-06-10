@@ -16,7 +16,7 @@ notifications:
 branches:
   only:
     - master
-    - ^greenkeeper.*
+    - /^greenkeeper.*$/
   except:
     - gh-pages
 before_install:
