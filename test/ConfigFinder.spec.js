@@ -36,7 +36,7 @@ describe('ConfigFinder', () => {
             let configs = finder.findConfigs('./test/fixtures/webpack.*.config.js');
 
             expect(configs).toEqual(jasmine.any(Array));
-            expect(configs.length).toEqual(5);
+            expect(configs.length).toEqual(6);
         });
 
         it('should find configs using pattern `./test/fixtures/webpack.1.config.js`', () => {
@@ -58,7 +58,7 @@ describe('ConfigFinder', () => {
             let configs = finder.findClosestConfigs('./test/fixtures/dir1/dir2/dir3/webpack.*.config.js');
 
             expect(configs).toEqual(jasmine.any(Array));
-            expect(configs.length).toEqual(5);
+            expect(configs.length).toEqual(6);
         });
 
         it('should find closet configs using pattern `./test/fixtures/webpack.1.config.js`', () => {

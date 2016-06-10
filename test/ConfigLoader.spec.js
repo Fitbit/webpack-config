@@ -1,3 +1,6 @@
+import {
+    resolve
+} from 'path';
 import ConfigLoader from '../src/ConfigLoader';
 import ConfigEnvironment from '../src/ConfigEnvironment';
 import ConfigPatternCache from '../src/ConfigPatternCache';
@@ -33,6 +36,12 @@ describe('ConfigLoader', () => {
             let config = loader.loadConfig('./test/fixtures/webpack.1.config.js');
 
             expect(config).toEqual(jasmine.any(Object));
+        });
+
+        it('should set `filename` if absent', () => {
+            let config = loader.loadConfig('./test/fixtures/webpack.6.config.js');
+
+            expect(config.filename).toEqual(resolve('./test/fixtures/webpack.6.config.js'));
         });
 
         it('should throw exception config is not found', () => {
