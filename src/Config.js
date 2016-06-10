@@ -320,6 +320,13 @@ class Config {
     }
 
     /**
+     * @returns {Object}
+     */
+    toJSON() {
+        return this.toObject();
+    }
+
+    /**
      * Initializes new {@link Config} with specific `values`
      * @param {...Object} values
      * @returns {Config}

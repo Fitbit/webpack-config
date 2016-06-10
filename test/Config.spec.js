@@ -243,6 +243,14 @@ describe('Config', () => {
         });
     });
 
+    describe('#toJSON()', () => {
+        it('should be used by `JSON.stringify`', () => {
+            config.set('foo', 1);
+
+            expect(JSON.stringify(config)).toEqual('{"foo":1}');
+        });
+    });
+
     describe('.initWith()', () => {
         it('should return `Config`', () => {
             config = Config.initWith({
