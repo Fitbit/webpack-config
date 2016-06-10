@@ -5,7 +5,6 @@ import ConfigEnvironment from '../src/ConfigEnvironment';
 import ConfigPatternCache from '../src/ConfigPatternCache';
 import ConfigNameResolver from '../src/ConfigNameResolver';
 import ConfigPathResolver from '../src/ConfigPathResolver';
-import ConfigCache from '../src/ConfigCache';
 import ConfigFinder from '../src/ConfigFinder';
 
 describe('ConfigFinder', () => {
@@ -13,7 +12,6 @@ describe('ConfigFinder', () => {
         patternCache,
         nameResolver,
         pathResolver,
-        cache,
         finder;
 
     beforeEach(() => {
@@ -21,7 +19,6 @@ describe('ConfigFinder', () => {
         patternCache = new ConfigPatternCache();
         nameResolver = new ConfigNameResolver(environment, patternCache);
         pathResolver = new ConfigPathResolver(nameResolver);
-        cache = new ConfigCache(environment);
         finder = new ConfigFinder(pathResolver);
     });
 
