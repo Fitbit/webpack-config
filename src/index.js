@@ -1,4 +1,5 @@
 import Config from './Config';
+import ConfigBuilder from './ConfigBuilder';
 import ConfigCache from './ConfigCache';
 import ConfigLoader from './ConfigLoader';
 import ConfigFinder from './ConfigFinder';
@@ -22,6 +23,10 @@ export {
      * @type {Config}
      */
     Config,
+    /**
+     * @type {ConfigBuilder}
+     */
+    ConfigBuilder,
     /**
      * @type {ConfigPatternCache}
      */
