@@ -13,15 +13,8 @@ import {
     Glob
 } from 'glob';
 import glob2base from 'glob2base';
-import ConfigLoader from './ConfigLoader';
 import ConfigPathResolver from './ConfigPathResolver';
 import ConfigServiceLocator from './ConfigServiceLocator';
-
-/**
- * @private
- * @type {WeakMap}
- */
-const LOADER = new WeakMap();
 
 /**
  * @private
@@ -45,20 +38,10 @@ const GLOB_OPTIONS = {
 class ConfigFinder {
     /**
      * @constructor
-     * @param {ConfigLoader} loader
      * @param {ConfigPathResolver} pathResolver
      */
-    constructor(loader, pathResolver) {
-        LOADER.set(this, loader);
+    constructor(pathResolver) {
         PATH_RESOLVER.set(this, pathResolver);
-    }
-
-    /**
-     * @readonly
-     * @type {ConfigLoader}
-     */
-    get loader() {
-        return LOADER.get(this);
     }
 
     /**
@@ -112,7 +95,7 @@ class ConfigFinder {
      * @type {ConfigFinder}
      */
     static get INSTANCE() {
-        return ConfigServiceLocator.getOrCreate(this, () => new ConfigFinder(ConfigLoader.INSTANCE, ConfigPathResolver.INSTANCE));
+        return ConfigServiceLocator.getOrCreate(this, () => new ConfigFinder(ConfigPathResolver.INSTANCE));
     }
 }
 

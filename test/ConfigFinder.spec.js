@@ -1,7 +1,6 @@
 import {
     resolve
 } from 'path';
-import ConfigLoader from '../src/ConfigLoader';
 import ConfigEnvironment from '../src/ConfigEnvironment';
 import ConfigPatternCache from '../src/ConfigPatternCache';
 import ConfigNameResolver from '../src/ConfigNameResolver';
@@ -15,7 +14,6 @@ describe('ConfigFinder', () => {
         nameResolver,
         pathResolver,
         cache,
-        loader,
         finder;
 
     beforeEach(() => {
@@ -24,8 +22,7 @@ describe('ConfigFinder', () => {
         nameResolver = new ConfigNameResolver(environment, patternCache);
         pathResolver = new ConfigPathResolver(nameResolver);
         cache = new ConfigCache(environment);
-        loader = new ConfigLoader(pathResolver, cache);
-        finder = new ConfigFinder(loader, pathResolver);
+        finder = new ConfigFinder(pathResolver);
     });
 
     describe('.INSTANCE', () => {
