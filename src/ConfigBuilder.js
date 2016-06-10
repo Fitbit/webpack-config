@@ -27,6 +27,20 @@ const PENDING_CONFIG = new WeakMap();
 const evalHook = (path, hook, current, previous) => isFunction(hook) ? hook(path, current, previous) : hook;
 
 /**
+ * @private
+ * @param {WeakMap} map
+ * @param {*} context
+ * @returns {Config}
+ */
+const getOrSetConfig = (map, context) => {
+    if (!map.has(context)) {
+        map.set(context, new Config());
+    }
+
+    return map.get(context);
+};
+
+/**
  * @class
  */
 class ConfigBuilder {
@@ -36,11 +50,7 @@ class ConfigBuilder {
      * @type {Config|ConfigList}
      */
     get config() {
-        if (!CONFIG.has(this)) {
-            CONFIG.set(this, new Config());
-        }
-
-        return CONFIG.get(this);
+        return getOrSetConfig(CONFIG, this);
     }
 
     /**
@@ -48,11 +58,7 @@ class ConfigBuilder {
      * @type {Config}
      */
     get pendingConfig() {
-        if (!PENDING_CONFIG.has(this)) {
-            PENDING_CONFIG.set(this, new Config());
-        }
-
-        return PENDING_CONFIG.get(this);
+        return getOrSetConfig(PENDING_CONFIG, this);
     }
 
     /**
