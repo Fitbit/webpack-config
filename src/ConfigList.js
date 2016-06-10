@@ -6,7 +6,7 @@ import Config from './Config';
  */
 class ConfigList extends Array {
     /**
-     * @param {...Object} values
+     * @param {...Object[]} values
      * @returns {ConfigList}
      */
     static initWith(...values) {

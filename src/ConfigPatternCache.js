@@ -18,12 +18,11 @@ const INTERPOLATE = new WeakMap();
 /**
  * @class
  * @extends {Map}
- * @private
  */
 class ConfigPatternCache extends Map {
     /**
      * @constructor
-     * @param {RegExp} [interpolate]
+     * @param {RegExp} [interpolate=/\[([\s\S]+?)]/g]
      */
     constructor(interpolate = DEFAULT_INTERPOLATE) {
         super();
@@ -59,6 +58,9 @@ class ConfigPatternCache extends Map {
 
     /**
      * @override
+     * @param {*} key
+     * @param {String} value
+     * @returns {RegExp}
      */
     set(key, value) {
         return super.set(key, this.compile(value));

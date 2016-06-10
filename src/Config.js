@@ -243,7 +243,16 @@ class Config {
     }
 
     /**
-     * Sets `value` at `path`
+     * @example
+     * import Config from 'webpack-config';
+     *
+     * let config = new Config();
+     *
+     * config.set('debug', true);
+     *
+     * console.log(config.toObject());
+     * // Object { debug: true }
+     * @description Sets `value` at `path`
      * @param {String} path
      * @param {*} value
      * @return {Config}
@@ -255,7 +264,16 @@ class Config {
     }
 
     /**
-     * Gets `value` at `path`
+     * @example
+     * import Config from 'webpack-config';
+     *
+     * let config = new Config();
+     *
+     * config.set('debug', true);
+     *
+     * console.log(config.get('debug'));
+     * // true
+     * @description Gets `value` at `path`
      * @param {String} path
      * @return {*}
      */
@@ -264,7 +282,16 @@ class Config {
     }
 
     /**
-     * Removes `value` at `path`
+     * @example
+     * import Config from 'webpack-config';
+     *
+     * let config = new Config();
+     *
+     * config.set('debug', true).remove('debug');
+     *
+     * console.log(config.get('debug'));
+     * // undefined
+     * @description Removes `value` at `path`
      * @param {String} path
      * @return {Config}
      */
@@ -275,7 +302,16 @@ class Config {
     }
 
     /**
-     * Checks if `value` exist at `path`
+     * @example
+     * import Config from 'webpack-config';
+     *
+     * let config = new Config();
+     *
+     * config.set('debug', true);
+     *
+     * console.log(config.has('debug'));
+     * // true
+     * @description Checks if `value` exist at `path`
      * @param {String} path
      * @return {Boolean}
      */
