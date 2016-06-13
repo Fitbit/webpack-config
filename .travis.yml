@@ -14,9 +14,6 @@ cache:
 notifications:
   email: false
 branches:
-  only:
-    - master
-    - /^greenkeeper.*$/
   except:
     - gh-pages
 before_install:
