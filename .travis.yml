@@ -1,6 +1,7 @@
 sudo: false
 language: node_js
 node_js:
+  - 6
   - 5
   - 4
 matrix:
@@ -14,6 +15,9 @@ cache:
 notifications:
   email: false
 branches:
+  only:
+    - master
+    - /^greenkeeper.*$/
   except:
     - gh-pages
 before_install:
