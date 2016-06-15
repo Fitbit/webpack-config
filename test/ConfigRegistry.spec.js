@@ -17,10 +17,10 @@ describe('ConfigRegistry', () => {
         it('should add `value` if absent', () => {
             let value = new Date('2016-05-13'),
                 key = Object.create(null),
-                factory = () => { return value; };
+                valueLoader = () => { return value; };
 
-            expect(registry.getOrSet(key, factory)).toEqual(value);
-            expect(registry.getOrSet(key, factory)).toEqual(value);
+            expect(registry.getOrSet(key, valueLoader)).toEqual(value);
+            expect(registry.getOrSet(key, valueLoader)).toEqual(value);
         });
     });
 });
