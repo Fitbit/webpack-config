@@ -10,6 +10,7 @@ describe('ConfigRegistry', () => {
     describe('.INSTANCE', () => {
         it('should return instance of `ConfigRegistry`', () => {
             expect(ConfigRegistry.INSTANCE).toEqual(jasmine.any(ConfigRegistry));
+            expect(ConfigRegistry.INSTANCE).toBe(ConfigRegistry.INSTANCE);
         });
     });
 

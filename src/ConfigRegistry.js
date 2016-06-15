@@ -1,4 +1,10 @@
 /**
+ * @private
+ * @type {WeakMap}
+ */
+const INSTANCE = new WeakMap();
+
+/**
  * @class
  * @extends {Map}
  */
@@ -21,7 +27,11 @@ class ConfigRegistry extends Map {
      * @type {ConfigRegistry}
      */
     static get INSTANCE() {
-        return new ConfigRegistry();
+        if (!INSTANCE.has(this)) {
+            INSTANCE.set(this, new ConfigRegistry());
+        }
+
+        return INSTANCE.get(this);
     }
 }
 
