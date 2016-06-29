@@ -131,7 +131,13 @@ class Config {
      * @example
      * import Config from 'webpack-config';
      *
-     * export default new Config().extend('npm-module-name/webpack.config.js');
+     * // Loads from `node_modules/react-redux/webpack.config.js`
+     * export default new Config().extend('react-redux/webpack.config.js');
+     * @example
+     * import Config from 'webpack-config';
+     *
+     * // Loads from `node_modules/webpack-config-my/webpack.config.js`
+     * export default new Config().extend('my/webpack.config.js');
      * @example
      * import Config from 'webpack-config';
      *

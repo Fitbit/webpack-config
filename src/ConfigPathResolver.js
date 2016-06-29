@@ -1,4 +1,7 @@
 import {
+    isError
+} from 'lodash';
+import {
     resolve
 } from 'path';
 import ConfigNameResolver from './ConfigNameResolver';
@@ -10,6 +13,12 @@ import ConfigRegistry from './ConfigRegistry';
  */
 const NAME_RESOLVER = new WeakMap();
 
+/**
+ * @private
+ * @type {String}
+ */
+const MODULE_PREFIX = 'webpack-config';
+
 /* eslint-disable valid-jsdoc */
 /**
  * @private
@@ -17,11 +26,30 @@ const NAME_RESOLVER = new WeakMap();
  */
 const DEFAULT_RESOLVERS = [
     /**
-     * `require('<npm-module-name>')`
+     * `require('<module-name>')`
      * @param {String} filename
-     * @returns {String}
+     * @returns {String|Error}
      */
-    filename => require.resolve(filename),
+    filename => {
+        try {
+            return require.resolve(filename);
+        } catch (err) {
+            return err;
+        }
+    },
+
+    /**
+     * `require('webpack-config-<name>')`
+     * @param {String} filename
+     * @returns {String|Error}
+     */
+    filename => {
+        try {
+            return require.resolve(`${MODULE_PREFIX}-${filename}`);
+        } catch (err) {
+            return err;
+        }
+    },
 
     /**
      * `path.resolve('<file-name>')`
@@ -75,11 +103,14 @@ class ConfigPathResolver {
     resolvePath(filename) {
         filename = this.nameResolver.resolveName(filename);
 
-        this.resolvers.forEach(resolver => {
-            try {
-                filename = resolver(filename);
-            } catch (e) {} // eslint-disable-line no-empty
-        });
+        for (const resolver of this.resolvers) {
+            const value = resolver(filename);
+
+            if (!isError(value)) {
+                filename = value;
+                break;
+            }
+        }
 
         return filename;
     }
