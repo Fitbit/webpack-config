@@ -21,8 +21,8 @@ branches:
   except:
     - gh-pages
 before_install:
-  - git config --global user.name "$COMMIT_AUTHOR_NAME"
-  - git config --global user.email "$COMMIT_AUTHOR_EMAIL"
+  - git config --global user.name "$GH_USER_NAME"
+  - git config --global user.email "$GH_USER_EMAIL"
 before_script:
   - npm prune
 script:
