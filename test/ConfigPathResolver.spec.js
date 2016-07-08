@@ -6,7 +6,7 @@ import ConfigPatternCache from '../src/ConfigPatternCache';
 import ConfigNameResolver from '../src/ConfigNameResolver';
 import ConfigPathResolver from '../src/ConfigPathResolver';
 
-describe('ConfigNameResolver', () => {
+describe('ConfigPathResolver', () => {
     let environment,
         patternCache,
         nameResolver,

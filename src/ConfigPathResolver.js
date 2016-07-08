@@ -1,4 +1,5 @@
 import {
+    isString,
     isError
 } from 'lodash';
 import {
@@ -104,9 +105,10 @@ class ConfigPathResolver {
         filename = this.nameResolver.resolveName(filename);
 
         for (const resolver of this.resolvers) {
-            const value = resolver(filename);
+            const value = resolver(filename),
+                throwsError = isError(value) || value instanceof Error;
 
-            if (!isError(value)) {
+            if (isString(value) && !throwsError) {
                 filename = value;
                 break;
             }
