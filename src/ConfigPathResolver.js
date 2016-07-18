@@ -28,12 +28,12 @@ const MODULE_PREFIX = 'webpack-config';
 const DEFAULT_RESOLVERS = [
     /**
      * `require('<module-name>')`
-     * @param {String} filename
+     * @param {String} value
      * @returns {String|Error}
      */
-    filename => {
+    value => {
         try {
-            return require.resolve(filename);
+            return require.resolve(value);
         } catch (err) {
             return err;
         }
@@ -41,12 +41,12 @@ const DEFAULT_RESOLVERS = [
 
     /**
      * `require('webpack-config-<name>')`
-     * @param {String} filename
+     * @param {String} value
      * @returns {String|Error}
      */
-    filename => {
+    value => {
         try {
-            return require.resolve(`${MODULE_PREFIX}-${filename}`);
+            return require.resolve(`${MODULE_PREFIX}-${value}`);
         } catch (err) {
             return err;
         }
@@ -54,10 +54,10 @@ const DEFAULT_RESOLVERS = [
 
     /**
      * `path.resolve('<file-name>')`
-     * @param {String} filename
+     * @param {String} value
      * @returns {String}
      */
-    filename => resolve(filename)
+    value => resolve(value)
 ];
 /* eslint-enable valid-jsdoc */
 
@@ -98,23 +98,23 @@ class ConfigPathResolver {
     }
 
     /**
-     * @param {String} filename
+     * @param {String} value
      * @returns {String}
      */
-    resolvePath(filename) {
-        filename = this.nameResolver.resolveName(filename);
+    resolve(value) {
+        value = this.nameResolver.resolve(value);
 
         for (const resolver of this.resolvers) {
-            const value = resolver(filename),
+            const resolvedValue = resolver(value),
                 throwsError = isError(value) || value instanceof Error;
 
-            if (isString(value) && !throwsError) {
-                filename = value;
+            if (isString(resolvedValue) && !throwsError) {
+                value = resolvedValue;
                 break;
             }
         }
 
-        return filename;
+        return value;
     }
 
     /**

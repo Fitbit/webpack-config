@@ -21,9 +21,9 @@ class ConfigNameResolver {
     /**
      * @constructor
      * @param {ConfigEnvironment} environment
-     * @param {ConfigPatternCache} patternCache
+     * @param {ConfigPatternCache} [patternCache]
      */
-    constructor(environment, patternCache) {
+    constructor(environment, patternCache = new ConfigPatternCache()) {
         ENVIRONMENT.set(this, environment);
         PATTERN_CACHE.set(this, patternCache);
     }
@@ -45,17 +45,17 @@ class ConfigNameResolver {
     }
 
     /**
-     * @param {String} filename
+     * @param {String} value
      * @returns {String}
      */
-    resolveName(filename) {
+    resolve(value) {
         const options = {};
 
         for (const key of this.environment.keys()) {
             options[key] = this.environment.valueOf(key);
         }
 
-        return this.patternCache.eval(filename, options);
+        return this.patternCache.eval(value, options);
     }
 
     /**

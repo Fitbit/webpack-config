@@ -58,7 +58,7 @@ class ConfigFinder {
      * @returns {String[]}
      */
     findClosestConfigs(pattern, visited = []) {
-        pattern = this.pathResolver.resolvePath(pattern);
+        pattern = this.pathResolver.resolve(pattern);
 
         if (includes(visited, pattern)) {
             return [];
@@ -85,9 +85,9 @@ class ConfigFinder {
      * @returns {String[]}
      */
     findConfigs(pattern) {
-        pattern = this.pathResolver.resolvePath(pattern);
+        pattern = this.pathResolver.resolve(pattern);
 
-        return sync(pattern, GLOB_OPTIONS).map(filename => this.pathResolver.resolvePath(filename));
+        return sync(pattern, GLOB_OPTIONS).map(filename => this.pathResolver.resolve(filename));
     }
 
     /**

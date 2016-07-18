@@ -2,22 +2,19 @@ import {
     resolve
 } from 'path';
 import ConfigEnvironment from '../src/ConfigEnvironment';
-import ConfigPatternCache from '../src/ConfigPatternCache';
 import ConfigNameResolver from '../src/ConfigNameResolver';
 import ConfigPathResolver from '../src/ConfigPathResolver';
 import ConfigFinder from '../src/ConfigFinder';
 
 describe('ConfigFinder', () => {
     let environment,
-        patternCache,
         nameResolver,
         pathResolver,
         finder;
 
     beforeEach(() => {
         environment = new ConfigEnvironment();
-        patternCache = new ConfigPatternCache();
-        nameResolver = new ConfigNameResolver(environment, patternCache);
+        nameResolver = new ConfigNameResolver(environment);
         pathResolver = new ConfigPathResolver(nameResolver);
         finder = new ConfigFinder(pathResolver);
     });

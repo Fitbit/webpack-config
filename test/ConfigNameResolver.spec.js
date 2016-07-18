@@ -1,16 +1,13 @@
 import ConfigEnvironment from '../src/ConfigEnvironment';
-import ConfigPatternCache from '../src/ConfigPatternCache';
 import ConfigNameResolver from '../src/ConfigNameResolver';
 
 describe('ConfigNameResolver', () => {
     let environment,
-        patternCache,
         nameResolver;
 
     beforeEach(() => {
         environment = new ConfigEnvironment();
-        patternCache = new ConfigPatternCache();
-        nameResolver = new ConfigNameResolver(environment, patternCache);
+        nameResolver = new ConfigNameResolver(environment);
     });
 
     describe('.INSTANCE', () => {
@@ -19,7 +16,7 @@ describe('ConfigNameResolver', () => {
         });
     });
 
-    describe('#resolveName()', () => {
+    describe('#resolve()', () => {
         beforeEach(() => {
             environment.setAll({
                 foo1: 'foo1',
@@ -29,26 +26,26 @@ describe('ConfigNameResolver', () => {
             });
         });
 
-        it('should replace `[foo1]` with `foo1`', () => {
-            let filename = nameResolver.resolveName('webpack.[foo1].config.js');
+        it('should resolve `[foo1]` with `foo1`', () => {
+            let filename = nameResolver.resolve('webpack.[foo1].config.js');
 
             expect(filename).toEqual('webpack.foo1.config.js');
         });
 
-        it('should replace `[bar1]` with `bar1`', () => {
-            let filename = nameResolver.resolveName('webpack.[bar1].config.js');
+        it('should resolve `[bar1]` with `bar1`', () => {
+            let filename = nameResolver.resolve('webpack.[bar1].config.js');
 
             expect(filename).toEqual('webpack.bar1.config.js');
         });
 
-        it('should replace `[foo2]` with `foo2', () => {
-            let filename = nameResolver.resolveName('webpack.[foo2].config.js');
+        it('should resolve `[foo2]` with `foo2', () => {
+            let filename = nameResolver.resolve('webpack.[foo2].config.js');
 
             expect(filename).toEqual('webpack.foo2.config.js');
         });
 
-        it('should replace `[bar2]` with `foo2', () => {
-            let filename = nameResolver.resolveName('webpack.[bar2].config.js');
+        it('should resolve `[bar2]` with `foo2', () => {
+            let filename = nameResolver.resolve('webpack.[bar2].config.js');
 
             expect(filename).toEqual('webpack.foo2.config.js');
         });
