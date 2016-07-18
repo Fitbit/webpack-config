@@ -18,14 +18,14 @@ const EXCLUDE_FIELDS = [
  * @param {Config} config
  * @returns {Config}
  */
-let DEFAULT_TRANSFORM = config => config;
+const DEFAULT_TRANSFORM = config => config;
 
 /**
  * @private
  * @param {Config} config
  * @returns {config}
  */
-let CLEANUP_TRANSFORM = config => {
+const CLEANUP_TRANSFORM = config => {
     EXCLUDE_FIELDS.forEach(function(name) {
         delete config[name];
     });
@@ -38,7 +38,7 @@ let CLEANUP_TRANSFORM = config => {
  * @extends {Map}
  * @private
  */
-class ConfigTransform extends Map {
+class ConfigExtendTransform extends Map {
     /**
      * @override
      * @param {*} key
@@ -46,7 +46,7 @@ class ConfigTransform extends Map {
      * @throws {ReferenceError}
      * @returns {Function[]}
      */
-    set(key, value = ConfigTransform.DEFAULT) {
+    set(key, value = ConfigExtendTransform.DEFAULT) {
         if (!isFunction(value)) {
             throw new ReferenceError(`\`${value}\` is not \`Function\``);
         }
@@ -57,14 +57,14 @@ class ConfigTransform extends Map {
             values.pop();
         }
 
-        values.push(value, ConfigTransform.CLEANUP);
+        values.push(value, ConfigExtendTransform.CLEANUP);
 
         return super.set(key, values);
     }
 
     /**
-     * @param {...(String|Object<String,Function>|Object<String,Function[]>)} values
-     * @returns {ConfigTransform}
+     * @param {...ConfigExtendOptions} values
+     * @returns {ConfigExtendTransform}
      */
     setAll(...values) {
         values.forEach(obj => {
@@ -85,6 +85,7 @@ class ConfigTransform extends Map {
     }
 
     /**
+     * @readonly
      * @type {Function}
      */
     static get DEFAULT() {
@@ -92,6 +93,7 @@ class ConfigTransform extends Map {
     }
 
     /**
+     * @readonly
      * @type {Function}
      */
     static get CLEANUP() {
@@ -99,12 +101,12 @@ class ConfigTransform extends Map {
     }
 
     /**
-     * @param {...(String|Object<String,Function>|Object<String,Function[]>)} values
-     * @returns {ConfigTransform}
+     * @param {...ConfigExtendOptions} values
+     * @returns {ConfigExtendTransform}
      */
     static initWith(...values) {
-        return new ConfigTransform().setAll(...values);
+        return new ConfigExtendTransform().setAll(...values);
     }
 }
 
-export default ConfigTransform;
+export default ConfigExtendTransform;

@@ -9,8 +9,27 @@ import {
     has
 } from 'lodash';
 import ConfigLoader from './ConfigLoader';
-import ConfigTransform from './ConfigTransform';
+import ConfigExtendTransform from './ConfigExtendTransform';
 import ConfigDependency from './ConfigDependency';
+
+/**
+ * @function
+ * @name ConfigTransform
+ * @param {Config} config
+ * @returns {*}
+ */
+
+/**
+ * @typedef {Object|ConfigTransform} ConfigDefaultsOptions
+ */
+
+/**
+ * @typedef {Object|ConfigTransform} ConfigMergeOptions
+ */
+
+/**
+ * @typedef {String|Object<String,ConfigTransform>|Object<String,ConfigTransform[]>} ConfigExtendOptions
+ */
 
 /**
  * @private
@@ -75,7 +94,7 @@ class Config {
      *     };
      * });
      * @description Adds `values` if they are missing
-     * @param {...(Object|Function)} values
+     * @param {...ConfigDefaultsOptions} values
      * @returns {Config}
      */
     defaults(...values) {
@@ -106,7 +125,7 @@ class Config {
      *     };
      * });
      * @description Merges `values`
-     * @param {...(Object|Function)} values
+     * @param {...ConfigMergeOptions} values
      * @returns {Config}
      */
     merge(...values) {
@@ -163,11 +182,11 @@ class Config {
      *    }]
      * });
      * @description Helps to extend config using local file or shareable config file which should be hosted under `node_modules`
-     * @param {...(String|Object<String,Function>|Object<String,Function[]>)} values
+     * @param {...ConfigExtendTransform} values
      * @returns {Config}
      */
     extend(...values) {
-        let map = ConfigTransform.initWith(...values);
+        const map = ConfigExtendTransform.initWith(...values);
 
         for (const [key, value] of map.entries()) {
             const config = ConfigLoader.INSTANCE.loadConfig(key);

@@ -73,7 +73,7 @@ class ConfigBuilder {
 
     /**
      * @see {@link Config#merge}
-     * @param {...(Object|Function)} values
+     * @param {...ConfigMergeOptions} values
      * @returns {ConfigBuilder}
      */
     merge(...values) {
@@ -84,7 +84,7 @@ class ConfigBuilder {
 
     /**
      * @see {@link Config#defaults}
-     * @param {...(Object|Function)} values
+     * @param {...ConfigDefaultsOptions} values
      * @returns {ConfigBuilder}
      */
     defaults(...values) {
@@ -95,7 +95,7 @@ class ConfigBuilder {
 
     /**
      * @see {@link Config#extend}
-     * @param {...(String|Object<String,Function>|Object<String,Function[]>)} values
+     * @param {...ConfigExtendOptions} values
      * @returns {ConfigBuilder}
      */
     extend(...values) {
