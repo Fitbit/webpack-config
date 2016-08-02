@@ -11,26 +11,26 @@
 
 ## Samples
 
-`webpack.config.js`
+`./webpack.config.js`
 
 ```javascript
 {"gitdown": "include", "file": "webpack.config.js"}
 ```
 
-`webpack.base.config.js`
+`./conf/webpack.base.config.js`
 
 ```javascript
-{"gitdown": "include", "file": "webpack.base.config.js"}
+{"gitdown": "include", "file": "conf/webpack.base.config.js"}
 ```
 
-`webpack.dev.config.js`
+`./conf/webpack.development.config.js`
 
 ```javascript
-{"gitdown": "include", "file": "webpack.dev.config.js"}
+{"gitdown": "include", "file": "conf/webpack.development.config.js"}
 ```
 
-`webpack.prod.config.js`
+`./conf/webpack.production.config.js`
 
 ```javascript
-{"gitdown": "include", "file": "webpack.prod.config.js"}
+{"gitdown": "include", "file": "conf/webpack.production.config.js"}
 ```

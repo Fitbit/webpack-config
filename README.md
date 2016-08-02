@@ -11,7 +11,7 @@
 
 <h2 id="webpack-config-samples">Samples</h2>
 
-`webpack.config.js`
+`./webpack.config.js`
 
 ```javascript
 import {
@@ -20,14 +20,14 @@ import {
 } from 'webpack-config';
 
 ConfigEnvironment.INSTANCE.setAll({
-    env: () => process.env.WEBPACK_ENV || process.env.NODE_ENV
+    env: () => process.env.NODE_ENV
 });
 
-export default new Config().extend('./conf/webpack.[env].config.js');
+export default new Config().extend('conf/webpack.[env].config.js');
 
 ```
 
-`webpack.base.config.js`
+`./conf/webpack.base.config.js`
 
 ```javascript
 import path from 'path';
@@ -95,13 +95,13 @@ export default new Config().merge({
 
 ```
 
-`webpack.dev.config.js`
+`./conf/webpack.development.config.js`
 
 ```javascript
 import webpack from 'webpack';
 import Config from 'webpack-config';
 
-export default new Config().extend('./conf/webpack.base.config.js').merge({
+export default new Config().extend('conf/webpack.base.config.js').merge({
     filename: __filename,
     debug: true,
     devtool: '#source-map',
@@ -128,14 +128,14 @@ export default new Config().extend('./conf/webpack.base.config.js').merge({
 
 ```
 
-`webpack.prod.config.js`
+`./conf/webpack.production.config.js`
 
 ```javascript
 import webpack from 'webpack';
 import Config from 'webpack-config';
 
 export default new Config().extend({
-    './conf/webpack.dev.config.js': config => {
+    'conf/webpack.development.config.js': config => {
         delete config.debug;
         delete config.devtool;
         delete config.output.pathinfo;

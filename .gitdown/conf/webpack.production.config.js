@@ -2,7 +2,7 @@ import webpack from 'webpack';
 import Config from 'webpack-config';
 
 export default new Config().extend({
-    './conf/webpack.dev.config.js': config => {
+    'conf/webpack.development.config.js': config => {
         delete config.debug;
         delete config.devtool;
         delete config.output.pathinfo;
