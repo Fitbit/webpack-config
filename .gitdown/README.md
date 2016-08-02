@@ -9,6 +9,16 @@
 # {"gitdown": "gitinfo", "name": "name"}
 > Helps to load, extend and merge webpack configs
 
+## Shareable Configs
+
+You can publish your configs to `npm` using `webpack-config-` prefix for package name.
+
+When you call `#extend()` method you may omit that prefix:
+
+```javascript
+{"gitdown": "include", "file": "webpack.npm.config.js"}
+```
+
 ## Samples
 
 `./webpack.config.js`

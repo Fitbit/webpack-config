@@ -9,6 +9,25 @@
 <h1 id="webpack-config">webpack-config</h1>
 > Helps to load, extend and merge webpack configs
 
+<h2 id="webpack-config-shareable-configs">Shareable Configs</h2>
+
+You can publish your configs to `npm` using `webpack-config-` prefix for package name.
+
+When you call `#extend()` method you may omit that prefix:
+
+```javascript
+import WebpackConfig from 'webpack-config';
+
+export default new WebpackConfig().extend(
+    'mdreizin/base',
+    'mdreizin/css',
+    'mdreizin/html',
+    'webpack-config-mdreizin/json'
+    // etc
+);
+
+```
+
 <h2 id="webpack-config-samples">Samples</h2>
 
 `./webpack.config.js`
