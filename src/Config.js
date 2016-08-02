@@ -43,7 +43,7 @@ const DEPENDENCY_TREE = 'DEPENDENCY_TREE';
  * @param {Config} context
  * @returns {*}
  */
-let evalValue = (value, context) => isFunction(value) ? value.call(context, context) : value;
+const evalValue = (value, context) => isFunction(value) ? value.call(context, context) : value;
 
 /**
  * @class
