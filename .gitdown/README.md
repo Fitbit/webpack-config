@@ -9,6 +9,11 @@
 # {"gitdown": "gitinfo", "name": "name"}
 > Helps to load, extend and merge webpack configs
 
+## Features
+
+[x] Supports environment variables under `#extend()` method
+[x] Supports shareable configs
+
 ## Shareable Configs
 
 You can publish your configs to `npm` using `webpack-config-` prefix for package name.

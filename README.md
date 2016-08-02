@@ -9,6 +9,11 @@
 <h1 id="webpack-config">webpack-config</h1>
 > Helps to load, extend and merge webpack configs
 
+<h2 id="webpack-config-features">Features</h2>
+
+[x] Supports environment variables under `#extend()` method
+[x] Supports shareable configs
+
 <h2 id="webpack-config-shareable-configs">Shareable Configs</h2>
 
 You can publish your configs to `npm` using `webpack-config-` prefix for package name.
