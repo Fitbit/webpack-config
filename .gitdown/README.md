@@ -11,8 +11,8 @@
 
 ## Features
 
-[x] Supports environment variables under `#extend()` method
-[x] Supports shareable configs
+- [x] Supports environment variables under `#extend()` method
+- [x] Supports shareable configs
 
 ## Shareable Configs
 

@@ -11,8 +11,8 @@
 
 <h2 id="webpack-config-features">Features</h2>
 
-[x] Supports environment variables under `#extend()` method
-[x] Supports shareable configs
+- [x] Supports environment variables under `#extend()` method
+- [x] Supports shareable configs
 
 <h2 id="webpack-config-shareable-configs">Shareable Configs</h2>
 
