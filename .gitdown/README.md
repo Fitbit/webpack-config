@@ -7,8 +7,7 @@
 {"gitdown": "badge", "name": "david-dev"}
 
 # {"gitdown": "gitinfo", "name": "name"}
-
-Helps to load, extend and merge webpack configs
+> Helps to load, extend and merge webpack configs
 
 ## Samples
 

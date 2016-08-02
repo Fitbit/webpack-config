@@ -7,8 +7,7 @@
 [![Development Dependency Status](https://img.shields.io/david/dev/mdreizin/webpack-config.svg?style=flat-square)](https://david-dm.org/mdreizin/webpack-config#info=devDependencies)
 
 <h1 id="webpack-config">webpack-config</h1>
-
-Helps to load, extend and merge webpack configs
+> Helps to load, extend and merge webpack configs
 
 <h2 id="webpack-config-samples">Samples</h2>
 
