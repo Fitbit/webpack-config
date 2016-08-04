@@ -1,11 +1,17 @@
 import Config from '../src/Config';
-import MultiConfig from '../src/ConfigList';
-import ConfigFactory from '../src/ConfigFactory';
+import ConfigList from '../src/ConfigList';
+import TestFactory from './helpers/TestFactory';
 
 describe('ConfigFactory', () => {
-    describe('.createConfig()', () => {
+    let factory;
+
+    beforeEach(() => {
+        factory = TestFactory.createConfigFactory();
+    });
+
+    describe('#createConfig()', () => {
         it('should create `Config` from `Function`', () => {
-            let config = ConfigFactory.createConfig(() => {
+            const config = factory.createConfig(() => {
                 return {
                     foo: 'foo1'
                 };
@@ -18,7 +24,7 @@ describe('ConfigFactory', () => {
         });
 
         it('should create `Config` from `Object`', () => {
-            let config = ConfigFactory.createConfig({
+            const config = factory.createConfig({
                 foo: 'foo1'
             });
 
@@ -29,11 +35,11 @@ describe('ConfigFactory', () => {
         });
 
         it('should create `MultiConfig` from `Object[]`', () => {
-            let configs = ConfigFactory.createConfig([{
+            const configs = factory.createConfig([{
                 foo: 'foo1'
             }]);
 
-            expect(configs).toEqual(jasmine.any(MultiConfig));
+            expect(configs).toEqual(jasmine.any(ConfigList));
             expect(configs.length).toEqual(1);
             expect(configs[0]).toEqual(jasmine.any(Config));
             expect(configs[0].toObject()).toEqual({

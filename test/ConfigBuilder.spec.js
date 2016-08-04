@@ -1,11 +1,15 @@
-import Config from '../src/Config';
-import ConfigList from '../src/ConfigList';
-import ConfigBuilder from '../src/ConfigBuilder';
+import TestFactory from './helpers/TestFactory';
 
 describe('ConfigBuilder', () => {
+    let builder;
+
+    beforeEach(() => {
+        builder = TestFactory.createConfigBuilder();
+    });
+
     describe('#merge()', () => {
         it('should merge `values`', () => {
-            const config = new ConfigBuilder().merge({
+            const config = builder.merge({
                 foo: {
                     bar: 'bar1'
                 },
@@ -23,7 +27,7 @@ describe('ConfigBuilder', () => {
 
     describe('#defaults()', () => {
         it('should not add extra `values`', () => {
-            const config = new ConfigBuilder().merge({
+            const config = builder.merge({
                 foo: 'foo1'
             }).defaults({
                 foo: 'foo2',
@@ -39,7 +43,7 @@ describe('ConfigBuilder', () => {
 
     describe('#extend()', () => {
         it('should extend using `String`', () => {
-            const config = new ConfigBuilder().extend('./test/fixtures/webpack.1.config.js').build();
+            const config = builder.extend('./test/fixtures/webpack.1.config.js').build();
 
             expect(config.toObject()).toEqual({
                 tags: [
@@ -55,12 +59,12 @@ describe('ConfigBuilder', () => {
 
     describe('#copyOf()', () => {
         it('should do copy of `Config`', () => {
-            const config = new ConfigBuilder().merge({
+            const config = builder.merge({
                 foo: 'bar1'
-            }).copyOf(Config.initWith({
+            }).copyOf({
                 foo: 'bar2',
                 bar: 'foo1'
-            })).build();
+            }).build();
 
             expect(config.toObject()).toEqual({
                 foo: 'bar1',
@@ -69,51 +73,51 @@ describe('ConfigBuilder', () => {
         });
 
         it('should do copy of `ConfigList`', () => {
-            const config = new ConfigBuilder().copyOf(ConfigList.initWith([{
+            const config = builder.copyOf([{
                 foo: 'foo1',
                 bar: 'bar1'
-            }])).merge({
+            }]).merge({
                 foo: 'foo2'
             }).build();
 
-            expect(config).toEqual(ConfigList.initWith([{
+            expect(config.map(x => x.toObject())).toEqual([{
                 foo: 'foo2',
                 bar: 'bar1'
-            }]));
+            }]);
         });
     });
 
     describe('#applyHooks()', () => {
         it('should apply hooks for `Config`', () => {
-            const config = new ConfigBuilder().merge({
-                foo: 'foo1',
-                bar: 'bar1'
+            const config = builder.merge({
+                foo: 'foo1'
             }).applyHooks({
-                foo: () => 'foo2',
-                bar: 'bar2',
-                x: () => {}
+                foo: 'bar1'
             }).build();
 
             expect(config.toObject()).toEqual({
-                foo: 'foo2',
-                bar: 'bar2'
+                foo: 'bar1'
             });
         });
 
         it('should apply hooks for `ConfigList`', () => {
-            const config = new ConfigBuilder().copyOf(ConfigList.initWith([{
-                foo: 'foo1',
+            const config = builder.copyOf([{
                 bar: 'bar1'
-            }])).applyHooks({
-                foo: () => 'foo2',
-                bar: 'bar2',
-                x: () => {}
+            }]).applyHooks({
+                bar: () => 'foo1'
             }).build();
 
-            expect(config).toEqual(ConfigList.initWith([{
-                foo: 'foo2',
-                bar: 'bar2'
-            }]));
+            expect(config.map(x => x.toObject())).toEqual([{
+                bar: 'foo1'
+            }]);
+        });
+
+        it('should not apply hooks for missing properties', () => {
+            const config = builder.copyOf({}).applyHooks({
+                bar: 'foo1'
+            }).build();
+
+            expect(config.toObject()).toEqual({});
         });
     });
 });

@@ -1,0 +1,55 @@
+import Config from '../src/Config';
+import ConfigBuilder from '../src/ConfigBuilder';
+import {
+    Config as ConfigProxy,
+    ConfigEnvironment,
+    ConfigCache,
+    ConfigPatternCache,
+    ConfigNameResolver,
+    ConfigPathResolver,
+    ConfigLoader,
+    ConfigFinder,
+    ConfigFactory,
+    ConfigBuilder as ConfigBuilderProxy,
+    environment,
+    cache,
+    patternCache,
+    nameResolver,
+    pathResolver,
+    loader,
+    finder,
+    factory
+} from '../src';
+
+describe('Module', () => {
+    const proxies = [
+            [ConfigProxy, Config],
+            [ConfigBuilderProxy, ConfigBuilder]
+        ],
+        classes = [
+            [ConfigEnvironment, environment],
+            [ConfigCache, cache],
+            [ConfigPatternCache, patternCache],
+            [ConfigNameResolver, nameResolver],
+            [ConfigPathResolver, pathResolver],
+            [ConfigLoader, loader],
+            [ConfigFinder, finder],
+            [ConfigFactory, factory]
+        ];
+
+    proxies.forEach(proxy => {
+        it(`should export \`${proxy[1].name}\``, () => {
+            const Proxy = proxy[0];
+
+            expect(Proxy).toBeTruthy();
+            expect(new Proxy()).toEqual(jasmine.any(proxy[1]));
+        });
+    });
+
+    classes.forEach(cls => {
+        it(`should export \`${cls[0].name}\``, () => {
+            expect(cls[0]).toBeTruthy();
+            expect(cls[1]).toEqual(jasmine.any(cls[0]));
+        });
+    });
+});

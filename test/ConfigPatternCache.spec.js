@@ -1,16 +1,10 @@
-import ConfigPatternCache from '../src/ConfigPatternCache';
+import TestFactory from './helpers/TestFactory';
 
 describe('ConfigPatternCache', () => {
     let patternCache;
 
     beforeEach(() => {
-        patternCache = new ConfigPatternCache();
-    });
-
-    describe('.INSTANCE', () => {
-        it('should return instance of `ConfigPatternCache`', () => {
-            expect(ConfigPatternCache.INSTANCE).toEqual(jasmine.any(ConfigPatternCache));
-        });
+        patternCache = TestFactory.createConfigPatternCache();
     });
 
     describe('#set()', () => {
@@ -25,8 +19,8 @@ describe('ConfigPatternCache', () => {
 
     describe('#getOrSet()', () => {
         it('should `.compile` to `Function` once', () => {
-            let value1 = patternCache.getOrSet('value');
-            let value2 = patternCache.getOrSet('value');
+            const value1 = patternCache.getOrSet('value'),
+                value2 = patternCache.getOrSet('value');
 
             expect(value1).toBe(value2);
             expect(value1).toEqual(value2);
