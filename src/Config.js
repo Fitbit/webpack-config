@@ -1,34 +1,10 @@
 import {
-    isFunction,
-    isObject,
-    defaultsDeep,
-    mergeWith,
     set,
     unset,
     get,
     has
 } from 'lodash';
-import ConfigExtendTransform from './ConfigExtendTransform';
 import ConfigDependency from './ConfigDependency';
-
-/**
- * @function
- * @name ConfigTransform
- * @param {Config} config
- * @returns {*}
- */
-
-/**
- * @typedef {Object|ConfigTransform} ConfigDefaultsOptions
- */
-
-/**
- * @typedef {Object|ConfigTransform} ConfigMergeOptions
- */
-
-/**
- * @typedef {String|Object<String,ConfigTransform>|Object<String,ConfigTransform[]>} ConfigExtendOptions
- */
 
 /**
  * @private
@@ -40,15 +16,40 @@ const DEPENDENCY_TREE = 'DEPENDENCY_TREE';
  * @private
  * @type {WeakMap}
  */
-const LOADER = new WeakMap();
+const FACTORY = new WeakMap();
 
 /**
  * @private
- * @param {Object|Function} value
- * @param {Config} context
- * @returns {*}
+ * @type {WeakMap}
  */
-const evalValue = (value, context) => isFunction(value) ? value.call(context, context) : value;
+const DEFAULTS_COMMAND = new WeakMap();
+
+/**
+ * @private
+ * @type {WeakMap}
+ */
+const MERGE_COMMAND = new WeakMap();
+
+/**
+ * @private
+ * @type {WeakMap}
+ */
+const EXTEND_COMMAND = new WeakMap();
+
+/**
+ * @private
+ * @param {Config} config
+ * @param {ConfigCommand} command
+ * @param {...*} values
+ * @returns {Config}
+ */
+const executeCommand = (config, command, ...values) => {
+    for (const value of values) {
+        command.execute(config, value);
+    }
+
+    return config;
+};
 
 /**
  * @class
@@ -56,19 +57,48 @@ const evalValue = (value, context) => isFunction(value) ? value.call(context, co
 class Config {
     /**
      * @constructor
-     * @param {ConfigLoader} loader
+     * @param {ConfigFactory} factory
+     * @param {ConfigDefaultsCommand} defaultsCommand
+     * @param {ConfigMergeCommand} mergeCommand
+     * @param {ConfigExtendCommand} extendCommand
      */
-    constructor(loader) {
-        LOADER.set(this, loader);
+    constructor(factory, defaultsCommand, mergeCommand, extendCommand) {
+        FACTORY.set(this, factory);
+        DEFAULTS_COMMAND.set(this, defaultsCommand);
+        MERGE_COMMAND.set(this, mergeCommand);
+        EXTEND_COMMAND.set(this, extendCommand);
     }
 
     /**
-     * @protected
      * @readonly
-     * @type {ConfigLoader}
+     * @type {ConfigFactory}
      */
-    get loader() {
-        return LOADER.get(this);
+    get factory() {
+        return FACTORY.get(this);
+    }
+
+    /**
+     * @readonly
+     * @type {ConfigDefaultsCommand}
+     */
+    get defaultsCommand() {
+        return DEFAULTS_COMMAND.get(this);
+    }
+
+    /**
+     * @readonly
+     * @type {ConfigMergeCommand}
+     */
+    get mergeCommand() {
+        return MERGE_COMMAND.get(this);
+    }
+
+    /**
+     * @readonly
+     * @type {ConfigExtendCommand}
+     */
+    get extendCommand() {
+        return EXTEND_COMMAND.get(this);
     }
 
     /**
@@ -116,17 +146,11 @@ class Config {
      *     };
      * });
      * @description Adds `values` if they are missing
-     * @param {...ConfigDefaultsOptions} values
+     * @param {...ConfigOptions} values
      * @returns {Config}
      */
     defaults(...values) {
-        for (const value of Object.values(values)) {
-            const properties = evalValue(value, this);
-
-            defaultsDeep(this, properties);
-        }
-
-        return this;
+        return executeCommand(this, this.defaultsCommand, ...values);
     }
 
     /**
@@ -147,21 +171,11 @@ class Config {
      *     };
      * });
      * @description Merges `values`
-     * @param {...ConfigMergeOptions} values
+     * @param {...ConfigOptions} values
      * @returns {Config}
      */
     merge(...values) {
-        for (const value of Object.values(values)) {
-            const properties = evalValue(value, this);
-
-            mergeWith(this, properties, (x, y) => { // eslint-disable-line consistent-return
-                if (Array.isArray(x)) {
-                    return x.concat(y);
-                }
-            });
-        }
-
-        return this;
+        return executeCommand(this, this.mergeCommand, ...values);
     }
 
     /**
@@ -204,41 +218,11 @@ class Config {
      *    }]
      * });
      * @description Helps to extend config using local file or shareable config file which should be hosted under `node_modules`
-     * @param {...ConfigExtendTransform} values
+     * @param {...ConfigExtendPossibleOptions} values
      * @returns {Config}
      */
     extend(...values) {
-        const map = ConfigExtendTransform.initWith(...values);
-
-        for (const [key, value] of map.entries()) {
-            const config = this.loader.loadConfig(key);
-
-            if (config instanceof Config) {
-                this.dependencyTree.children.push(config.dependencyTree);
-
-                let prevConfig = config.clone();
-
-                value.forEach(x => {
-                    const currConfig = x.call(this, prevConfig);
-
-                    if (!isObject(currConfig)) {
-                        prevConfig = {};
-                    } else {
-                        prevConfig = currConfig;
-                    }
-
-                    if (!(prevConfig instanceof Config)) {
-                        prevConfig = new Config(this.loader).merge(prevConfig);
-                    }
-                });
-
-                if (prevConfig instanceof Config) {
-                    this.merge(prevConfig.toObject());
-                }
-            }
-        }
-
-        return this;
+        return executeCommand(this, this.extendCommand, ...values);
     }
 
     /**
@@ -257,7 +241,7 @@ class Config {
      * @returns {Config}
      */
     clone() {
-        return new Config(this.loader).merge(this.toObject());
+        return new Config(this.factory, this.defaultsCommand, this.mergeCommand, this.extendCommand).merge(this.toObject());
     }
 
     /**

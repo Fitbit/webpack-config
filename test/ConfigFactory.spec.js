@@ -1,12 +1,17 @@
 import Config from '../src/Config';
 import ConfigList from '../src/ConfigList';
-import TestFactory from './helpers/TestFactory';
+import ConfigFactory from '../src/ConfigFactory';
+import MockConfigContainer from './helpers/MockConfigContainer';
 
 describe('ConfigFactory', () => {
-    let factory;
+    let container = new MockConfigContainer(),
+        /**
+         * @type {ConfigFactory}
+         */
+        factory;
 
     beforeEach(() => {
-        factory = TestFactory.createConfigFactory();
+        factory = container.resolve(ConfigFactory);
     });
 
     describe('#createConfig()', () => {
@@ -34,7 +39,7 @@ describe('ConfigFactory', () => {
             });
         });
 
-        it('should create `MultiConfig` from `Object[]`', () => {
+        it('should create `ConfigList` from `Object[]`', () => {
             const configs = factory.createConfig([{
                 foo: 'foo1'
             }]);

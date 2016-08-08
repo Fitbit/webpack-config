@@ -1,23 +1,28 @@
 import {
     resolve
 } from 'path';
-import TestFactory from './helpers/TestFactory';
+import ConfigCache from '../src/ConfigCache';
+import MockConfigContainer from './helpers/MockConfigContainer';
 
 describe('ConfigCache', () => {
     const FILENAME = resolve('./test/fixtures/webpack.1.config.js');
 
-    let cache;
+    let container = new MockConfigContainer(),
+        /**
+         * @type {ConfigCache}
+         */
+        cache;
 
     beforeEach(() => {
-        cache = TestFactory.createConfigCache();
+        cache = container.resolve(ConfigCache);
+
+        cache.persistent = true;
     });
 
     describe('#get()', () => {
         it('should return same configs when `persistent` is `true`', () => {
             const config1 = cache.get(FILENAME),
                 config2 = cache.get(FILENAME);
-
-            cache.persistent = true;
 
             expect(config1).toBe(config2);
         });
@@ -30,6 +35,17 @@ describe('ConfigCache', () => {
             const config2 = cache.get(FILENAME);
 
             expect(config1).not.toBe(config2);
+        });
+
+        it('should resolve `__esModule`', () => {
+            cache.set('./test/fixtures/webpack.6.config.js', {
+                __esModule: true,
+                'default': {}
+            });
+
+            const config = cache.get('./test/fixtures/webpack.6.config.js');
+
+            expect(config).toBeTruthy();
         });
     });
 });

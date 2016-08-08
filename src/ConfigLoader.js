@@ -1,7 +1,6 @@
 import {
     isString
 } from 'lodash';
-import ConfigFactory from './ConfigFactory';
 
 /**
  * @private
@@ -29,15 +28,15 @@ class ConfigLoader {
      * @constructor
      * @param {ConfigPathResolver} pathResolver
      * @param {ConfigCache} cache
+     * @param {ConfigFactory} factory
      */
-    constructor(pathResolver, cache) {
+    constructor(pathResolver, cache, factory) {
         PATH_RESOLVER.set(this, pathResolver);
         CACHE.set(this, cache);
-        FACTORY.set(this, new ConfigFactory(this));
+        FACTORY.set(this, factory);
     }
 
     /**
-     * @protected
      * @readonly
      * @type {ConfigPathResolver}
      */
@@ -46,7 +45,6 @@ class ConfigLoader {
     }
 
     /**
-     * @protected
      * @readonly
      * @type {ConfigCache}
      */
@@ -55,7 +53,6 @@ class ConfigLoader {
     }
 
     /**
-     * @protected
      * @readonly
      * @type {ConfigFactory}
      */
