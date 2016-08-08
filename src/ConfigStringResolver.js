@@ -13,7 +13,7 @@ const PATTERN_CACHE = new WeakMap();
 /**
  * @class
  */
-class ConfigNameResolver {
+class ConfigStringResolver {
     /**
      * @constructor
      * @param {ConfigEnvironment} environment
@@ -25,7 +25,6 @@ class ConfigNameResolver {
     }
 
     /**
-     * @protected
      * @readonly
      * @type {ConfigEnvironment}
      */
@@ -34,7 +33,6 @@ class ConfigNameResolver {
     }
 
     /**
-     * @protected
      * @readonly
      * @type {ConfigPatternCache}
      */
@@ -53,8 +51,16 @@ class ConfigNameResolver {
             options[key] = this.environment.valueOf(key);
         }
 
-        return this.patternCache.eval(value, options);
+        let resolvedValue;
+
+        try {
+            resolvedValue = this.patternCache.eval(value, options);
+        } catch (e) {
+            resolvedValue = value;
+        }
+
+        return resolvedValue;
     }
 }
 
-export default ConfigNameResolver;
+export default ConfigStringResolver;
