@@ -24,13 +24,6 @@ class ConfigDependencyIterator extends RecursiveIterator {
     /**
      * @override
      */
-    isLeaf(any) { /* istanbul ignore next: covered by `RecursiveIterator` */
-        return super.isLeaf(any) && !any.children.length;
-    }
-
-    /**
-     * @override
-     */
     getStatesOfChildNodes(node, path, deep) {
         return node.children.map(child => this.getState(node, child, child.root.filename, path.concat(child.root.filename), deep + 1));
     }
