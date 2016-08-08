@@ -11,8 +11,8 @@
 
 ## Features
 
-- [x] Supports environment variables under `#extend()` method
-- [x] Supports shareable configs
+- [x] Supports environment variables under `#extend()`, `#merge()`, `#defaults()` methods
+- [x] Supports shareable configs via `node`-modules
 
 ## Changelog
 
