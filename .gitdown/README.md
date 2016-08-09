@@ -12,6 +12,7 @@
 ## Features
 
 - [x] Supports environment variables under `#extend()`, `#merge()`, `#defaults()` methods
+- [x] Supports `process.env.*` in addition to environment variables
 - [x] Supports shareable configs via `node`-modules
 
 ## Changelog

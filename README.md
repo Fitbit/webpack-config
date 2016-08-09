@@ -12,6 +12,7 @@
 <h2 id="webpack-config-features">Features</h2>
 
 - [x] Supports environment variables under `#extend()`, `#merge()`, `#defaults()` methods
+- [x] Supports `process.env.*` in addition to environment variables
 - [x] Supports shareable configs via `node`-modules
 
 <h2 id="webpack-config-changelog">Changelog</h2>
@@ -48,6 +49,7 @@ environment.setAll({
     env: () => process.env.NODE_ENV
 });
 
+// Also you may use `'conf/webpack.[NODE_ENV].config.js'`
 export default new Config().extend('conf/webpack.[env].config.js');
 
 ```
