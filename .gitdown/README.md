@@ -29,6 +29,8 @@ When you call `#extend()` method you may omit that prefix:
 {"gitdown": "include", "file": "webpack.npm.config.js"}
 ```
 
+Also I would recommend to add `webpack` and `webpack-config` keywords so other users can easily find your module.
+
 ## Samples
 
 `./webpack.config.js`

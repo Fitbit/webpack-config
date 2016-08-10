@@ -38,6 +38,8 @@ export default new Config().extend(
 
 ```
 
+Also I would recommend to add `webpack` and `webpack-config` keywords so other users can easily find your module.
+
 <h2 id="webpack-config-samples">Samples</h2>
 
 `./webpack.config.js`
