@@ -28,7 +28,7 @@ const FACTORY = new WeakMap();
  * @param {Config} previous
  * @returns {*}
  */
-const evalHook = (path, hook, current, previous) => isFunction(hook) ? hook(path, current, previous) : hook;
+const applyHook = (path, hook, current, previous) => isFunction(hook) ? hook(path, current, previous) : hook;
 
 /**
  * @class
@@ -92,7 +92,7 @@ class ConfigBuilder {
 
     /**
      * @see {@link Config#merge}
-     * @param {...ConfigMergeOptions} values
+     * @param {...ConfigOptions} values
      * @returns {ConfigBuilder}
      */
     merge(...values) {
@@ -103,7 +103,7 @@ class ConfigBuilder {
 
     /**
      * @see {@link Config#defaults}
-     * @param {...ConfigDefaultsOptions} values
+     * @param {...ConfigOptions} values
      * @returns {ConfigBuilder}
      */
     defaults(...values) {
@@ -132,14 +132,14 @@ class ConfigBuilder {
             if (Array.isArray(this.config)) {
                 this.config.forEach(config => {
                     if (config.has(path)) {
-                        const value = evalHook(path, hook, this.pendingConfig, config);
+                        const value = applyHook(path, hook, this.pendingConfig, config);
 
                         this.pendingConfig.set(path, value);
                     }
                 });
             } else {
                 if (this.pendingConfig.has(path)) {
-                    const value = evalHook(path, hook, this.pendingConfig, this.config);
+                    const value = applyHook(path, hook, this.pendingConfig, this.config);
 
                     this.pendingConfig.set(path, value);
                 }
