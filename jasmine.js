@@ -3,11 +3,10 @@ import SpecReporter from 'jasmine-spec-reporter';
 
 const JASMINE_CONFIG_PATH = './jasmine.json';
 
-let jasmine = new Jasmine();
+const jasmine = new Jasmine();
 
-jasmine.configureDefaultReporter({
-    print: () => {}
-});
+jasmine.configureDefaultReporter({print: () => {}});
+jasmine.env.clearReporters();
 jasmine.addReporter(new SpecReporter());
 jasmine.loadConfigFile(JASMINE_CONFIG_PATH);
 jasmine.execute();
