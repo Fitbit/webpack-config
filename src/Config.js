@@ -5,12 +5,13 @@ import {
     has
 } from 'lodash';
 import ConfigDependency from './ConfigDependency';
+import ConfigCommandInvoker from './ConfigCommandInvoker';
 
 /**
  * @private
- * @type {String}
+ * @type {WeakMap}
  */
-const DEPENDENCY_TREE = 'DEPENDENCY_TREE';
+const DEPENDENCY_TREE = new WeakMap();
 
 /**
  * @private
@@ -35,21 +36,6 @@ const MERGE_COMMAND = new WeakMap();
  * @type {WeakMap}
  */
 const EXTEND_COMMAND = new WeakMap();
-
-/**
- * @private
- * @param {Config} config
- * @param {ConfigCommand} command
- * @param {...*} values
- * @returns {Config}
- */
-const executeCommand = (config, command, ...values) => {
-    for (const value of values) {
-        command.execute(config, value);
-    }
-
-    return config;
-};
 
 /**
  * @class
@@ -109,7 +95,7 @@ class Config {
      *
      * config.extend('./test/fixtures/webpack.1.config.js');
      *
-     * for (let {node} of config.dependencyTree) {
+     * for (const {node} of config.dependencyTree) {
      *   console.log(node.root.filename);
      * }
      * // ./test/fixtures/webpack.1.config.js
@@ -117,16 +103,24 @@ class Config {
      * // ./test/fixtures/webpack.3.config.js
      * // ./test/fixtures/webpack.5.config.js
      * // ./test/fixtures/webpack.4.config.js
-     * @description Keeps information about configs which have been loaded via {@link Config#extend}
+     * @description Holds information about [included]{@link Config#extend} configs
      * @readonly
      * @type {ConfigDependency}
      */
     get dependencyTree() {
-        if (!this[DEPENDENCY_TREE]) {
-            this[DEPENDENCY_TREE] = new ConfigDependency(this);
+        if (!DEPENDENCY_TREE.has(this)) {
+            DEPENDENCY_TREE.set(this, new ConfigDependency(this));
         }
 
-        return this[DEPENDENCY_TREE];
+        return DEPENDENCY_TREE.get(this);
+    }
+
+    /**
+     * @private
+     * @param {ConfigDependency} value
+     */
+    set dependencyTree(value) {
+        DEPENDENCY_TREE.set(this, value);
     }
 
     /**
@@ -150,7 +144,7 @@ class Config {
      * @returns {Config}
      */
     defaults(...values) {
-        return executeCommand(this, this.defaultsCommand, ...values);
+        return new ConfigCommandInvoker(this.defaultsCommand).invoke(this, ...values);
     }
 
     /**
@@ -175,7 +169,7 @@ class Config {
      * @returns {Config}
      */
     merge(...values) {
-        return executeCommand(this, this.mergeCommand, ...values);
+        return new ConfigCommandInvoker(this.mergeCommand).invoke(this, ...values);
     }
 
     /**
@@ -222,7 +216,7 @@ class Config {
      * @returns {Config}
      */
     extend(...values) {
-        return executeCommand(this, this.extendCommand, ...values);
+        return new ConfigCommandInvoker(this.extendCommand).invoke(this, ...values);
     }
 
     /**
@@ -241,7 +235,11 @@ class Config {
      * @returns {Config}
      */
     clone() {
-        return new Config(this.factory, this.defaultsCommand, this.mergeCommand, this.extendCommand).merge(this.toObject());
+        const config = new Config(this.factory, this.defaultsCommand, this.mergeCommand, this.extendCommand);
+
+        config.dependencyTree = new ConfigDependency(config, this.dependencyTree.children);
+
+        return config.merge(this.toObject());
     }
 
     /**
@@ -267,8 +265,6 @@ class Config {
                 properties[key] = value;
             }
         }
-
-        delete properties[DEPENDENCY_TREE];
 
         return properties;
     }

@@ -33,13 +33,19 @@ class ConfigFactory {
 
     /**
      * @private
-     * @param {Object} options
+     * @param {Object|Config} value
      * @returns {Config}
      */
-    initWith(options) {
-        const config = this.container.resolve(Config);
+    initWith(value) {
+        let config;
 
-        return config.merge(options);
+        if (value instanceof Config) {
+            config = value.clone();
+        } else {
+            config = this.container.resolve(Config).merge(value);
+        }
+
+        return config;
     }
 
     /**
