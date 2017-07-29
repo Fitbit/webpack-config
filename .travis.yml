@@ -2,9 +2,9 @@ sudo: false
 language: node_js
 node_js:
   - 8
-  - 7
-  - 6
-  - 5
+#  - 7
+#  - 6
+#  - 5
 os:
   - linux
   - osx
@@ -39,6 +39,6 @@ jobs:
             yarn run jsdoc;
             yarn run gh-pages;
           else
-            echo "Release stage is skipped on pull request."
+            echo "Release stage is skipped on pull request.";
           fi
       after_success:
