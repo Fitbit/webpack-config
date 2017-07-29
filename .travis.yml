@@ -32,12 +32,13 @@ jobs:
       before_install:
         - git config --global user.name "$GH_USER_NAME"
         - git config --global user.email "$GH_USER_EMAIL"
+      before_deploy:
+        - yarn run jsdoc
+      after_deploy:
+        - yarn run codeclimate
+        - yarn run gh-pages
       deploy:
         provider: script
-        script:
-          - yarn run codeclimate
-          - yarn run semantic-release
-          - yarn run jsdoc
-          - yarn run gh-pages
+        script: yarn run semantic-release
         on:
           branch: master
