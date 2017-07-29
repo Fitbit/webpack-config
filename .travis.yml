@@ -2,9 +2,9 @@ sudo: false
 language: node_js
 node_js:
   - 8
-#  - 7
-#  - 6
-#  - 5
+  - 7
+  - 6
+  - 5
 os:
   - linux
   - osx
@@ -35,10 +35,9 @@ jobs:
       deploy:
         provider: script
         script:
-          - ls dist
-#          - yarn run codeclimate
-#          - yarn run semantic-release
-#          - yarn run jsdoc
-#          - yarn run gh-pages
+          - yarn run codeclimate
+          - yarn run semantic-release
+          - yarn run jsdoc
+          - yarn run gh-pages
         on:
           branch: master
