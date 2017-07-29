@@ -19,8 +19,14 @@ branches:
     - /^greenkeeper/.*$/
   except:
     - gh-pages
+script:
+  - yarn install
 jobs:
+  fast_finish: true
   include:
-    - stage: Test
-      node_js: 8
-      script: yarn run clean
+    - stage: Build
+      script:
+        - yarn run clean
+        - yarn run eslint
+        - yarn run cover
+        - yarn run build
