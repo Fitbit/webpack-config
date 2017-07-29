@@ -24,22 +24,7 @@ branches:
 before_install:
   - git config --global user.name "$GH_USER_NAME"
   - git config --global user.email "$GH_USER_EMAIL"
-script:
-  - yarn run clean
-  - yarn run eslint
-  - yarn run cover
-  - yarn run build
 jobs:
   include:
-    - stage: Release
-      node_js: 8
-      deploy:
-        provider: script
-        script:
-          - yarn run build
-          - yarn run codeclimate
-          - yarn run semantic-release
-          - yarn run jsdoc
-          - yarn run gh-pages
-        on:
-          branch: master
+    - stage: Test
+      script: yarn run clean
