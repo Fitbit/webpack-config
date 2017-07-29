@@ -3,7 +3,7 @@ build: off
 deploy: off
 cache:
   - node_modules -> package.json
-  - '%APPDATA%\npm-cache -> package.json'
+  - node_modules -> yarn.lock
 branches:
   only:
     - master
@@ -14,17 +14,17 @@ matrix:
   fast_finish: true
 environment:
   matrix:
+    - nodejs_version: 8
+    - nodejs_version: 7
     - nodejs_version: 6
     - nodejs_version: 5
-    - nodejs_version: 4
 platform:
   - x86
   - x64
 install:
   - ps: Install-Product node $env:nodejs_version $env:platform
-  - npm prune
-  - npm install
+  - yarn install
 test_script:
   - node --version
-  - npm --version
-  - cmd: npm test
+  - yarn --version
+  - cmd: yarn test
