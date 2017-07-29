@@ -2,9 +2,9 @@ sudo: false
 language: node_js
 node_js:
   - 8
-  - 7
-  - 6
-  - 5
+#  - 7
+#  - 6
+#  - 5
 os:
   - linux
   - osx
@@ -19,15 +19,26 @@ branches:
     - /^greenkeeper/.*$/
   except:
     - gh-pages
-script: []
-install: []
+before_install:
+  - git config --global user.name "$GH_USER_NAME"
+  - git config --global user.email "$GH_USER_EMAIL"
+script:
+  - yarn run clean
+  - yarn run eslint
+  - yarn run cover
+  - yarn run build
 jobs:
   fast_finish: true
   include:
-    - stage: test
-      script:
-        - yarn install
-        - yarn run clean
-        - yarn run eslint
-        - yarn run cover
-        - yarn run build
+    - stage: release
+      node_js: 8
+      deploy:
+        provider: script
+        script:
+          - yarn run clean
+#          - yarn run codeclimate
+#          - yarn run semantic-release
+#          - yarn run jsdoc
+#          - yarn run gh-pages
+        on:
+          branch: master
