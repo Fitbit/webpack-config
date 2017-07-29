@@ -19,8 +19,7 @@ branches:
     - /^greenkeeper/.*$/
   except:
     - gh-pages
-script:
-  - yarn install
+script: false
 jobs:
   fast_finish: true
   include:
