@@ -19,8 +19,8 @@ branches:
     - /^greenkeeper/.*$/
   except:
     - gh-pages
-script: false
-install: false
+script: []
+install: []
 jobs:
   fast_finish: true
   include:
@@ -30,17 +30,4 @@ jobs:
         - yarn run clean
         - yarn run eslint
         - yarn run cover
-#    - stage: build
-#      script:
-#        - yarn run build
-#    - stage: release
-#      node_js: 8
-#      deploy:
-#        provider: script
-#        script:
-#          - yarn run codeclimate
-#          - yarn run semantic-release
-#          - yarn run jsdoc
-#          - yarn run gh-pages
-#        on:
-#          branch: master
+        - yarn run build
