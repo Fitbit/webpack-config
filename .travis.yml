@@ -2,9 +2,9 @@ sudo: false
 language: node_js
 node_js:
   - 8
-  - 7
-  - 6
-  - 5
+#  - 7
+#  - 6
+#  - 5
 os:
   - linux
   - osx
@@ -32,6 +32,10 @@ jobs:
       before_install:
         - git config --global user.name "$GH_USER_NAME"
         - git config --global user.email "$GH_USER_EMAIL"
+      script:
+        - mkdir -p $TRAVIS_BUILD_DIR/.travis
+        - touch $TRAVIS_BUILD_DIR/.travis/release.sh
+        - chmod +x $TRAVIS_BUILD_DIR/.travis/release.sh
       before_deploy:
         - yarn run jsdoc
       deploy:
@@ -42,7 +46,6 @@ jobs:
       deploy:
         skip_cleanup: true
         provider: script
-        install: skip
-        script: skip
+        script: $TRAVIS_BUILD_DIR/.travis/release.sh
         on:
           branch: master
