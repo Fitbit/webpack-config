@@ -20,25 +20,27 @@ branches:
   except:
     - gh-pages
 script: false
+install: false
 jobs:
   fast_finish: true
   include:
     - stage: test
       script:
+        - yarn install
         - yarn run clean
         - yarn run eslint
         - yarn run cover
-    - stage: build
-      script:
-        - yarn run build
-    - stage: release
-      node_js: 8
-      deploy:
-        provider: script
-        script:
-          - yarn run codeclimate
-          - yarn run semantic-release
-          - yarn run jsdoc
-          - yarn run gh-pages
-        on:
-          branch: master
+#    - stage: build
+#      script:
+#        - yarn run build
+#    - stage: release
+#      node_js: 8
+#      deploy:
+#        provider: script
+#        script:
+#          - yarn run codeclimate
+#          - yarn run semantic-release
+#          - yarn run jsdoc
+#          - yarn run gh-pages
+#        on:
+#          branch: master
