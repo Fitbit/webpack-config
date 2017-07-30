@@ -15,7 +15,7 @@
     "postcover": "nyc report",
     "codeclimate": "codeclimate-test-reporter < ./coverage/lcov.info",
     "jsdoc": "jsdoc ./src -c ./jsdoc.json",
-    "gh-pages": "gh-pages -r https://${GH_TOKEN}@github.com/Fitbit/webpack-config.git -d docs",
+    "gh-pages": "gh-pages -r https://$GH_TOKEN@github.com/Fitbit/webpack-config.git -d docs",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "nyc": {
