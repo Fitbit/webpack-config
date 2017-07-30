@@ -34,11 +34,11 @@ jobs:
         - git config --global user.email "$GH_USER_EMAIL"
       deploy:
         skip_cleanup: true
-        - provider: script
-          script: yarn run jsdoc && yarn run gh-pages
+#        - provider: script
+#          script: yarn run jsdoc && yarn run gh-pages
         - provider: script
           script: yarn run codeclimate
-        - provider: script
-          script: yarn run semantic-release
+#        - provider: script
+#          script: yarn run semantic-release
       on:
         branch: master
