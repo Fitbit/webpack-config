@@ -7,7 +7,7 @@ node_js:
 #  - 5
 os:
   - linux
-#  - osx
+  - osx
 cache:
   directories:
     - node_modules
@@ -29,12 +29,9 @@ jobs:
   include:
     - stage: release
       node_js: 8
-      before_deploy:
-        - git config --global user.name "$GH_USER_NAME"
-        - git config --global user.email "$GH_USER_EMAIL"
       deploy:
         skip_cleanup: true
         provider: script
-        script: yarn run jsdoc && yarn run gh-pages
+        script: yarn run codeclimate && yarn run semantic-release
       on:
         branch: master
