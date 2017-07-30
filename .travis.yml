@@ -36,8 +36,8 @@ jobs:
         - yarn run build
         - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
             yarn run jsdoc;
-            git config --global user.name "$GH_USER_NAME"
-            git config --global user.email "$GH_USER_EMAIL"
+            git config --global user.name "$GH_USER_NAME";
+            git config --global user.email "$GH_USER_EMAIL";
             yarn run gh-pages;
           else
             echo "Release stage is skipped on pull request.";
