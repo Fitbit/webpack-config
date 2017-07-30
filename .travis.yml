@@ -36,6 +36,6 @@ jobs:
       deploy:
         skip_cleanup: true
         provider: script
-        script: yarn run jsdoc && yarn run gh-pages
+        script: yarn run codeclimate && yarn run semantic-release
       on:
         branch: master
