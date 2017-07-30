@@ -5,9 +5,11 @@ node_js:
 #  - 7
 #  - 6
 #  - 5
+matrix:
+  fast_finish: true
 os:
   - linux
-#  - osx
+  - osx
 cache:
   directories:
     - node_modules
@@ -19,24 +21,13 @@ branches:
     - /^greenkeeper/.*$/
   except:
     - gh-pages
+before_install:
+  - git config --global user.name "$GH_USER_NAME"
+  - git config --global user.email "$GH_USER_EMAIL"
 script:
   - yarn run clean
   - yarn run eslint
   - yarn run cover
   - yarn run build
-jobs:
-  fast_finish: true
-  include:
-    - stage: release
-      node_js: 8
-      script:
-        - yarn run clean
-        - yarn run eslint
-        - yarn run cover
-        - yarn run build
-        - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-            yarn run codeclimate;
-            TRAVIS_JOB_NUMBER=WORKAROUND.1 yarn run semantic-release;
-          else
-            echo "Release stage is skipped on pull request.";
-          fi
+after_script:
+  - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && .travis/after-all.sh || false'
