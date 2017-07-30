@@ -7,7 +7,7 @@ node_js:
 #  - 5
 os:
   - linux
-  - osx
+#  - osx
 cache:
   directories:
     - node_modules
@@ -41,7 +41,7 @@ jobs:
             yarn run codeclimate;
             TRAVIS_JOB_NUMBER=WORKAROUND.1 npm run semantic-release;
             yarn run jsdoc;
-            yarn run gh-pages;
+            npm run gh-pages;
           else
             echo "Release stage is skipped on pull request.";
           fi
