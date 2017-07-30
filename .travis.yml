@@ -2,12 +2,12 @@ sudo: false
 language: node_js
 node_js:
   - 8
-#  - 7
+  - 7
 #  - 6
 #  - 5
 os:
   - linux
-  - osx
+#  - osx
 cache:
   directories:
     - node_modules
