@@ -29,8 +29,6 @@ jobs:
   include:
     - stage: release
       node_js: 8
-        - git config --global user.name "$GH_USER_NAME"
-        - git config --global user.email "$GH_USER_EMAIL"
       script:
         - yarn run clean
         - yarn run eslint
@@ -38,7 +36,9 @@ jobs:
         - yarn run build
         - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
             yarn run jsdoc;
-            GH_TOKEN=${GH_TOKEN} yarn run gh-pages;
+            git config --global user.name "$GH_USER_NAME"
+            git config --global user.email "$GH_USER_EMAIL"
+            yarn run gh-pages;
           else
             echo "Release stage is skipped on pull request.";
           fi
