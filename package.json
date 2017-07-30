@@ -15,7 +15,6 @@
     "postcover": "nyc report",
     "codeclimate": "codeclimate-test-reporter < ./coverage/lcov.info",
     "jsdoc": "jsdoc ./src -c ./jsdoc.json",
-    "gh-pages": "gh-pages -r https://$GH_TOKEN@github.com/Fitbit/webpack-config.git -d docs",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "nyc": {
@@ -55,7 +54,6 @@
     "eslint": "^4.3.0",
     "eslint-plugin-babel": "^4.1.2",
     "eslint-plugin-markdown": "^1.0.0-beta.6",
-    "gh-pages": "^1.0.0",
     "jasmine": "^2.7.0",
     "jasmine-spec-reporter": "^4.1.1",
     "jsdoc": "^3.5.3",
