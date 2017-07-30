@@ -38,7 +38,8 @@ jobs:
         - yarn run cover
         - yarn run build
         - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-            TRAVIS_JOB_NUMBER=WORKAROUND.1 npm run semantic-release;
+            yarn run jsdoc;
+            yarn run gh-pages;
           else
             echo "Release stage is skipped on pull request.";
           fi
