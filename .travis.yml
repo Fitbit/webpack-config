@@ -30,6 +30,7 @@ jobs:
     - stage: release
       node_js: 8
       deploy:
+        provider: script
         script:
 #          - yarn semantic-release
           - yarn run codeclimate
