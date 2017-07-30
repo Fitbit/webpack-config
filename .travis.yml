@@ -29,9 +29,10 @@ jobs:
   include:
     - stage: release
       node_js: 8
-      deploy:
-        skip_cleanup: true
-        provider: script
-        script: yarn run codeclimate && yarn run semantic-release
-      on:
-        branch: master
+      script:
+        - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
+            yarn run codeclimate;
+            yarn run semantic-release;
+          else
+            echo "Release stage is skipped on pull request.";
+          fi
