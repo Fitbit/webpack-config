@@ -27,13 +27,19 @@ script:
 jobs:
   fast_finish: true
   include:
-    - stage: release
+    - stage: codeclimate
       node_js: 8
       deploy:
         skip_cleanup: true
-        - provider: script
-          script: yarn run codeclimate
-        - provider: script
-          script: yarn run semantic-release
+        provider: script
+        script: yarn run codeclimate
+      on:
+        branch: master
+    - stage: npm
+      node_js: 8
+      deploy:
+        skip_cleanup: true
+        provider: script
+        script: yarn run semantic-release
       on:
         branch: master
