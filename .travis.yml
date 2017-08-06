@@ -4,14 +4,10 @@ node_js:
   - 8
   - 7
   - 6
-  - 5
 os:
   - linux
   - osx
-cache:
-  directories:
-    - node_modules
-    - $HOME/.yarn-cache
+cache: yarn
 notifications:
   email: false
 branches:
