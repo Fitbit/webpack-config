@@ -2,7 +2,7 @@ sudo: false
 language: node_js
 node_js:
   - 9
-  - 8
+  - lts/*
 os:
   - linux
   - osx
@@ -37,7 +37,7 @@ jobs:
   fast_finish: true
   include:
     - stage: release
-      node_js: 8
+      node_js: lts/*
       deploy:
         skip_cleanup: true
         provider: script
